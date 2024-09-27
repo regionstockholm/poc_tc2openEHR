@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Spine\Spine.Foundation.Web.Bootstrapper.Minimal\Spine.Foundation.Web.Bootstrapper.Minimal.csproj" />
+    <ProjectReference Include="..\..\..\Spine\Spine.Migration.OpenEhr.Etl.Core\Spine.Migration.OpenEhr.Etl.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="TestData\01CareDocumentationGet_195705172590_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\02CareDocumentationGet_195401171334_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\03CareDocumentationGet_195207291591_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\04CareDocumentationGet_195906113187_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\05CareDocumentationGet_201402192387_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\CareDocumentationGet_195705172590_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
