@@ -1,7 +1,32 @@
-{
-	"3719": "systoliskt",
-	"1964": "kroppslängd",
-	"1965": "kroppsvikt",
-	"3720": "diastoliskt",
-	"289": "problem_diagnos"
-}
+[
+	{
+		"Code": "3719",
+		"Value": "systoliskt",
+		"Terminology": "TC-Catalag"
+	},
+	{
+    "Code": "1964",
+    "Value": "kroppslängd",
+    "Terminology": "TC-Catalag"
+  },
+  {
+    "Code": "1965",
+    "Value": "kroppsvikt",
+    "Terminology": "TC-Catalag"
+  },
+  {
+    "Code": "3720",
+    "Value": "diastoliskt",
+    "Terminology": "TC-Catalag"
+  },
+  {
+    "Code": "6531",
+    "Value": "problem_diagnos",
+    "Terminology": "TC-Catalag"
+  },
+  {
+    "Code": "1849",
+    "Value": "systolic_diastolic",
+    "Terminology": "TC-Catalag"
+  }
+]

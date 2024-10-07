@@ -30,25 +30,31 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
         {
             // ToDo 
             // Looping for Parllel CareDocumentation ETL execution
-            try
-            {
-                string careDocFileName = Path.Combine(AppContext.BaseDirectory, @"TestData\CareDocumentationGet_195705172590_0.xml");
-
-                var extractorConfigurations = new ExtractionConfiguration<string>(careDocFileName);
-                var tcData = await _careDocExtractor.Extract<string, CareDocumentationDto>(extractorConfigurations);
-                var tcOpenEhrData = await _careDocTransformer.Trasform<CareDocumentationDto, CareDocumentOpenEhrData>(tcData);
-                var result = await _careDocOpenEhrLoader.Load<OpenEhrData, object>(new OpenEhrData()
+            int count = 0;
+            string careDocsFolder = Path.Combine(AppContext.BaseDirectory, @"TestData");
+            foreach (var file in Directory.EnumerateFiles(careDocsFolder, "*.xml"))
+            { 
+                try
                 {
-                    PatientID = tcOpenEhrData.PatientID,
-                    Compositions = tcOpenEhrData.Compositions,
-                });  // ToDo Mapper and model optimization
-            }
-            catch (Exception ex)
-            {
-                // ToDo Log exceptions in Logger
-                Console.WriteLine(ex.ToString());
-            }
+                    //string file = Path.Combine(AppContext.BaseDirectory, @"TestData\CareDocumentationGet_201402192387_0 - Mock.xml");
+                    var extractorConfigurations = new ExtractionConfiguration<string>(file);
+                    var tcData = await _careDocExtractor.Extract<string, CareDocumentationDto>(extractorConfigurations);
+                    var tcOpenEhrData = await _careDocTransformer.Trasform<CareDocumentationDto, CareDocumentOpenEhrData>(tcData);
+                    var result = await _careDocOpenEhrLoader.Load<OpenEhrData, object>(new OpenEhrData()
+                    {
+                        PatientID = tcOpenEhrData.PatientID,
+                        Compositions = tcOpenEhrData.Compositions,
+                    });  // ToDo Mapper and model optimization
+                }
+                catch (Exception ex)
+                {
+                    // ToDo Log exceptions in Logger
+                    Console.WriteLine(ex.ToString());
 
+                }
+                Console.WriteLine($"{++count}. File name : { file}");
+                
+            }   
         }
 
     }

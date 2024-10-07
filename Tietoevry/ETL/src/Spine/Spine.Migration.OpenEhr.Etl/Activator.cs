@@ -31,7 +31,8 @@ namespace Spine.Migration.OpenEhr.Etl
         {
             _configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("AppSettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ENVIRONMENT__NAME")}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .AddCommandLine(args).Build();
 
@@ -41,8 +42,10 @@ namespace Spine.Migration.OpenEhr.Etl
         public Activation RegisterServices()
         {
             _services.AddSingleton<IConfiguration>(_configuration);
+
             _services.AddTransient(typeof(Lazy<>), typeof(LazyService<>));
             _services.AddBootStrapper();
+            _services.AddOpenEhrClient(_configuration);
 
             return this;
         }

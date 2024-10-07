@@ -7,12 +7,12 @@
     {
         public void Register(IServiceRegister register)
         {
-            register.AddSingleton<ITerminolgyLookup, TerminologyLookup>();
             register.AddSingleton<ITemplateServices, TemplateServices>();
             register.AddSingleton<ICompositionService, CompositionService>();
-
+            register.AddSingleton<IUnitProvider, UnitProvider>();
             register.AddSingleton<ITransformService, TransformData>();
-
+            register.AddSingleton<IPatientService, PatientService>();
+            register.AddSingleton<ITerminologyProvider, TerminologyProvider>();
             register.AddSingleton<ICareDocumentationTransformer, CareDocumentationTransformer>();
         }
     }

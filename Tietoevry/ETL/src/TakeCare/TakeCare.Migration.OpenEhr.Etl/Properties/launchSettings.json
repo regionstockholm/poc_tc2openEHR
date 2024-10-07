@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TakeCare.Migration.OpenEhr.Etl": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ENVIRONMENT__NAME": "Development1"
+      }
+    }
+  }
+}

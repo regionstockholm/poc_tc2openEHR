@@ -18,25 +18,28 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
         public int ParentCount { get; set; }
 
         [XmlElement("TermId")]
-        public string TermId { get; set; }
+        public string? TermId { get; set; }
 
         [XmlElement("Comment")]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [XmlElement("Value")]
-        public KeywordValue Value { get; set; }
+        public KeywordValue? Value { get; set; }
 
         [XmlElement("Keyword")]
-        public List<Keyword> Keywords { get; set; }
+        public List<Keyword>? Keywords { get; set; }
     }
 
     public class KeywordValue
     {
         [XmlElement("TextVal")]
-        public string TextVal { get; set; }
+        public string? TextVal { get; set; }
 
         [XmlElement("NumVal")]
-        public NumVal NumVal { get; set; }
+        public NumVal? NumVal { get; set; }
+
+        [XmlElement("TermId")]
+        public string? TermId { get; set; }
     }
 
     public class NumVal
@@ -45,6 +48,6 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
         public string Val { get; set; }
 
         [XmlElement("Unit")]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 }

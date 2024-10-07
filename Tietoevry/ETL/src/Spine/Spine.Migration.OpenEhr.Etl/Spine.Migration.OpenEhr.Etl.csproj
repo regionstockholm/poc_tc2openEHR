@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Spine\Spine.Migration.OpenEhr.Etl.Core\Spine.Migration.OpenEhr.Etl.Core.csproj" />
     <ProjectReference Include="..\Spine.Foundation.Web.IoC.Minimal\Spine.Foundation.Web.IoC.Minimal.csproj" />
+    <ProjectReference Include="..\Spine.Foundation.Web.OpenEhr.Client\Spine.Foundation.Web.OpenEhr.Client.csproj" />
   </ItemGroup>
 
 </Project>

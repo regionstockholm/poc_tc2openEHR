@@ -20,6 +20,8 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel
 
         public string SignerId { get; set; }
 
+        public string CounterSignerId { get; set; }
+
         public string SignedById { get; set; }
 
         public string SignedTimestamp { get; set; }

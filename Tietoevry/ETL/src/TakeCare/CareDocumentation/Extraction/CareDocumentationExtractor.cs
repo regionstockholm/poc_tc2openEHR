@@ -116,6 +116,7 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction
                 DocSavedTimestamp = casenote.DocSavedTimestamp,
                 SignerId = casenote.SignerId,
                 SignedById = casenote.SignedById,
+                CounterSignerId = casenote.CounterSignerId,
                 SignedTimestamp = casenote.SignedTimestamp,
                 ApprovedForPatient = casenote.ApprovedForPatient,
                 EventDateTime = casenote.EventDateTime,

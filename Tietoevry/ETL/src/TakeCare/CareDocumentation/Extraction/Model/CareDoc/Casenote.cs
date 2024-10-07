@@ -52,6 +52,9 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
         [XmlElement("SignerId")]
         public string SignerId { get; set; }
 
+        [XmlElement("CounterSignerId")]
+        public string CounterSignerId { get; set; }
+
         [XmlElement("SignedById")]
         public string SignedById { get; set; }
 

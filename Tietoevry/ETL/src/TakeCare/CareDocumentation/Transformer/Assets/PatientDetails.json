@@ -1,0 +1,26 @@
+[
+  {
+    "SsnId": "201402192387",
+    "PatientId": "691f4cc6-af39-400c-9373-a4ff9f828459"
+  },
+  {
+    "SsnId": "195906113187",
+    "PatientId": "6e2dcbcd-928c-4ecd-8d95-8a29ea98ffc6"
+  },
+  {
+    "SsnId": "195207291591",
+    "PatientId": "cd424b25-4b44-43f4-8b7f-d8a3b27554c6"
+  },
+  {
+    "SsnId": "195401171334",
+    "PatientId": "1f2ca173-839e-4ca0-b83c-c4ab1465e2ab"
+  },
+  {
+    "SsnId": "195705172590",
+    "PatientId": "5151df39-a57b-4991-8763-e53f4766ee39"
+  },
+  {
+    "SsnId": "196607113146",
+    "PatientId": "d1542df8-2731-440f-a46e-62bf4a003c1b"
+  }
+]

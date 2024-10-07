@@ -19,14 +19,15 @@ namespace Spine.Foundation.Web.OpenEhr.Client
     {
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IOptions<Credentials> _credentialOptions;
+        private readonly IOptions<IdpConfigurations> _idpOptions;
+        private IdpConfigurations idpConfg => _idpOptions.Value;
 
         public TokenService(IConfiguration configuration,
             IHttpClientFactory httpClientFactory,
-            IOptions<Credentials> credentialOptions)
+            IOptions<IdpConfigurations> idpOptions)
         {
             _httpClientFactory = httpClientFactory;
-            _credentialOptions = credentialOptions;
+            _idpOptions = idpOptions;
             _configuration = configuration;
         }
 
@@ -35,24 +36,10 @@ namespace Spine.Foundation.Web.OpenEhr.Client
             // ToDo 
             // 1. Add a Caching for token
 
-            var endPointUrl = _configuration["Endpoint:Url"];
-
-            if (endPointUrl == null)
-            {
-                throw new ArgumentNullException("Endpoint:Url is not set");
-            }
-
-            var IdpPath = _configuration["Endpoint:IdpPath"];
-
-            if (IdpPath == null)
-            {
-                throw new ArgumentNullException("Endpoint:IdpPath is not set");
-            }
-
             var formContent = FormUrlEncodedCredentials();
-            var idpUrl = $"{endPointUrl}{IdpPath}/protocol/openid-connect/token";
+            var idpUrl = $"{idpConfg.Path}/protocol/openid-connect/token";
             var token = string.Empty;
-            using (var client = _httpClientFactory.CreateClient())
+            using (var client = _httpClientFactory.CreateClient("openEHRClient"))
             {
                 var request = new HttpRequestMessage(HttpMethod.Post, idpUrl);
                 request.Content = formContent;
@@ -71,18 +58,10 @@ namespace Spine.Foundation.Web.OpenEhr.Client
 
         private FormUrlEncodedContent FormUrlEncodedCredentials()
         {
-
-            var credentails = new Credentials
-            {
-                ClientId = _configuration["TokenCredentials:ClientId"],
-                ClientSecret = _configuration["TokenCredentials:ClientSecret"],
-                GrantType = _configuration["TokenCredentials:GrantType"]
-            };
-
             return new FormUrlEncodedContent(new[]{
-                new KeyValuePair<string, string>("grant_type", credentails.GrantType),
-                new KeyValuePair<string, string>("client_id", credentails.ClientId),
-                new KeyValuePair<string, string>("client_secret", credentails.ClientSecret)
+                new KeyValuePair<string, string>("grant_type", idpConfg.TokenCredentials.GrantType),
+                new KeyValuePair<string, string>("client_id", idpConfg.TokenCredentials.ClientId),
+                new KeyValuePair<string, string>("client_secret", idpConfg.TokenCredentials.ClientSecret)
             });
 
 
@@ -105,6 +84,20 @@ namespace Spine.Foundation.Web.OpenEhr.Client
         private readonly Lazy<ITokenService> _lazyTokenService;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
+        private string _ehrPath
+        {
+            get
+            {
+                var ehrPath = _configuration["Ehr:Path"];
+
+                if (ehrPath == null)
+                {
+                    throw new ArgumentNullException("Ehr:Path is not set in configuration");
+                }
+                return ehrPath;
+            }
+        }
+
         public OpenEhrServiceAgent(
              Lazy<ITokenService> lazyTokenService,
              IHttpClientFactory httpClientFactory,
@@ -117,26 +110,12 @@ namespace Spine.Foundation.Web.OpenEhr.Client
 
         public async Task<Guid> GetEhrId(string extenalId, string nameSpace)
         {
-            var endPointUrl = _configuration["Endpoint:Url"];
-
-            if (endPointUrl == null)
-            {
-                throw new ArgumentNullException("Endpoint:Url is not set");
-            }
-
-            var ehrPath = _configuration["Endpoint:EhrPath"];
-
-            if (ehrPath == null)
-            {
-                throw new ArgumentNullException("Endpoint:IdpPath is not set");
-            }
 
             var token = await _tokenService.TokenByClientCredentials();
 
-
-            using (var client = _httpClientFactory.CreateClient())
+            using (var client = _httpClientFactory.CreateClient("openEHRClient"))
             {
-                var ehrUrl = $"{endPointUrl}{ehrPath}/rest/v1/ehr?subjectId={extenalId}&subjectNamespace={nameSpace}";
+                var ehrUrl = $"{_ehrPath}/rest/v1/ehr?subjectId={extenalId}&subjectNamespace={nameSpace}";
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var response = client.GetAsync(ehrUrl).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
@@ -150,30 +129,18 @@ namespace Spine.Foundation.Web.OpenEhr.Client
 
         public async Task<dynamic> SaveComposition(JObject composition, Guid ehrId)
         {
-            var endPointUrl = _configuration["Endpoint:Url"];
-            var templateId = _configuration["Template:TemplateId"];           
+            var templateId = _configuration["Template:TemplateId"];
             var namespaces = _configuration["Template:Namespace"];
             var format = _configuration["Template:Format"];
             var lifecycleState = _configuration["Template:LifecycleState"];
             var auditChangeType = _configuration["Template:AuditChangeType"];
 
-            if (endPointUrl == null)
-            {
-                throw new ArgumentNullException("Endpoint:Url is not set");
-            }
-
-            var ehrPath = _configuration["Endpoint:EhrPath"];
-
-            if (ehrPath == null)
-            {
-                throw new ArgumentNullException("Endpoint:IdpPath is not set");
-            }
 
             var token = await _tokenService.TokenByClientCredentials();
 
-            using (var client = _httpClientFactory.CreateClient())
+            using (var client = _httpClientFactory.CreateClient("openEHRClient"))
             {
-                var ehrUrl = $"{endPointUrl}{ehrPath}/rest/v1/composition?templateId={templateId}&ehrId={ehrId}&subjectNamespace={namespaces}&format={format}&lifecycleState={lifecycleState}&auditChangeType={auditChangeType}";
+                var ehrUrl = $"{_ehrPath}/rest/v1/composition?templateId={templateId}&ehrId={ehrId}&subjectNamespace={namespaces}&format={format}&lifecycleState={lifecycleState}&auditChangeType={auditChangeType}";
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -191,6 +158,23 @@ namespace Spine.Foundation.Web.OpenEhr.Client
         }
     }
 
+    public class IdpConfigurations
+    {
+        private string path;
+        public string Path
+        {
+            get => path;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new InvalidCredentialException("Idp:Path is not set");
+                }
+                path = value;
+            }
+        }
+        public Credentials TokenCredentials { get; set; }
+    }
     public class Credentials
     {
         private string clientId;

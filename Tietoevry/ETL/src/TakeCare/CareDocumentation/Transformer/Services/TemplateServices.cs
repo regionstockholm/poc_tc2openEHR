@@ -11,7 +11,7 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
         {
             var currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             // Combine it with the relative path to the assets folder
-            filePath = Path.Combine(currentDirectory, "Assets", "Templatev1.json");
+            filePath = Path.Combine(currentDirectory, "Assets", "Templatev2.json");
         }
 
         public Dictionary<string, Object> GetTemplate()
