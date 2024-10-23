@@ -1,27 +1,21 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
+﻿using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Utils;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
 {
-    internal class UnitProvider : IUnitProvider
+    public class UnitProvider : IUnitProvider
     {
-        private static Dictionary<string, string> dictionary { get; set; }
+        private static List<UnitDetails> _units { get; set; }
 
         static UnitProvider()
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Units.json");
-            dictionary = Utility.LoadData<Dictionary<string, string>>(filePath);
+            _units = Utility.LoadData<List<UnitDetails>>(filePath);
         }
 
         public string GetOpenEhrUnit(string unit)
         {
-            return dictionary.ContainsKey(unit) ? dictionary[unit] : unit;
+            return _units.Find(u=>u.TakeCareUnit == unit)?.OpenEhrUnit ?? unit;
         }
     }
 }

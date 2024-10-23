@@ -1,10 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Utils
 {
@@ -14,6 +8,12 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Utils
         {
             string jsonData = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<T>(jsonData);
+        }
+        public static string CalculatePercentage(string val)
+        {
+            //parse the val string into number
+            decimal number = Convert.ToDecimal(val);
+            return (number / 100).ToString();
         }
     }
 }

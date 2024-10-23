@@ -1,7 +1,22 @@
-{
-  "mmHG": "mm[Hg]",
-  "Kg": "kg",
-  "°C": "Cel",
-  "strokes/min": "/min",
-  "breaths/min.": "/min"
-}
+[
+  {
+    "OpenEhrUnit": "mm[Hg]",
+    "TakeCareUnit": "mmHg"
+  },
+  {
+    "OpenEhrUnit": "kg",
+    "TakeCareUnit": "Kg"
+  },
+  {
+    "OpenEhrUnit": "Cel",
+    "TakeCareUnit": "°C"
+  },
+  {
+    "OpenEhrUnit": "/min",
+    "TakeCareUnit": "slag/min"
+  },
+  {
+    "OpenEhrUnit": "/min",
+    "TakeCareUnit": "andetag/min."
+  }
+]

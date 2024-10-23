@@ -1,4 +1,6 @@
-﻿using Spine.Migration.OpenEhr.Etl.Core.Models;
+﻿using Newtonsoft.Json.Linq;
+using Spine.Migration.OpenEhr.Etl.Core;
+using Spine.Migration.OpenEhr.Etl.Core.Models;
 using Spine.Migration.OpenEhr.Loader;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel;
@@ -7,7 +9,7 @@ using TakeCare.Migration.OpenEhr.Etl.CareDocumentation;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class CareDocumentationEtlHandler : ICareDocumentationEtlHandler
+    public class CareDocumentationEtlHandler : IEtlHandler
     {
         private readonly Lazy<ICareDocumentationExtractor> _lazyExtractor;
         private readonly Lazy<ICareDocumentationTransformer> _lazyTransformer;
@@ -26,12 +28,12 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
         }
 
 
-        public async void Execute()
+        public async Task Execute()
         {
             // ToDo 
             // Looping for Parllel CareDocumentation ETL execution
             int count = 0;
-            string careDocsFolder = Path.Combine(AppContext.BaseDirectory, @"TestData");
+            string careDocsFolder = Path.Combine(AppContext.BaseDirectory, @"Assets\TestData\CareDocumentation");
             foreach (var file in Directory.EnumerateFiles(careDocsFolder, "*.xml"))
             { 
                 try
@@ -40,10 +42,10 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
                     var extractorConfigurations = new ExtractionConfiguration<string>(file);
                     var tcData = await _careDocExtractor.Extract<string, CareDocumentationDto>(extractorConfigurations);
                     var tcOpenEhrData = await _careDocTransformer.Trasform<CareDocumentationDto, CareDocumentOpenEhrData>(tcData);
-                    var result = await _careDocOpenEhrLoader.Load<OpenEhrData, object>(new OpenEhrData()
+                    var result = await _careDocOpenEhrLoader.Load<OpenEhrData<OpenEhrCaseNote>, object>(new OpenEhrData<OpenEhrCaseNote>()
                     {
                         PatientID = tcOpenEhrData.PatientID,
-                        Compositions = tcOpenEhrData.Compositions,
+                        Compositions = tcOpenEhrData.CaseNotes
                     });  // ToDo Mapper and model optimization
                 }
                 catch (Exception ex)

@@ -26,3 +26,7 @@ Thumbs.db
 
 # Ignore the .vs folder
 .vs/
+
+# Ignore NuGet packages in any subdirectory
+**/*.nupkg
+!Packages/**/*.nupkg

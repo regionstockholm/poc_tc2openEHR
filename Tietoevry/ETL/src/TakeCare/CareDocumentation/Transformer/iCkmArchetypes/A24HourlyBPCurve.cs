@@ -1,69 +1,73 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel;
+using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services;
+using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Utils;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.iCkmArchetypes
 {
     internal record A24HourlyBPCurve
     {
-        private readonly IUnitProvider _unitService;
+        private static readonly IUnitProvider _unitService;
 
-        public A24HourlyBPCurve(IUnitProvider unitService)
+        static A24HourlyBPCurve()
         {
-            _unitService = unitService;
+            _unitService = new UnitProvider();
         }
-        public static void AddA24HourlyBPCurveData(JObject composedObject, KeywordDto keyword, int v, string commonPrefix)
+        public static void AddA24HourlyBPCurveData(JObject composedObject, KeywordDto keyword, int v, string commonPrefix, TerminologyDetails termData)
         {
             StringBuilder prefixBuilder = new StringBuilder(commonPrefix);
             prefixBuilder.Append("ickm/a24-timmars_blodtryckskurva");
             prefixBuilder.Append(":");
             string prefix = prefixBuilder.ToString();
-            string suffix = "/a24_timmars_blodtrycksmätning/";
-            composedObject[$"{prefix}{v}{suffix}{"_uid"}"] = keyword.Guid;
-            composedObject[$"{prefix}{v}{suffix}{"math_function|code"}"] = "146"; //verify
-            composedObject[$"{prefix}{v}{suffix}{"math_function|value"}"] = "mean"; //verify
-            composedObject[$"{prefix}{v}{suffix}{"width"}"] = "P2DT4H18M"; //verify
-            composedObject[$"{prefix}{v}{suffix}{"systoliskt|magnitude"}"] = (keyword.Value != null) ? ((keyword.Value.NumVal != null) ? keyword.Value.NumVal.Val : keyword.Value.TextVal) : "";
-            composedObject[$"{prefix}{v}{suffix}{"systoliskt|unit"}"] = "mm[Hg]";
-            composedObject[$"{prefix}{v}{suffix}{"diastoliskt|magnitude"}"] = (keyword.Value != null) ? ((keyword.Value.NumVal != null) ? keyword.Value.NumVal.Val : keyword.Value.TextVal) : "";
-            composedObject[$"{prefix}{v}{suffix}{"diastoliskt|unit"}"] = "mm[Hg]";
-
-            suffix = "/sökord/";
-            composedObject[$"{prefix}{v}{suffix}{"entry_uid"}"] = keyword.Guid;
-            composedObject[$"{prefix}{v}{suffix}{"namn|code"}"] = keyword.TermId;
-            composedObject[$"{prefix}{v}{suffix}{"namn|value"}"] = keyword.Name;
-
-            /*if ( string.IsNullOrWhiteSpace(keyword.Value))
+            string midword = "/a24_timmars_blodtrycksmätning";
+            string suffix = "/sökord/";
+            composedObject[$"{prefix}{v}{midword}{"/_uid"}"] = keyword.Guid;
+            composedObject[$"{prefix}{v}{midword}{"/math_function|code"}"] = "146"; //verify
+            composedObject[$"{prefix}{v}{midword}{"/math_function|value"}"] = "mean"; //verify
+            composedObject[$"{prefix}{v}{midword}{"/math_function|terminology"}"] = "openehr"; //verify
+            composedObject[$"{prefix}{v}{midword}{"/width"}"] = "P2DT4H18M"; //verify
+            if(keyword.Value!=null && !string.IsNullOrEmpty(keyword.Value.TextVal))
             {
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|code"}"] = keyword.TermId;
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|value"}"] = "";
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|terminology"}"] = "external_terminology";
-            }
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|code"}"] = "";
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|value"}"] = "";
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|terminology"}"] = "external_terminology";
-            
-            */
-
-            composedObject[$"{prefix}{v}{suffix}{"dv_text_en"}"] = "*DV_TEXT (en) 54";
-            composedObject[$"{prefix}{v}{suffix}{"dv_boolean_en"}"] = false;
-
-            if (keyword.Value != null && keyword.Value.NumVal != null && keyword.Value.NumVal.Unit != null)
-            {
-                composedObject[$"{prefix}{v}{suffix}{"originalenhet"}"] = keyword.Value.NumVal.Unit;
-            }
-            composedObject[$"{prefix}{v}{suffix}{"kommentar"}"] = keyword.Comment;
-            composedObject[$"{prefix}{v}{suffix}{"nivå"}"] = keyword.ParentCount;
-            if (keyword.Childs != null)
-            {
-                for (int i = 0; i < keyword.Childs.Count; i++)
+                string[] bpValue = keyword.Value.TextVal.Split('/');
+                if (bpValue.Length > 0)
                 {
-                    composedObject[$"{prefix}{v}{suffix}{"underordnat_sökord:"}{i}{"/ehr_uri_value"}"] = "ehr://" + keyword.Childs[i];
+                    composedObject[$"{prefix}{v}{midword}{"/systoliskt|magnitude"}"] = bpValue[0];
+                    //composedObject[$"{prefix}{v}{midword}{"/systoliskt|unit"}"] = "mm[Hg]";
+                }
+                if (bpValue.Length > 1)
+                {
+                    composedObject[$"{prefix}{v}{midword}{"/diastoliskt|magnitude"}"] = bpValue[1];
+                    //composedObject[$"{prefix}{v}{midword}{"/diastoliskt|unit"}"] = "mm[Hg]";
+                }
+            }
+
+            composedObject[$"{prefix}{v}{suffix}{"entry_uid"}"] = keyword.Guid;
+            composedObject[$"{prefix}{v}{suffix}{"namn|code"}"] = termData.TermId;
+            composedObject[$"{prefix}{v}{suffix}{"namn|value"}"] = termData.TermName;
+            composedObject[$"{prefix}{v}{suffix}{"namn|terminology"}"] = termData.Terminology;
+            composedObject[$"{prefix}{v}{suffix}{"datatyp"}"] = termData.Datatype;
+
+            if (keyword.Value != null)
+            {
+                if (!string.IsNullOrEmpty(keyword.Value.TextVal))
+                {
+                    composedObject[$"{prefix}{v}{suffix}{"värde/text_value"}"] = keyword.Value.TextVal;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(keyword.Comment))
+            {
+                composedObject[$"{prefix}{v}{suffix}{"kommentar"}"] = keyword.Comment;
+            }
+            composedObject[$"{prefix}{v}{suffix}{"nivå"}"] = keyword.ParentCount;
+            if (keyword.Children != null)
+            {
+                for (int i = 0; i < keyword.Children.Count; i++)
+                {
+                    composedObject[$"{prefix}{v}{suffix}{"underordnat_sökord:"}{i}{"/ehr_uri_value"}"] = "ehr://" + keyword.Children[i];
                 }
             }
         }

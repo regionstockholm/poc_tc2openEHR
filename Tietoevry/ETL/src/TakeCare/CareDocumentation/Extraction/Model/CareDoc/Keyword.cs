@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Extension;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
 {
@@ -44,8 +45,25 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
 
     public class NumVal
     {
+        private decimal? val;
+
         [XmlElement("Val")]
-        public string Val { get; set; }
+        public string Val
+        {
+            get
+            {
+                return val?.ToString() ?? string.Empty; 
+            }
+            set
+            {
+                val = value?.GetDecimalNumberValue();
+            }
+        }
+
+        public decimal? GetDecimalValue()
+        {
+            return val;
+        }
 
         [XmlElement("Unit")]
         public string? Unit { get; set; }

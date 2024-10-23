@@ -51,15 +51,15 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction
 
         private static void SetGuidsRecursively(List<Keyword> keywords, Guid parentId)
         {
+            ++parentCount;
             keywords.ForEach(k =>
             {
                 k.ParentId = parentId;
                 var newGuid = Guid.NewGuid();
                 k.Guid = newGuid;
+                k.ParentCount = parentCount; 
                 if (k.Keywords != null && k.Keywords.Count > 0)
                 {
-                    k.ParentCount = ++parentCount;
-
                     SetGuidsRecursively(k.Keywords, newGuid);
                     --parentCount;
                 }
@@ -91,12 +91,12 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction
             {
                 casenote.Keywords.ForEach(key1 =>
                 {
-                    key1.Childs = new List<Guid>();
+                    key1.Children = new List<Guid>();
                     casenote.Keywords.ForEach(key2 =>
                     {
                         if (key2.ParentId == key1.Guid)
                         {
-                            key1.Childs.Add(key2.Guid);
+                            key1.Children.Add(key2.Guid);
                         }
                     });
                 });

@@ -51,7 +51,7 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel
 
         public Guid ParentId { get; set; }
 
-        public List<Guid> Childs { get; set; }
+        public List<Guid> Children { get; set; }
 
         public int ParentCount { get; set; }
 

@@ -1,11 +1,8 @@
 ﻿using Spine.Migration.OpenEhr.Etl;
-using TakeCare.Migration.OpenEhr.Etl;
-
 Activation.Instance
                .Configure(args)
-               .RegisterServices()
-               .RegisterEtl<TakeCareEtlHandler>()
                .Build()
-               .Run();
+               .Run(); // Run all ETL handlers
+               //.Run<MeasurementEtlHandler>(); // Run individual ETL handler which you want to run
 
-// Multiple ETL handlers of customers 
+

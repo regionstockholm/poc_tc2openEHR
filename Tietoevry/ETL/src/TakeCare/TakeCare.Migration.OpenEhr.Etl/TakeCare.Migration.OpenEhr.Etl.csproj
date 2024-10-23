@@ -8,11 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Spine\Spine.Migration.OpenEhr.Etl.Core\Spine.Migration.OpenEhr.Etl.Core.csproj" />
-    <ProjectReference Include="..\..\Spine\Spine.Migration.OpenEhr.Etl\Spine.Migration.OpenEhr.Etl.csproj" />
-    <ProjectReference Include="..\..\Spine\Spine.Migration.OpenEhr.Loader\Spine.Migration.OpenEhr.Loader.csproj" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0-beta1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CareDocumentation\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj" />
     <ProjectReference Include="..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
+    <ProjectReference Include="..\Measurement\Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction.csproj" />
+    <ProjectReference Include="..\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj" />
+	<ProjectReference Include="..\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj" />
   </ItemGroup>
 
   <ItemGroup>

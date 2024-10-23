@@ -8,8 +8,10 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {
     public class TerminologyDetails
     {
-        public string Code { get; set; }
-        public string Value { get; set; }
-        public string? Terminology { get; set; }
+        public string TermId { get; set; }
+        public string TermName { get; set; }
+        public string Terminology { get; set; }
+        public string Datatype { get; set; }
+        public string Unit { get; set; }
     }
 }

@@ -11,14 +11,14 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
     public class TerminologyProvider :  ITerminologyProvider
     {
         private static List<TerminologyDetails> _terms { get; set; }
-        public TerminologyProvider()
+        static TerminologyProvider()
         {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Terminology.json");
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "TcTerminology.json");
             _terms = Utility.LoadData<List<TerminologyDetails>>(filePath);
         }
         public TerminologyDetails GetTerminology(string termId)
         {
-            return _terms.Find(t => t.Code == termId);
+            return _terms.Find(t => t.TermId == termId);
         }
     }
 }

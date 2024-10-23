@@ -7,53 +7,54 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {
     internal record News2TotalScore
     {
-        private readonly IUnitProvider _unitService;
-
-        public News2TotalScore(IUnitProvider unitService)
+        private static IUnitProvider _unitService;
+        //static constructor
+        static News2TotalScore()
         {
-            _unitService = unitService;
+            _unitService = new UnitProvider();
         }
 
-        public static void AddTotalScoreData(JObject composedObject, KeywordDto keyword, int v, string commonPrefix)
+        public static void AddTotalScoreData(JObject composedObject, KeywordDto keyword, int v, string commonPrefix, TerminologyDetails termData)
         {
             StringBuilder prefixBuilder = new StringBuilder(commonPrefix);
             prefixBuilder.Append("ickm/news2_totalpoäng");
             prefixBuilder.Append(":");
             string prefix = prefixBuilder.ToString();
             composedObject[$"{prefix}{v}{"/_uid"}"] = keyword.Guid;
-            composedObject[$"{prefix}{v}{"/totalpoäng_news2"}"] = (keyword.Value != null) ? ((keyword.Value.NumVal != null) ? keyword.Value.NumVal.Val : keyword.Value.TextVal) : "";
-
             string suffix = "/sökord/";
-            composedObject[$"{prefix}{v}{suffix}{"entry_uid"}"] = keyword.Guid;
-            composedObject[$"{prefix}{v}{suffix}{"namn|code"}"] = keyword.TermId;
-            composedObject[$"{prefix}{v}{suffix}{"namn|value"}"] = keyword.Name;
-            /*if (keyword.Value != null)
+            if (keyword.Value != null)
             {
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|code"}"] = keyword.TermId;
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|value"}"] = "";
-                composedObject[$"{prefix}{v}{suffix}{"värde/coded_text_value|terminology"}"] = "external_terminology";
-            }
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|code"}"] = "";
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|value"}"] = "";
-            composedObject[$"{prefix}{v}{suffix}{"datatyp|terminology"}"] = "external_terminology";
-
-            */
-
-            composedObject[$"{prefix}{v}{suffix}{"dv_text_en"}"] = "*DV_TEXT (en) 54";
-            composedObject[$"{prefix}{v}{suffix}{"dv_boolean_en"}"] = false;
-
-
-            if (keyword.Value != null && keyword.Value.NumVal != null && keyword.Value.NumVal.Unit != null)
-            {
-                composedObject[$"{prefix}{v}{suffix}{"originalenhet"}"] = keyword.Value.NumVal.Unit;
-            }
-            composedObject[$"{prefix}{v}{suffix}{"kommentar"}"] = keyword.Comment;
-            composedObject[$"{prefix}{v}{suffix}{"nivå"}"] = keyword.ParentCount;
-            if (keyword.Childs != null)
-            {
-                for (int i = 0; i < keyword.Childs.Count; i++)
+                if (keyword.Value.NumVal != null)
                 {
-                    composedObject[$"{prefix}{v}{suffix}{"underordnat_sökord:"}{i}{"/ehr_uri_value"}"] = "ehr://" + keyword.Childs[i];
+                    if (!string.IsNullOrEmpty(keyword.Value.NumVal.Val))
+                    {
+                        composedObject[$"{prefix}{v}{"/totalpoäng_news2"}"] = keyword.Value.NumVal.Val;
+                        composedObject[$"{prefix}{v}{suffix}{"värde/count_value"}"] = keyword.Value.NumVal.Val;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(keyword.Value.TextVal))
+                {
+                    composedObject[$"{prefix}{v}{"/totalpoäng_news2"}"] = keyword.Value.TextVal;
+                    composedObject[$"{prefix}{v}{suffix}{"värde/text_value"}"] = keyword.Value.TextVal;
+                }
+            }
+
+            composedObject[$"{prefix}{v}{suffix}{"entry_uid"}"] = keyword.Guid;
+            composedObject[$"{prefix}{v}{suffix}{"namn|code"}"] = termData.TermId;
+            composedObject[$"{prefix}{v}{suffix}{"namn|value"}"] = termData.TermName;
+            composedObject[$"{prefix}{v}{suffix}{"namn|terminology"}"] = termData.Terminology;
+            composedObject[$"{prefix}{v}{suffix}{"datatyp"}"] = termData.Datatype;
+
+            if (!string.IsNullOrEmpty(keyword.Comment))
+            {
+                composedObject[$"{prefix}{v}{suffix}{"kommentar"}"] = keyword.Comment;
+            }
+            composedObject[$"{prefix}{v}{suffix}{"nivå"}"] = keyword.ParentCount;
+            if (keyword.Children != null)
+            {
+                for (int i = 0; i < keyword.Children.Count; i++)
+                {
+                    composedObject[$"{prefix}{v}{suffix}{"underordnat_sökord:"}{i}{"/ehr_uri_value"}"] = "ehr://" + keyword.Children[i];
                 }
             }
         }
