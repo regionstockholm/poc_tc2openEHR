@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcWeight : Weight
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
 
         public TcWeight(string prefix, string occurance) : base(prefix, occurance)
         {
@@ -16,7 +16,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             WeightValue = new Measurement();
             var keywordPrefix = $@"{prefix}/vikt";
             this._prefix = keywordPrefix;
-            Keyword = new Keyword($@"{keywordPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{occurance}");
         }
         
         public override string ToString()

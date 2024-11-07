@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcOxygenLevel : O2Level
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
         public TcOxygenLevel(string prefix, string occurance) : base(prefix, occurance)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(occurance);
@@ -13,7 +13,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             Measurement = new MeasurementFraction();
             var keywordPrefix = $@"{prefix}/syrgasnivå";
             this._prefix = keywordPrefix;
-            Keyword = new Keyword($@"{keywordPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{occurance}");
         }
         public override string ToString()
         {

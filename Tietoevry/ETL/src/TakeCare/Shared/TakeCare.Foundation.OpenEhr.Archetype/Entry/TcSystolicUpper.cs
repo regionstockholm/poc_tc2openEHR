@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcSystolicUpper : SystolicUpper
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
 
         public TcSystolicUpper(string prefix, string occurance) : base(prefix, occurance)
         {
@@ -13,7 +13,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             Systolic = new Measurement();
             var keywordPrefix = $@"{prefix}/blodtryck_systoliskt_-_övre";
             this._prefix = keywordPrefix;
-            Keyword = new Keyword($@"{keywordPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{occurance}");
         }
 
         public override string ToString()

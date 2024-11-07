@@ -4,17 +4,17 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcInvasiveSystolic : MeanArterialBP
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
         public string Method { get; set; }
         public TcInvasiveSystolic(string prefix, string occurance) : base(prefix, occurance)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(occurance);
             ArgumentException.ThrowIfNullOrWhiteSpace(prefix);
             this._occurance = occurance;
-            var keywordPrefix = $@"{prefix}/invasivt_blodtryck_systoliskt:{occurance}";
+            var keywordPrefix = $@"{prefix}/invasivt_blodtryck_systoliskt";
             this._prefix = keywordPrefix;
 
-            Keyword = new Keyword(prefix);
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{ occurance}");
         }
         public override string ToString()
         {

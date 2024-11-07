@@ -1,0 +1,14 @@
+[
+  {
+    "code": "at0169",
+    "display": "Ej tillåtet",
+    "equivalence": "equivalent",
+    "isReplaceble": "0"
+  },
+  {
+    "code": "at0168",
+    "display": "Tillåtet",
+    "equivalence": "equivalent",
+    "isReplaceble": "1"
+  }
+]

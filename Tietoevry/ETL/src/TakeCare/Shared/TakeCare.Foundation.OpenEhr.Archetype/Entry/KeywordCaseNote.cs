@@ -18,30 +18,12 @@
 
         public override string ToString()
         {
-            var result = $@" 
-                            ""{_prefix}/sökord/namn|code"": ""{Code}"",
-                            ""{_prefix}/sökord/namn|value"": ""{Value}"",
-                            ""{_prefix}/sökord/namn|terminology"": ""{Terminology}"",
-                            ""{_prefix}/sökord/datatyp"": ""{Datatype}"",
-                            ""{_prefix}/sökord/nivå"": {Level},
-                            ""{_prefix}/sökord/entry_uid"": ""{EntryUid}"",";
-            if (!string.IsNullOrEmpty(TermIDValue))
+            var result = $@"
+                            {base.ToString()}";
+
+            if (NumValue != null)
             {
-                result += $@"
-                            ""{_prefix}/sökord/värde/coded_text_value|code"": ""{TermIDValue}"",
-                            ""{_prefix}/sökord/värde/coded_text_value|terminology"": ""TC-Datatypes"",";
-                if(!string.IsNullOrEmpty(TextValue))
-                    result += $@"
-                            ""{_prefix}/sökord/värde/coded_text_value|value"": ""{TextValue}"",";
-            }
-            else if (!string.IsNullOrEmpty(TextValue))
-            {
-                result += $@"
-                            ""{_prefix}/sökord/värde/text_value"": ""{TextValue}"",";
-            }
-            else if(NumValue!=null)
-            {
-                if (NumUnit!=null)
+                if (NumUnit != null)
                 {
                     result += $@"
                             ""{_prefix}/sökord/värde/quantity_value|magnitude"": {NumValue},
@@ -53,12 +35,27 @@
                             ""{_prefix}/sökord/värde/text_value"": ""{NumValue}"",";
                 }
             }
-            if (!string.IsNullOrEmpty(OriginalUnit))
+            else if (!string.IsNullOrWhiteSpace(TermIDValue))
+            {
+                result += $@"
+                            ""{_prefix}/sökord/värde/coded_text_value|code"": ""{TermIDValue}"",
+                            ""{_prefix}/sökord/värde/coded_text_value|terminology"": ""TC-Datatypes"",";
+                if(!string.IsNullOrEmpty(TextValue))
+                    result += $@"
+                            ""{_prefix}/sökord/värde/coded_text_value|value"": ""{TextValue}"",";
+            }
+            else if (!string.IsNullOrWhiteSpace(TextValue))
+            {
+                result += $@"
+                            ""{_prefix}/sökord/värde/text_value"": ""{TextValue}"",";
+            }
+
+            if (!string.IsNullOrWhiteSpace(OriginalUnit))
             {
                 result += $@"
                             ""{_prefix}/sökord/originalenhet"": ""{OriginalUnit}"",";
             }
-            if (!string.IsNullOrEmpty(Comment))
+            if (!string.IsNullOrWhiteSpace(Comment))
             {
                 result += $@"
                             ""{_prefix}/sökord/kommentar"": ""{Comment}"",";

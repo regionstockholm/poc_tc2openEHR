@@ -5,7 +5,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
     public class TcBloodPressure : BloodPressure
     {
        // bloodtrack
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
 
         public TcBloodPressure(string prefix, string occurance) : base(prefix, occurance)
         {
@@ -14,7 +14,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             Systolic = new Measurement();
             Diastolic = new Measurement();
             var keywordPrefix = $@"{prefix}/blodtryck";
-            Keyword = new Keyword($@"{keywordPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{occurance}");
         }
 
         public override string ToString()

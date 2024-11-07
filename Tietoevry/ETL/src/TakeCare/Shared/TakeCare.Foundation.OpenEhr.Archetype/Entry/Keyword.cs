@@ -25,15 +25,12 @@
                             ""{_prefix}/sökord/namn|value"": ""{Value}"",
                             ""{_prefix}/sökord/namn|terminology"": ""{Terminology}"",
                             ""{_prefix}/sökord/datatyp"": ""{Datatype}"",
-                            ""{_prefix}/sökord/värde/text_value"": ""{TextValue}"",
-                            ""{_prefix}/sökord/originalenhet"": ""{OriginalUnit}"",
-                            ""{_prefix}/sökord/kommentar"": ""{Comment}"",
                             ""{_prefix}/sökord/nivå"": {Level},
                             ""{_prefix}/sökord/entry_uid"": ""{EntryUid}"",
                            ";
-
-            return string.IsNullOrWhiteSpace(EhrUriValue) ?
-                result : $@"{result} ""{_prefix}/sökord/underordnat_sökord:0/ehr_uri_value"": ""{EhrUriValue}"",";
+            return result;
+            //return string.IsNullOrWhiteSpace(EhrUriValue) ?
+            //    result : $@"{result} ""{_prefix}/sökord/underordnat_sökord:0/ehr_uri_value"": ""{EhrUriValue}"",";
         }
     }
 

@@ -17,6 +17,7 @@
         {
             var result = $@"
                             ""{_prefix}/composer/_identifier:0|name"": ""{Composer.Name}"",
+                            ""{_prefix}/composer/_identifier:0|name"": ""{Composer.Name}"",
                             ""{_prefix}/composer/_identifier:0|id"" : ""{Composer.Id}"",
                             ""{_prefix}/composer/_identifier:0|type"": ""{Composer.Type}"",
                             ""{_prefix}/composer/_identifier:0|issuer"": ""{Composer.Issuer}"",

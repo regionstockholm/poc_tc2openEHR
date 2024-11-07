@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Archetype" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0-beta1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
+    <ProjectReference Include="..\..\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\equivalence-details.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

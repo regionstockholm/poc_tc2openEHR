@@ -5,7 +5,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
     public class TcLeftArmSystolic : ArmSystolic
     {
         private const string _termName = "blodtryck_vä_arm_systoliskt";
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
 
         public TcLeftArmSystolic(string prefix, string occurance) : base(prefix, occurance)
         {
@@ -14,7 +14,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             var keywordPrefix = $@"{prefix}/{_termName}:{occurance}";
             this._prefix = keywordPrefix;
             this._occurance = occurance;
-            Keyword = new Keyword(keywordPrefix);
+            Keyword = new KeywordCaseNote(keywordPrefix);
             MeasurementLocation = new Terminology() { Code = "at0026", Type = "local", Value = "Vänster arm" };
         }
 

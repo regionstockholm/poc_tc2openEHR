@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcSittingLength : Length
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
         public TcLengthTerminology BodyPosition { get; set; }
         public TcLengthTerminology BodySegmentName { get; set; }
         public string Method { get; set; }
@@ -19,7 +19,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             BodySegmentName = new TcLengthTerminology();
             var keywordPrefix = $@"{prefix}/längd_sittande";
             this._prefix = keywordPrefix;
-            Keyword = new Keyword($@"{keywordPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{keywordPrefix}:{occurance}");
         }
 
         public override string ToString()

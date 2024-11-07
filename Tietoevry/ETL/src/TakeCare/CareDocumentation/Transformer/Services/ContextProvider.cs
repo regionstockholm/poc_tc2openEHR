@@ -8,7 +8,7 @@ using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Utils;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
 {
-    internal class ContextProvider : IContextProvider
+    public class ContextProvider : IContextProvider
     {
         private static List<ContextDetails> _roles { get; set; }
         static ContextProvider()

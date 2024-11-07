@@ -33,8 +33,14 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Model.CareDoc
 
     public class KeywordValue
     {
+        private string? textVal;
+
         [XmlElement("TextVal")]
-        public string? TextVal { get; set; }
+        public string? TextVal
+        {
+            get => textVal;
+            set => textVal = value?.Replace("\n", "\\n").Replace("\r", "\\n");
+        }
 
         [XmlElement("NumVal")]
         public NumVal? NumVal { get; set; }

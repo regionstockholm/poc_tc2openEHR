@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcPulseRate : BaseMeasurement
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
         public TcPulseRate(string prefix, string occurance) : base(prefix, occurance)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(occurance);
@@ -13,7 +13,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             Measurement = new Measurement();
             var updatedPrefix = $@"{prefix}/pulsfrekvens";
             this._prefix = updatedPrefix;
-            Keyword = new Keyword($@"{updatedPrefix}:{occurance}");
+            Keyword = new KeywordCaseNote($@"{updatedPrefix}:{occurance}");
         }
         public override string ToString()
         {

@@ -15,8 +15,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CareDocumentation\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj" />
     <ProjectReference Include="..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
-    <ProjectReference Include="..\Measurement\Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction.csproj" />
-    <ProjectReference Include="..\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj" />
+    <ProjectReference Include="..\Measurement\Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction.csproj" />
+	<ProjectReference Include="..\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj" />
+	<ProjectReference Include="..\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj" />
+	<ProjectReference Include="..\Medication\Transformer\TakeCare.Migration.OpenEhr.Medication.Transformer.csproj" />
 	<ProjectReference Include="..\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj" />
   </ItemGroup>
 

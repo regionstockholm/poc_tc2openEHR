@@ -4,7 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcGenericEntry : BaseEntry
     {
-        public Keyword Keyword { get; set; }
+        public KeywordCaseNote Keyword { get; set; }
         public TcGenericEntry(string prefix, string occurance)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(prefix);
@@ -12,7 +12,7 @@ namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
             _prefix = prefix;
             _occurance = occurance;
             var keywordPrefix = $@"{prefix}/genrisk_händelse:{occurance}";
-            Keyword = new Keyword(keywordPrefix);
+            Keyword = new KeywordCaseNote(keywordPrefix);
         }
         public override string ToString()
         {
