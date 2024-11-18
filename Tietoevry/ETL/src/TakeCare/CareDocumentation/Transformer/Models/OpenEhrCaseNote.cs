@@ -1,4 +1,5 @@
 ﻿using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
+using Spine.Migration.OpenEhr.Etl.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ using TakeCare.Foundation.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {
-    public class OpenEhrCaseNote
+    public class OpenEhrCaseNote : BaseOpenEhrData
     {
         public string PatientID { get; set; }
-        public Context Context { get; set; }
 
         public TcContextInformation ContextInformation { get; set; }
         public TcCaseNoteCareUnitContext CareUnitContext { get; set; }
@@ -21,7 +21,7 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
         
         public override string ToString()
         {
-            var result = $@"{Context.ToString()}
+            var result = $@"
                             {ContextInformation.ToString()}
                             {CareUnitContext.ToString()}
                             {ContextMetadata.ToString()}";

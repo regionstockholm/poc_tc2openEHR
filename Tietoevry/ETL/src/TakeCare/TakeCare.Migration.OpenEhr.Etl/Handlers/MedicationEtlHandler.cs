@@ -1,4 +1,5 @@
-﻿using Spine.Migration.OpenEhr.Etl.Core;
+﻿using Microsoft.Extensions.Logging;
+using Spine.Migration.OpenEhr.Etl.Core;
 using Spine.Migration.OpenEhr.Etl.Core.Models;
 using Spine.Migration.OpenEhr.Loader;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
@@ -15,17 +16,21 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
         private readonly Lazy<IMedicationTransformer> _lazyTransformer;
         private readonly Lazy<IOpenEhrLoader> _lazyLoader;
 
+        private readonly Lazy<ILogger<MedicationEtlHandler>> _lazyLogger;
+        private ILogger<MedicationEtlHandler> _logger => _lazyLogger.Value;
         private IMedicationExtractor _medicationExtractor => _lazyExtractor.Value;
         private IMedicationTransformer _medicationTransformer => _lazyTransformer.Value;
         private IOpenEhrLoader _OpenEhrLoader => _lazyLoader.Value;
 
         public MedicationEtlHandler(Lazy<IMedicationExtractor> lazyExtractor,
             Lazy<IMedicationTransformer> lazyTransformer,
-            Lazy<IOpenEhrLoader> lazyLoader)
+            Lazy<IOpenEhrLoader> lazyLoader,
+            Lazy<ILogger<MedicationEtlHandler>> lazyLogger)
         {
             _lazyExtractor = lazyExtractor;
             _lazyTransformer = lazyTransformer;
             _lazyLoader = lazyLoader;
+            _lazyLogger = lazyLogger;
         }
 
         public async Task Execute()
@@ -35,18 +40,12 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
             var files = Directory.EnumerateFiles(careDocsFolder, "*.xml");
             foreach (var file in files)
             {
-                Console.WriteLine($"{++count}. File name : {file}\n");
                 try
                 {
                     var extractorConfigurations = new ExtractionConfiguration<string>(file);
                     var medicationData = await _medicationExtractor.Extract<string, MedicationDTO>(extractorConfigurations);
-
-                    Console.WriteLine($"*Medication for Patient - {medicationData.Result.PatientId}");
-
-                    //todo - transform is in progress
                     var tcOpenEhrData = await _medicationTransformer.Trasform<MedicationDTO, List<OpenEhrMedication>>(medicationData);
 
-                    //////todo - load
                     foreach (var medication in tcOpenEhrData)
                     {
                         var result = await _OpenEhrLoader.Load<OpenEhrData<OpenEhrMedication>, object>(new OpenEhrData<OpenEhrMedication>()
@@ -68,13 +67,13 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
                 }
                 catch (Exception ex)
                 {
-                    // ToDo Log exceptions in Logger
-                    Console.WriteLine(ex.ToString());
-
+                    _logger.LogError(ex, $"Error in processing file {file}");
                 }
+
+                _logger.LogInformation($"{++count}. File name : {file}");
             }
         }
 
-      
+
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 {
@@ -55,6 +55,24 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 
         [XmlElement("ExternalStartDate")]
         public string ExternalStartDate { get; set; }
+
+        private string _externalStartDate;
+        public string ExternalISOStartDate
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(ExternalStartDate) && !ExternalStartDate.Contains("-"))
+                {
+                    _externalStartDate = ExternalStartDate.GetFormattedISODate();
+                }
+                else
+                {
+                    _externalStartDate = ExternalStartDate;
+
+                }
+                return _externalStartDate;
+            }
+        }
 
         [XmlElement("ExternalPrescriber")]
         public string ExternalPrescriber { get; set; }

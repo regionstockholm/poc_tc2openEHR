@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 {
@@ -27,6 +28,15 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 
         [XmlElement("AdministrationStartTime")]
         public string AdministrationStartTime { get; set; }
+
+        public string AdministrationFullStartDateTime
+        {
+            get
+            {
+                var adminDate = string.Concat(AdministrationStartDate, AdministrationStartTime);
+                return adminDate.GetFormattedISODate();
+            }
+        }
 
         [XmlElement("MaxDailyDose")]
         public string MaxDailyDose { get; set; }

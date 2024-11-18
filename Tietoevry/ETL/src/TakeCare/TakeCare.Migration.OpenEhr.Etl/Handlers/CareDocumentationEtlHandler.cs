@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Logging;
 using Spine.Migration.OpenEhr.Etl.Core;
 using Spine.Migration.OpenEhr.Etl.Core.Models;
 using Spine.Migration.OpenEhr.Loader;
@@ -14,17 +14,20 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
         private readonly Lazy<ICareDocumentationExtractor> _lazyExtractor;
         private readonly Lazy<ICareDocumentationTransformer> _lazyTransformer;
         private readonly Lazy<IOpenEhrLoader> _lazyLoader;
-
+        private readonly Lazy<ILogger<CareDocumentationEtlHandler>> _lazyLogger;
+        private ILogger<CareDocumentationEtlHandler> _logger => _lazyLogger.Value;
         private ICareDocumentationExtractor _careDocExtractor => _lazyExtractor.Value;
         private ICareDocumentationTransformer _careDocTransformer => _lazyTransformer.Value;
         private IOpenEhrLoader _careDocOpenEhrLoader => _lazyLoader.Value;
 
         public CareDocumentationEtlHandler(Lazy<ICareDocumentationExtractor> lazyExtractor,
-            Lazy<ICareDocumentationTransformer> lazyTransformer, Lazy<IOpenEhrLoader> lazyLoader)
+            Lazy<ICareDocumentationTransformer> lazyTransformer, Lazy<IOpenEhrLoader> lazyLoader,
+            Lazy<ILogger<CareDocumentationEtlHandler>> lazyLogger)
         {
             _lazyExtractor = lazyExtractor;
             _lazyTransformer = lazyTransformer;
             _lazyLoader = lazyLoader;
+            _lazyLogger = lazyLogger;
         }
 
 
@@ -35,7 +38,7 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
             int count = 0;
             string careDocsFolder = Path.Combine(AppContext.BaseDirectory, @"Assets\TestData\CareDocumentation");
             foreach (var file in Directory.EnumerateFiles(careDocsFolder, "*.xml"))
-            { 
+            {
                 try
                 {
                     //string file = Path.Combine(AppContext.BaseDirectory, @"TestData\CareDocumentationGet_201402192387_0 - Mock.xml");
@@ -50,13 +53,11 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
                 }
                 catch (Exception ex)
                 {
-                    // ToDo Log exceptions in Logger
-                    Console.WriteLine(ex.ToString());
-
+                    _logger.LogError(ex, $"Error in processing file {file}");
                 }
-                Console.WriteLine($"{++count}. File name : { file}");
-                
-            }   
+
+                _logger.LogInformation($"{++count}. File name : {file}");
+            }
         }
 
     }

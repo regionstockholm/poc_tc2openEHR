@@ -8,16 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Archetype" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0-beta1" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Archetype" Version="6.2.0-beta3" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0-beta4" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0-beta2" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0-beta3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
     <ProjectReference Include="..\..\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Application\TakeCare.Foundation.OpenEhr.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Models\TakeCare.Foundation.OpenEhr.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

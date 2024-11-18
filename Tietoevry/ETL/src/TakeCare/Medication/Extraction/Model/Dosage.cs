@@ -1,5 +1,5 @@
 ﻿using System.Xml.Serialization;
-using TakeCare.Migration.OpenEhr.Medication.Extraction.Extension;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 {
@@ -32,12 +32,9 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
         {
             get
             {
-                return _fullStartDate;
-            }
-            set
-            {
                 var lastDose = string.Concat(StartDate, StartTime);
                 _fullStartDate = lastDose.GetFormattedISODate();
+                return _fullStartDate;
             }
         }
 

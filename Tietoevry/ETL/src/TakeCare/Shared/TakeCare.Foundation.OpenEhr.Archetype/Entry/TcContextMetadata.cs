@@ -1,4 +1,6 @@
-﻿namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
+﻿using System.Reflection.Metadata;
+
+namespace TakeCare.Foundation.OpenEhr.Archetype.Entry
 {
     public class TcContextMetadata
     {
@@ -25,12 +27,12 @@
         public string VersionId { get;  set; }
         public string TemplateId { get; set; }
         public string TemplateName { get; set; }
-
+        public string DocId { get; set; }
         public override string ToString()
         {
 
             var result = $@"
-                             ""{_prefix}/context/metadata/dokument_id"": """",
+                             ""{_prefix}/context/metadata/dokument_id"": ""{DocId}"",
                              ""{_prefix}/context/metadata/dokumentationsmall|code"": ""{TemplateId}"",
                              ""{_prefix}/context/metadata/dokumentationsmall|value"": ""{TemplateName}"",
                              ""{_prefix}/context/metadata/dokumentationsmall|terminology"": ""TC-Template-codes"",

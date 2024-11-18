@@ -1,4 +1,5 @@
-﻿using Spine.Migration.OpenEhr.Etl.Core;
+﻿using Microsoft.Extensions.Logging;
+using Spine.Migration.OpenEhr.Etl.Core;
 using Spine.Migration.OpenEhr.Etl.Core.Models;
 using Spine.Migration.OpenEhr.Loader;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
@@ -15,17 +16,21 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
         private readonly Lazy<IMeasurementTransformer> _lazyTransformer;
         private readonly Lazy<IOpenEhrLoader> _lazyLoader;
 
+        private readonly Lazy<ILogger<MeasurementEtlHandler>> _lazyLogger;
+        private ILogger<MeasurementEtlHandler> _logger => _lazyLogger.Value;
         private IMeasurementExtractor _measurementExtractor => _lazyExtractor.Value;
         private IMeasurementTransformer _measurementTransformer => _lazyTransformer.Value;
         private IOpenEhrLoader _OpenEhrLoader => _lazyLoader.Value;
 
         public MeasurementEtlHandler(Lazy<IMeasurementExtractor> lazyExtractor,
             Lazy<IMeasurementTransformer> lazyTransformer,
-            Lazy<IOpenEhrLoader> lazyLoader)
+            Lazy<IOpenEhrLoader> lazyLoader,
+            Lazy<ILogger<MeasurementEtlHandler>> lazyLogger)
         {
             _lazyExtractor = lazyExtractor;
             _lazyTransformer = lazyTransformer;
             _lazyLoader = lazyLoader;
+            _lazyLogger = lazyLogger;
         }
 
 
@@ -36,35 +41,27 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
             var files = Directory.EnumerateFiles(careDocsFolder, "*.json");
             foreach (var file in files)
             {
-                Console.WriteLine($"{++count}. File name : {file}\n");
                 try
                 {
                     var extractorConfigurations = new ExtractionConfiguration<string>(file);
-                    var measurementData = await  _measurementExtractor.Extract<string, MeasurementDto>(extractorConfigurations);
-
-                    Console.WriteLine($"*Measurements for Patient - {measurementData.Result.PatientId}");
-
-                    //todo - transform is in progress
-                    var tcOpenEhrData =  await _measurementTransformer.Trasform<MeasurementDto, OpenEhrMeasurement>(measurementData);
-
-                    //todo - load
-
+                    var measurementData = await _measurementExtractor.Extract<string, MeasurementDto>(extractorConfigurations);
+                    var tcOpenEhrData = await _measurementTransformer.Trasform<MeasurementDto, OpenEhrMeasurement>(measurementData);
                     var result = await _OpenEhrLoader.Load<OpenEhrData<OpenEhrMeasurement>, object>(new OpenEhrData<OpenEhrMeasurement>()
                     {
                         PatientID = tcOpenEhrData.PatientID,
                         Compositions = new List<OpenEhrMeasurement>() { tcOpenEhrData }
                         //Compositions = new List<JObject>() { JObject.Parse("{" +tcOpenEhrData.ToString() + "}") }
-                    }); 
+                    });
                 }
                 catch (Exception ex)
                 {
-                    // ToDo Log exceptions in Logger
-                    Console.WriteLine(ex.ToString());
-
+                    _logger.LogError(ex, $"Error in processing file {file}");
                 }
+
+                _logger.LogInformation($"{++count}. File name : {file}");
             }
         }
 
-      
+
     }
 }

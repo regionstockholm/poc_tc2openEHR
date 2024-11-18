@@ -1,12 +1,12 @@
-﻿using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
+﻿using Spine.Migration.OpenEhr.Etl.Core.Models;
 using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TakeCare.Foundation.OpenEhr.Models.Model;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
 {
-    public class OpenEhrMedication
+    public class OpenEhrMedication : BaseOpenEhrData
     {
         public string PatientID { get; set; }
-        public Context Context { get; set; }
         public TcContextInformation ContextInformation { get; set; }
         public TcCareUnitContext CareUnitContext { get; set; }
         public TcMedicationContext MedicationContext { get; set; }
@@ -32,8 +32,7 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
             //var admins = Administrations.Count > 0 ? string.Join("", Drugs.Select(x => x.ToString())) : string.Empty;
             //var infusions = Infusions.Count > 0 ? string.Join("", Drugs.Select(x => x.ToString())) : string.Empty;
 
-            var result = $@"{Context.ToString()}
-                            {ContextInformation.ToString()}
+            var result = $@"{ContextInformation.ToString()}
                             {MedicationContext.ToString()}
                             {Medication.ToString()}
                             {Prescription.ToString()}

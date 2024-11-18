@@ -1,5 +1,6 @@
-﻿using System.Xml.Serialization;
-using TakeCare.Migration.OpenEhr.Medication.Extraction.Extension;
+﻿
+using System.Xml.Serialization;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 {
@@ -49,12 +50,9 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
         {
             get
             {
-                return _fullReviewDate;
-            }
-            set
-            {
                 var reviewDate = string.Concat(ReviewDate, ReviewTime);
                 _fullReviewDate = reviewDate.GetFormattedISODate();
+                return _fullReviewDate;
             }
         }
 
@@ -87,16 +85,14 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
         public string FirstDoseTime { get; set; }
 
         private string _fullFirstDoseDate;
-        public string FullFirstDoseDate { 
-            get 
+        public string FullFirstDoseDate
+        {
+            get
             {
-                return _fullFirstDoseDate;  
-            } 
-            set
-            { 
                 var firstDose = string.Concat(FirstDoseDate, FirstDoseTime);
                 _fullFirstDoseDate = firstDose.GetFormattedISODate();
-            } 
+                return _fullFirstDoseDate;
+            }
         }
 
         [XmlElement("LastDoseDate")]
@@ -111,12 +107,9 @@ namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
         {
             get
             {
-                return _fullLastDoseDate;
-            }
-            set
-            {
                 var lastDose = string.Concat(LastDoseDate, LastDoseTime);
                 _fullLastDoseDate = lastDose.GetFormattedISODate();
+                return _fullLastDoseDate;
             }
         }
 

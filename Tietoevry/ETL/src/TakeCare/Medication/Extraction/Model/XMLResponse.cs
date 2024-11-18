@@ -1,5 +1,5 @@
 ﻿using System.Xml.Serialization;
-using TakeCare.Migration.OpenEhr.Medication.Extraction.Extension;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Extraction.Model
 {
