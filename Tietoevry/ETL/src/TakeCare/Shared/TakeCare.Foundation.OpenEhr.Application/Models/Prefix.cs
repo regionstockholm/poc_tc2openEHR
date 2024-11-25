@@ -4,7 +4,7 @@
     {
         public string En { get; set; }
 
-        public string Swe { get; set; }
+        public string Sv { get; set; }
     }
 
 }

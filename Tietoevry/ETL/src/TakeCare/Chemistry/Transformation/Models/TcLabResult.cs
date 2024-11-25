@@ -11,7 +11,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
         private readonly string _prefix;
         private readonly int v;
 
-        public AnyEvent Events { get; set; }
+        public ActivityEvent Events { get; set; }
         public OrganizationInfo OrganizationInfo { get; set; }
         public RequestingOrganization RequestingOrganization { get; set; }
         public string InternalLaboratoryIdentifier { get; set; }

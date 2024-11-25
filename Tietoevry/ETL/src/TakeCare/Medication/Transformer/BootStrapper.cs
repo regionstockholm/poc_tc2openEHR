@@ -6,6 +6,7 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer
     {
         public void Register(IServiceRegister register)
         {
+            register.AddSingleton<ICompositionService, CompositionService>();
             register.AddSingleton<IMedicationService, MedicationService>();
             register.AddSingleton<IMedicationTransformer, MedicationTransformer>();
         }

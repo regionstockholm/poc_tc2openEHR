@@ -47,11 +47,11 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 case "en":
                     commonPrefix = _options.Value.Template.Prefix.En;
                     break;
-                case "swe":
-                    commonPrefix = _options.Value.Template.Prefix.Swe;
+                case "sv":
+                    commonPrefix = _options.Value.Template.Prefix.Sv;
                     break;
                 default:
-                    commonPrefix = _options.Value.Template.Prefix.Swe;
+                    commonPrefix = _options.Value.Template.Prefix.Sv;
                     break;
             }
             
@@ -124,6 +124,11 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 if (data.Saved != null && data.Saved.CareUnit != null)
                 {
                     contextDetails = _contextProvider.GetContextData(data.Saved.CareUnit.Id);
+                }
+                if (contextDetails == null)
+                {
+                    throw new Exception($"Invalid Saved CareUnit Id: { (data.Saved!=null && data.Saved.CareUnit!=null ? 
+                                                                data.Saved.CareUnit.Id : null)}");
                 }
                 chemistryData.CareUnitContext = new TcChemistryCareUnitContext($"{commonPrefix}/context/vårdenhet")
                 {
@@ -332,7 +337,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                         //test result - Event data
 
                         string testResultPrefix = $"{commonPrefix}/{labResult}";
-                        testData.Events = new AnyEvent($"{testResultPrefix}", i);
+                        testData.Events = new ActivityEvent($"{testResultPrefix}", i);
 
                         // event - time
                         if (!string.IsNullOrWhiteSpace(data.SamplingDateTime))

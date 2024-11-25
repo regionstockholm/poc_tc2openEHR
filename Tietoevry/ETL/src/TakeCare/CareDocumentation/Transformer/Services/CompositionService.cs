@@ -1,13 +1,12 @@
-﻿using DocumentFormat.OpenXml.EMMA;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
 using Spine.Foundation.Web.OpenEhr.Client;
 using System.Globalization;
 using TakeCare.Foundation.OpenEhr.Application.Models;
 using TakeCare.Foundation.OpenEhr.Application.Services;
+using TakeCare.Foundation.OpenEhr.Application.Utils;
 using TakeCare.Foundation.OpenEhr.Archetype.Entry;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel;
-using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.Extension;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
 using SpineBase = Spine.Foundation.Web.OpenEhr.Archetype.Entry;
 using TcBase = TakeCare.Foundation.OpenEhr.Archetype.Entry;
@@ -63,11 +62,11 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                 case "en":
                     commonPrefix = _options.Value.Template.Prefix.En;
                     break;
-                case "swe":
-                    commonPrefix = _options.Value.Template.Prefix.Swe;
+                case "sv":
+                    commonPrefix = _options.Value.Template.Prefix.Sv;
                     break;
                 default:
-                    commonPrefix = _options.Value.Template.Prefix.Swe;
+                    commonPrefix = _options.Value.Template.Prefix.Sv;
                     break;
             }
 
@@ -78,6 +77,10 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     counterMap = new Dictionary<string, int>();
                     counterMap.Add("generic", 0);
                     contextData = _contextProvider.GetContextData(caseNote.DocCreatedAtCareUnitId);
+                    if(contextData == null)
+                    {
+                        throw new Exception($"Invalid CareUnit Id: {caseNote.DocCreatedAtCareUnitId}");
+                    }
                     openEhrCaseNote = new OpenEhrCaseNote();
 
 
@@ -131,7 +134,7 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     };
 
                     //Add context metadata
-                    openEhrCaseNote.ContextMetadata = new TcBase.TcCaseNoteContextMetadata($"{commonPrefix}/context/metadata")
+                    openEhrCaseNote.ContextMetadata = new TcBase.TcCaseNoteContextMetadata($"{commonPrefix}")
                     {
                         DocumentTitle = caseNote.DocumentTitle,
                         DocumentId = caseNote.DocumentId,
@@ -192,18 +195,35 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     };
 
                     // Add context care unit data
-                    openEhrCaseNote.CareUnitContext = new TcCaseNoteCareUnitContext($"{commonPrefix}/context/vårdenhet")
+                    openEhrCaseNote.CareUnitContext = new TcCaseNoteCareUnitContext($"{commonPrefix}")
                     {
                         CareUnitName = (contextData != null) ? contextData.CareUnitName : caseNote.DocCreatedAtCareUnitId,
-                        Assigner = "RSK",
-                        Issuer = "RSK",
+                        CareProviderName = (contextData != null) ? contextData.CareProviderName : caseNote.DocCreatedAtCareUnitId,
+                        CareUnitId = new Identifier()
+                        {
+                            Value = caseNote.DocCreatedAtCareUnitId,
+                            Assigner = "RSK",
+                            Issuer = "RSK",
+                            Type = "CareUnitId"
+                        },
+                        CareProviderId = new Identifier()
+                        {
+                            Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
+                            Assigner = "RSK",
+                            Issuer = "RSK",
+                            Type = "CareProviderId"
+                        },
+                        OrgId = new Identifier()
+                        {
+                            Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
+                            Assigner = "RSK",
+                            Issuer = "RSK",
+                            Type = "CareProviderId"
+                        },
                         CareUnitCode = "43741000",
                         CareUnitValue = "vårdenhet",
-                        CareProviderId = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
-                        OrgId = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
                         CareProviderCode = "143591000052106",
-                        CareProviderValue = "vårdgivare",
-                        CareProviderName = (contextData != null) ? contextData.CareProviderName : caseNote.DocCreatedAtCareUnitId
+                        CareProviderValue = "vårdgivare"                       
                     };
 
                     //Add the Generic entry

@@ -2,6 +2,7 @@
 {
     public class TcMedicationOrder
     {
+        private const string _prefix = "läkemedelsförskrivning";
         public Guid Guid { get; set; }
         public List<Guid> ChildGuids { get; set; }
         public string DocumentID { get; set; }
@@ -31,30 +32,28 @@
         public override string ToString()
         {
             var result = $@"
-                        ""läkemedelsförskrivning/läkemedelsbeställning/_uid"": ""{Guid}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/timing"": ""R2/2024-10-14T15:00:00Z/P3M"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/timing|formalism"": ""timing"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/narrative"": ""Human readable instruction narrative"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/language|code"": ""sv"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/language|terminology"": ""ISO_639-1"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/encoding|code"": ""UTF-8"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/encoding|terminology"": ""IANA_character-sets"",
-                        ""läkemedelsförskrivning/composer|name"":  ""Signing user"",
-                        ""läkemedelsförskrivning/composer/identifiers:0|id"" :  ""{SignedByUserID}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/läkemedelsdatabas_id"": ""{DatabaseID}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/är_mixtur"": ""{IsMixture}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/externt_startdatum"": ""{ExternalStartDate}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/extern_förskrivare"": ""{ExternalPrescriber}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/har_ordinationsorsak"": {HasOrdinationReason},
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/triggas_av_atc"": {IsTriggeredByATC},
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/har_ordinationsorsak"": {HasOrdinationReason},
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/triggas_av_atc"": {IsTriggeredByATC},
-                        ""läkemedelsförskrivning/context/förskrivnings_identifierare:1"": ""{PrescriptionDocumentIDs}"",";
+                        ""{_prefix}/läkemedelsbeställning/_uid"": ""{Guid}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/timing"": ""R2/2024-10-14T15:00:00Z/P3M"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/timing|formalism"": ""timing"",
+                        ""{_prefix}/läkemedelsbeställning/narrative"": ""Human readable instruction narrative"",
+                        ""{_prefix}/läkemedelsbeställning/language|code"": ""sv"",
+                        ""{_prefix}/läkemedelsbeställning/language|terminology"": ""ISO_639-1"",
+                        ""{_prefix}/läkemedelsbeställning/encoding|code"": ""UTF-8"",
+                        ""{_prefix}/läkemedelsbeställning/encoding|terminology"": ""IANA_character-sets"",
+                        ""{_prefix}/composer|name"":  ""Signing user"",
+                        ""{_prefix}/composer/identifiers:0|id"" :  ""{SignedByUserID}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/läkemedelsdatabas_id"": ""{DatabaseID}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/är_mixtur"": ""{IsMixture}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/externt_startdatum"": ""{ExternalStartDate}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/extern_förskrivare"": ""{ExternalPrescriber}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/har_ordinationsorsak"": {HasOrdinationReason},
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/triggas_av_atc"": {IsTriggeredByATC},
+                        ""{_prefix}/context/förskrivnings_identifierare:1"": ""{PrescriptionDocumentIDs}"",";
             
-            var dosageTypeAql = (string.IsNullOrWhiteSpace(DosageType) || string.IsNullOrWhiteSpace(DosageTypeValue)) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|code"": ""{DosageType}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|value"": ""{DosageTypeValue}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|terminology"": ""TC-Dosage-Type"",";
+            var dosageTypeAql = string.IsNullOrWhiteSpace(DosageType)  ? string.Empty :
+                            $@"""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|code"": ""{DosageType}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|value"": ""{(DosageTypeEnum)Convert.ToInt16(DosageType)}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/doseringstyp|terminology"": ""TC-Dosage-Type"",";
 
             if (!string.IsNullOrWhiteSpace(dosageTypeAql))
             {
@@ -63,9 +62,9 @@
             }
 
             var changeReasonAql = (string.IsNullOrWhiteSpace(ChangeReasonID) || string.IsNullOrWhiteSpace(ChangeReasonText)) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|code"": ""{ChangeReasonID}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|value"": ""{ChangeReasonText}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|terminology"": ""TC-Meds-Change-Reason"",";
+                            $@"""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|code"": ""{ChangeReasonID}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|value"": ""{ChangeReasonText}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/orsak_till_ändring|terminology"": ""TC-Meds-Change-Reason"",";
 
             if (!string.IsNullOrWhiteSpace(changeReasonAql))
             {
@@ -74,9 +73,9 @@
             }
 
             var profylaxIDAql = string.IsNullOrWhiteSpace(ProfylaxID) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/profylax|code"": ""{ProfylaxID}"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/profylax|value"": ""Perioperable"",
-                        ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/profylax|terminology"": ""TC-Prophylaxis"",";
+                            $@"""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/profylax|code"": ""{ProfylaxID}"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/profylax|value"": ""Perioperable"",
+                        ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/profylax|terminology"": ""TC-Prophylaxis"",";
 
             if (!string.IsNullOrWhiteSpace(profylaxIDAql))
             {
@@ -85,9 +84,9 @@
             }
 
             var registrationStatus = string.IsNullOrWhiteSpace(RegistrationStatus) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|code"": ""{RegistrationStatus}"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|value"": ""{(RegistrationStatusEnum)Convert.ToInt16(RegistrationStatus)}"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|terminology"": ""TC-Medication-RegistrationStatus"",";
+                            $@"""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|code"": ""{RegistrationStatus}"",
+                                ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|value"": ""{(RegistrationStatusEnum)Convert.ToInt16(RegistrationStatus)}"",
+                                ""{_prefix}/läkemedelsbeställning/order:0/medicin_extension/registreringsstatus|terminology"": ""TC-Medication-RegistrationStatus"",";
 
             if (!string.IsNullOrWhiteSpace(registrationStatus))
             {
@@ -102,6 +101,14 @@
     enum RegistrationStatusEnum
     {
         Normal,
-        Cancelled = -2
+        Cancelled = -2 //means that the prescription has never been administered
+    }
+    enum DosageTypeEnum
+    {
+        Rb = 1, // 1 = continuous (each day)
+        Vb = 2, //2 = if necessary 
+        Tf = 3, //3 = temporary (one-time prescription)
+        Sch = 4, //4 = according to schedule
+        Bhs = 5 //5 = according to Treatment schedule
     }
 }

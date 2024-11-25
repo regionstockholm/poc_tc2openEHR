@@ -2,6 +2,7 @@
 {
     public class TcDosage
     {
+        private const string _prefix = "läkemedelsförskrivning/läkemedelsbeställning";
         public Guid ParentGuid { get; set; }
         public Guid Guid { get; set; }                                                                                      
         public string DosageID { get; set; }
@@ -27,10 +28,10 @@
         }
         public override string ToString()
         {
-            var dosagemapping = $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/frekvensschema/schematyp"": {ScheduleType},
-                                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/frekvensschema/period"": ""{Period}"",
-                                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/beställningens_startdatum_tid"": ""{StartFullDateTime}"",
-                                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/dosering:0/dos|unit"": ""1"",";
+            var dosagemapping = $@"""{_prefix}/order:0/terapeutisk_riktning:0/frekvensschema/schematyp"": {ScheduleType},
+                                    ""{_prefix}/order:0/terapeutisk_riktning:0/frekvensschema/period"": ""{Period}"",
+                                    ""{_prefix}/order:0/terapeutisk_riktning:0/beställningens_startdatum_tid"": ""{StartFullDateTime}"",
+                                    ""{_prefix}/order:0/terapeutisk_riktning:0/dosering:0/dos|unit"": ""1"",";
 
             return $@"
                     {string.Join("", DosageDrugs.Select(x => x.ToString()))}
@@ -40,14 +41,15 @@
 
     public class DosageDrug
     {
+        private const string _prefix = "läkemedelsförskrivning/läkemedelsbeställning";
         public string DrugRow { get; set; }
         public string DrugCode { get; set; }
         public string DoseText { get; set; }
         public string DoseNumerical { get; set; }
         public override string ToString()
         {
-            return $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/dosering:0/doseringsbeskrivning"": ""{DoseText}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/dosering:0/dos|magnitude"": ""{DoseNumerical}"",";
+            return $@"""{_prefix}/order:0/terapeutisk_riktning:0/dosering:0/doseringsbeskrivning"": ""{DoseText}"",
+                    ""{_prefix}/order:0/terapeutisk_riktning:0/dosering:0/dos|magnitude"": ""{DoseNumerical}"",";
         }
     }
 }

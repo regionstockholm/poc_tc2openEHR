@@ -6,11 +6,11 @@ namespace TakeCare.Migration.OpenEhr.Etl.CareDocumentation
 {
     public class CareDocumentationTransformer : ICareDocumentationTransformer
     {
-        private readonly ITransformService _transformService;
+        private readonly ICompositionService _compositionService;
 
-        public CareDocumentationTransformer(ITransformService transformService)
+        public CareDocumentationTransformer(ICompositionService compositionService)
         {
-            _transformService = transformService;
+            _compositionService = compositionService;
         }
         public Task<TResult> Trasform<TInput, TResult>(ExtractionResult<TInput> input)
             where TInput : class
@@ -18,7 +18,7 @@ namespace TakeCare.Migration.OpenEhr.Etl.CareDocumentation
         {
             ArgumentNullException.ThrowIfNull(input);
 
-            var transformedData = _transformService.Transform(input.Result as CareDocumentationDto);
+            var transformedData = _compositionService.Compose(input.Result as CareDocumentationDto);
 
             return Task.FromResult<TResult>(transformedData as TResult);
         }

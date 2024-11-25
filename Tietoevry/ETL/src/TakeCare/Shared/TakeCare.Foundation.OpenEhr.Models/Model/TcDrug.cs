@@ -4,6 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
 {
     public class TcDrug
     {
+        private const string _prefix = "läkemedelsförskrivning/läkemedelsbeställning";
         public Guid ParentGuid { get; set; }
         public Guid Guid { get; set; }
         public string Row { get; set; }
@@ -38,47 +39,47 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
             }
             else if (!string.IsNullOrWhiteSpace(DoseForm))
             {
-                doseform = $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/form"": ""{DoseForm}"",";
+                doseform = $@"""{_prefix}/order:0/läkemedelsdetaljer/form"": ""{DoseForm}"",";
             }
             else if (!string.IsNullOrWhiteSpace(DoseForm) && !string.IsNullOrWhiteSpace(DoseFormCode))
             {
-                doseform = $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/form|code"": ""{DoseFormCode}"",,
-                            ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/form|value"": ""{DoseForm}"",
-                            ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/form|terminology"": ""TC-Drug-Form"",";
+                doseform = $@"""{_prefix}/order:0/läkemedelsdetaljer/form|code"": ""{DoseFormCode}"",,
+                            ""{_prefix}/order:0/läkemedelsdetaljer/form|value"": ""{DoseForm}"",
+                            ""{_prefix}/order:0/läkemedelsdetaljer/form|terminology"": ""TC-Drug-Form"",";
             }
 
             var result =
-                $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel|code"":""{DrugCode}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel|value"":""{PreparationText}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel|terminology"":""TC-Drug-Code"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsväg|code"":""{AdministrationRouteID}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsväg|value"":""{AdministrationRouteText}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsväg|terminology"": ""TC-Administration-Route"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsmetod|code"":""{AdministrationTypeID}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsmetod|value"": ""{AdministrationTypeText}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/administreringsmetod|terminology"": ""TC-Administration-Type"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/anvisningar_för_dispensering/instruktion_för_dispensering_2:0|code"":""{DosageUnitID}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/anvisningar_för_dispensering/instruktion_för_dispensering_2:0|value"":""{DosageUnitText}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/kategori|code"":""{ProductType}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/kategori|value"":""{(ProductTypeEnum)Convert.ToInt16(ProductType)}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/kategori|terminology"": ""TC-Product-Type"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/läkemedel_extension/är_godkänd"": {IsApproved},
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/läkemedel_extension/atc-kodnamn"": ""{ATCName}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/läkemedel_extension/styrka_beskrivning"": ""{InternalArticleStrength}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/läkemedel_extension/särskild_läkemedelskod"": ""{SpecialDrugCode}"",";
+                $@"""{_prefix}/order:0/läkemedelsartikel|code"":""{DrugCode}"",
+                    ""{_prefix}/order:0/läkemedelsartikel|value"":""{PreparationText}"",
+                    ""{_prefix}/order:0/läkemedelsartikel|terminology"":""TC-Drug-Code"",
+                    ""{_prefix}/order:0/administreringsväg|code"":""{AdministrationRouteID}"",
+                    ""{_prefix}/order:0/administreringsväg|value"":""{AdministrationRouteText}"",
+                    ""{_prefix}/order:0/administreringsväg|terminology"": ""TC-Administration-Route"",
+                    ""{_prefix}/order:0/administreringsmetod|code"":""{AdministrationTypeID}"",
+                    ""{_prefix}/order:0/administreringsmetod|value"": ""{AdministrationTypeText}"",
+                    ""{_prefix}/order:0/administreringsmetod|terminology"": ""TC-Administration-Type"",
+                    ""{_prefix}/order:0/anvisningar_för_dispensering/instruktion_för_dispensering_2:0|code"":""{DosageUnitID}"",
+                    ""{_prefix}/order:0/anvisningar_för_dispensering/instruktion_för_dispensering_2:0|value"":""{DosageUnitText}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/kategori|code"":""{ProductType}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/kategori|value"":""{(ProductTypeEnum)Convert.ToInt16(ProductType)}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/kategori|terminology"": ""TC-Product-Type"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/läkemedel_extension/är_godkänd"": {IsApproved},
+                    ""{_prefix}/order:0/läkemedelsdetaljer/läkemedel_extension/atc-kodnamn"": ""{ATCName}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/läkemedel_extension/styrka_beskrivning"": ""{InternalArticleStrength}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/läkemedel_extension/särskild_läkemedelskod"": ""{SpecialDrugCode}"",";
 
             if (!string.IsNullOrWhiteSpace(Strength))
             {
-                result += $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/styrka/styrka_i_täljare|magnitude"": {Strength},
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/styrka/styrka_i_täljare|unit"": ""{StrengthUnit}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/styrka/styrka_i_nämnare|magnitude"": 1,
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/styrka/styrka_i_nämnare|unit"": ""1"",";
+                result += $@"""{_prefix}/order:0/läkemedelsdetaljer/styrka/styrka_i_täljare|magnitude"": {Strength},
+                    ""{_prefix}/order:0/läkemedelsdetaljer/styrka/styrka_i_täljare|unit"": ""{StrengthUnit}"",
+                    ""{_prefix}/order:0/läkemedelsdetaljer/styrka/styrka_i_nämnare|magnitude"": 1,
+                    ""{_prefix}/order:0/läkemedelsdetaljer/styrka/styrka_i_nämnare|unit"": ""1"",";
             }
 
             if (!string.IsNullOrWhiteSpace(StdSolutionAmount))
             {
-                result+= $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/mängd|magnitude"": {StdSolutionAmount},
-                            ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsdetaljer/mängd|unit"": ""ml"",";
+                result+= $@"""{_prefix}/order:0/läkemedelsdetaljer/mängd|magnitude"": {StdSolutionAmount},
+                            ""{_prefix}/order:0/läkemedelsdetaljer/mängd|unit"": ""ml"",";
             }
             if (!string.IsNullOrWhiteSpace(doseform))
             {
@@ -87,9 +88,9 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
             }
             var mappingOccurrance = 0;
             var atcCodeAql = string.IsNullOrWhiteSpace(ATCCode) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|code"":""{ATCCode}"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""ATC"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
+                            $@"""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|code"":""{ATCCode}"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""ATC"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
 
             if (!string.IsNullOrWhiteSpace(atcCodeAql))
             {
@@ -98,9 +99,9 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
             }
 
             var drugIdAql = string.IsNullOrWhiteSpace(DrugID) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{++mappingOccurrance}/target|code"": ""{DrugID}"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""NPL-Package"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
+                            $@"""{_prefix}/order:0/läkemedelsartikel/_mapping:{++mappingOccurrance}/target|code"": ""{DrugID}"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""NPL-Package"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
             if (!string.IsNullOrWhiteSpace(drugIdAql))
             {
                 result = $@"{result}
@@ -108,9 +109,9 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
             }
 
             var specialtyIdAql = string.IsNullOrWhiteSpace(SpecialityID) ? string.Empty :
-                            $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{++mappingOccurrance}/target|code"": ""{SpecialityID}"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""SpecialityId"",
-                                ""läkemedelsförskrivning/läkemedelsbeställning/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
+                            $@"""{_prefix}/order:0/läkemedelsartikel/_mapping:{++mappingOccurrance}/target|code"": ""{SpecialityID}"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}/target|terminology"": ""SpecialityId"",
+                                ""{_prefix}/order:0/läkemedelsartikel/_mapping:{mappingOccurrance}|match"": ""="",";
             if (!string.IsNullOrWhiteSpace(specialtyIdAql))
             {
                 result = $@"{result}

@@ -28,5 +28,11 @@
     "CareUnitName": "Privat ÖV",
     "CareProviderId": "3",
     "CareProviderName": "Privat vårdgivare"
+  },
+  {
+    "CareUnitId": "75",
+    "CareUnitName": "Öppenvårdsmott. Urologi",
+    "CareProviderId": "1",
+    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
   }
 ]

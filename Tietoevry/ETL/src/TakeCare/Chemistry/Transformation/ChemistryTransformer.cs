@@ -6,11 +6,11 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation
 {
     public class ChemistryTransformer : IChemistryTransformer
     {
-        private readonly ITransformService _transformService;
+        private readonly ICompositionService _compositionService;
 
-        public ChemistryTransformer(ITransformService transformService)
+        public ChemistryTransformer(ICompositionService compositionService)
         {
-            _transformService = transformService;
+            _compositionService = compositionService;
         }
         public Task<TResult> Trasform<TInput, TResult>(ExtractionResult<TInput> input)
             where TInput : class
@@ -18,7 +18,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation
         {
             ArgumentNullException.ThrowIfNull(input);
 
-            var transformedData = _transformService.Transform(input.Result as TakeCareChemistry);
+            var transformedData = _compositionService.Compose(input.Result as TakeCareChemistry);
 
             return Task.FromResult<TResult>(transformedData as TResult);
         }

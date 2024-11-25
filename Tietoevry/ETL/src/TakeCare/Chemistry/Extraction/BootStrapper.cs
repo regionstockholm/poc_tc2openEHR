@@ -9,6 +9,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Extraction
         {
             register.AddSingleton<IChemistryExtractor, ChemistryExtractor>();
             register.AddSingleton<IExtractionService, ExtractionService>();
+            register.AddSingleton<IFormatService, FormatService>();
         }
     }
 }

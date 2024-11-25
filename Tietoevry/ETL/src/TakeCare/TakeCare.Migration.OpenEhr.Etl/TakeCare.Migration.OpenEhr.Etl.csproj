@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Activities\Extraction\TakeCare.Migration.OpenEhr.Activities.Extraction.csproj" />
+    <ProjectReference Include="..\Activities\Transformer\TakeCare.Migration.OpenEhr.Activities.Transformer.csproj" />
     <ProjectReference Include="..\CareDocumentation\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj" />
     <ProjectReference Include="..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
     <ProjectReference Include="..\Chemistry\Extraction\TakeCare.Migration.OpenEhr.Chemistry.Extraction.csproj" />

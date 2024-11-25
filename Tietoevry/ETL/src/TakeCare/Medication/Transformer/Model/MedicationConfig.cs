@@ -9,6 +9,7 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
         public Template Template { get; set; }
 
         public FormConfig Form { get; set; }
+        public Language Language { get; set; }
 
     }
 }

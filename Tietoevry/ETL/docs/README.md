@@ -18,7 +18,7 @@ As a part of this application ETL tool was developed for following information t
 - Activity
 
 #### Project struture for ETL
-All ETL project shares the same structure (each one has different logic for extranction and transformation), each of ETL consists of 2 projects:
+All ETL project shares the same structure (each one has different logic for extraction and transformation), each of ETL consists of 2 projects:
 - Extraction  
 - Transformer as shown in below screenshot. 
 
@@ -28,41 +28,38 @@ All ETL project shares the same structure (each one has different logic for extr
 
 ![alt text](image/README/image-2.png)
 
+#### Notes :
+
+-To add new iCKM archetype, add the Terminology details to the Terminolgy.json, then add the composition creation logic to iCKMArchetypes, and finally add to the switch logic in Composition to call the apt composition logic.
+
+-**Extract layer read data from Test files and create etl compatible format, however if file has invalid Data e.g invalid date which can't be converted to ISO format, such data file will fail. So if any of record fails while extracting/transforming that actually fails whole file.**
 
 ## Services
 List of common services used throughout the application based on their need.
 
 #### Unit Provider
 
-The Unit Provider provides the standard OpenEHR units of the TakeCare units. Units in this context means for example 'mmHg' and units used for measurements data mainly.
+The Unit Provider Service takes the TakeCare unit as input as provides the corresponding standard OpenEHR unit.
 
 #### Context Provider
 
-Provides User context data
+The Context Provider Service takes the CareUnit and CareProvider details. It takes the Care Unit Id and returns the corresponsing Care Unit and Provider name.
 
 #### Terminology Provider
 
-Maps the TermID from the Casenote document to the openEHR standard TermID and gives the details.
+The Terminology Provider Service takes the term Id as input and returns the corresponding details about the termID like Name, Datatype, and Unit.
 
 #### Patient Service
 
-Provides the Patient Id based on the SSN (Social security number) ID provided in the Care Documentation.
-
-#### EHR ID resolver
-
-Provides the EHR ID based of the Patient Id fetched earlier.
-
-#### Terminology Lookup Provider
-
-Reads the TermCatalog and provide information about the TermID, its names, datatype and unit
+The Patient Service provides the Patient Id based on the SSN (Social security number) ID provided in the data files.
 
 #### Role Provider
 
-Provides lists of the role Id (profession ID) and the respctive roleName (profession Name).
+The Role Provider service provides the Role details(Prefosseion details) with respect to the the given Role Id. 
 
 #### Form Provider
 
-Provides form API details like Name and latest version.
+The Form Provider service provides form API details like Name and latest version for a given template Id.
 
 #### Medication Service
 
@@ -70,16 +67,28 @@ Calls substituable service which used to get code and values based on the value 
 
 #### Notes :
 
-To add new iCKM archetype, add the Terminology details to the Terminolgy.json, then add the composition creation logic to iCKMArchetypes, and finally add to the switch logic in Composition to call the apt composition logic.
-
+To add new iCKM archetype, add the Terminology details to the Terminolgy.json, then add the composition creation logic to TakeCare.Foundation.OpenEhr.Archetype.Entry, and finally add to the switch logic in Composition to call the appropriate composition logic.
 
 
 ## Care Documentation
-In Care documentation, data is in xml format in the form of Casenotes. Each xml file consists of list of casenotes and each case note consists of list of nested keywords.
 
-For each case not a composition is created.
+#### Overview 
+Care Documentation ETL extracts the Case Notes from the given xml file, flattens the nested Keyword structure, and transforms the data into composition for loading into OpenEhr CDR.
 
-Challenges - the care documentation xml structure was complicated and dynamic due to TakeCare structur containing nesting of keywords and their values.
+#### Input
+Xml
+
+#### Template 
+RSK - Journal Encounter
+
+#### Extraction and Transformation
+The Extraction project flattens the Nested Keyword structure.
+Every keyword is assigned an Id and the parent keyword references its children by maintaining a list of the their Ids.
+
+The Tranformation project creates a composition for each casenote and its metadata for the Patient with PatientId in each file. The unique structure of the nested keywords is maintained with the flattening in extraction and dynamically creating the AQL paths for the composition. 
+
+#### Challenges 
+The care documentation xml structure was complicated and dynamic due to TakeCare structur containing nesting of keywords and their values.
 
 ## Measurements
 In Measurement ETL patient measurements data is in Json file. These files are processing json files through ETL.
@@ -104,6 +113,57 @@ In Medication ETL, the test data was provided in xml file and had collection of 
 - In 2nd phase complex compostion will be saved - contains inter-relation between drug, dosages and days.
 - Medication is saved in a composition and Administration and infusion are saved in separate compositions where they are linked them to their respective medication.
 
+## Clinical Chemistry
+
+#### Overview
+Chemistry ETL extracts the Lab results from the given json file, and transforms the data into composition for saving into OpenEhr CDR.
+
+#### Input
+Json
+
+#### Template
+Lab_result_report_TCPOC
+
+#### Extraction and Transformation
+The Chemistry Extraction project reads data from the Json file into the class models for creating a list of Lab results. It also converts the dates into ISO format.
+
+The Transformation projects creates a composition for each file as each file contains one lab result for the given patient. 
+
+
+## Activities
+
+#### Overview 
+ctivities ETL extracts the Activities from the given json file, and transforms the data into composition for loading into OpenEhr CDR.A
+
+#### Input
+Json
+
+#### File naming convention
+[title/name]_[patientId].json - To map the data of the file to the respective patient, the Patient Id is fetched from the name of the file.
+eg. Activities_12345.json 
+
+#### Template 
+RS - Activity
+
+#### Extraction and Transformation
+The Extraction reads the Json file and maps to class models to form a List of Objects. For each activity, the dates are converted into ISO format and if the date and time are separate, then they are also merged into separate property with DateTime format for saving into the composition.
+
+The Tranformation project creates a composition for each activity and its metadata. The composition is dynamically created for each activity. The frequency content which varies as per the frequency type (0, 1, 2, 3) is also mapped as per the template.
+
+#### Challenges 
+The frequency content in the input varies depending on the frequency type.
+
+Following are the frequency types-
+
+- 0 - the content property contains a FrequencySingle object
+- 1 - the content property contains a FrequencyDaily object 
+- 2 - the content property contains a FrequencyScheduleDay object 
+- 3 - the content property contains a FrequencyScheduleWeek object 
+- 4 - the content property contains a FrequencyContinuous object 
+- 5 - the content property contains a FrequencyIrregular object 
+
+Frequency 0, 1, 2, and 3 are covered in this project.
+
 ## SUMMARY
 
 | Module    | Input file format | Template Name  |  View Used    | Widget Used |        UI    |
@@ -111,8 +171,8 @@ In Medication ETL, the test data was provided in xml file and had collection of 
 | Care Doc  |   .xml    | RSK - Journal Encounter   |    -     |     -    |     ![alt text](image/README/image-6.png)     | 
 | Measurement |   .json   | RSK - Journal Encounter |   -      |    -     |     ![alt text](image/README/image-7.png)    |
 | Medication  |   .xml    | RSK - Medication order  |   -      |    -     |     -       |
-| Chemistry   |   .json   |  -                      |   -      |    -     |    ![alt text](image/README/image-8.png)      | 
-| Activities  |   .xml    | RS - Activity           |   -      |    -     |     -       |
+| Chemistry   |   .json   |  Lab_result_report_TCPOC |   -      |    -     |    ![alt text](image/README/image-8.png)      | 
+| Activities  |   .json    | RS - Activity           |   -      |    -     |     ![alt text](image/README/image-activity.png)       |
 ---------------------------------------------------------------------------------------------------------------
 
 ## Solution Structure

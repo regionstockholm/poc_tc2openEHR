@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Spine.Migration.OpenEhr.Etl;
+using TakeCare.Migration.OpenEhr.Activities.Transformer.Models;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
 using TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models;
 using TakeCare.Migration.OpenEhr.Etl.Handlers;
@@ -21,6 +22,9 @@ Activation.Instance
 
                    var medicationConfig = configuration.GetSection("Medication");
                    services.Configure<MedicationConfig>(medicationConfig);
+
+                   var activityConfig = configuration.GetSection("Activity");
+                   services.Configure<ActivitiesConfig>(activityConfig);
                })
                .Build()
                .Run<MedicationEtlHandler>();

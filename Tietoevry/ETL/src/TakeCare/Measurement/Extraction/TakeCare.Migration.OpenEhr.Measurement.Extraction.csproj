@@ -35,6 +35,15 @@
     <None Update="Assets\TestData\Measurement\Measurements_195207291591_20241105101200-197803070189.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\TestData\Measurement\Measurements_195207291591_20241118093841-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_195207291591_20241118093953-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_195207291591_20241118094033-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\Measurement\Measurements_195906113187_20241022150712-197803070189.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -69,6 +78,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\Measurement\Measurements_196607113146_20241114090719-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_196607113146_20241118094233-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_196607113146_20241118094258-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_196607113146_20241118094333-195906300149.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\Measurements_196607113146_20241118094358-195906300149.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\Measurement\Measurements_201402192387_20240830141929-197803070189.json">

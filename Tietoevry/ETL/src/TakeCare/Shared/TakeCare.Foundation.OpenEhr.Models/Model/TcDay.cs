@@ -4,6 +4,7 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
 {
     public class TcDay
     {
+        private const string _prefix = "läkemedelsförskrivning/läkemedelsbeställning";
         public Guid ParentGuid { get; set; }
         public Guid Guid { get; set; }
         public string Row { get; set; }
@@ -21,8 +22,8 @@ namespace TakeCare.Foundation.OpenEhr.Models.Model
         {
             var infusionTime = string.IsNullOrWhiteSpace(InfusionTime) ? string.Empty : $@"PT{InfusionTime}M";
             var result =
-                 $@"""läkemedelsförskrivning/läkemedelsbeställning/order:0/ytterligare_instruktioner"": ""{DosageInstruction}"",
-                    ""läkemedelsförskrivning/läkemedelsbeställning/order:0/terapeutisk_riktning:0/dosering:0/administrationens_varaktighet"": ""{infusionTime}"",";
+                 $@"""{_prefix}/order:0/ytterligare_instruktioner"": ""{DosageInstruction}"",
+                    ""{_prefix}/order:0/terapeutisk_riktning:0/dosering:0/administrationens_varaktighet"": ""{infusionTime}"",";
 
             return result;
         }

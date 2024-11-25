@@ -8,7 +8,6 @@
         public void Register(IServiceRegister register)
         {
             register.AddSingleton<IChemistryTransformer, ChemistryTransformer>();
-            register.AddSingleton<ITransformService, TransformService>();
             register.AddSingleton<ICompositionService, CompositionService>();
         }
     }

@@ -43,7 +43,7 @@
 
         public TcCaseNoteContextMetadata(string prefix)
         {
-            _prefix = prefix;
+            _prefix = $@"{prefix}/context/metadata";
         }
 
         public override string ToString()

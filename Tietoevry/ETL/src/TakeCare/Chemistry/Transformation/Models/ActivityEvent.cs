@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
 {
-    public class AnyEvent
+    public class ActivityEvent
     {
         private readonly string _prefix;
         private readonly int v;
@@ -24,7 +24,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
         //public List<Specimen> Specimen { get; set; }
         public List<LabAnalyteResult> AnalyteResult { get; set; }
 
-        public AnyEvent(string prefix, int counter)
+        public ActivityEvent(string prefix, int counter)
         {
             _prefix = prefix;
             v = counter;
