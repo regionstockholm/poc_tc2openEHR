@@ -1,4 +1,4 @@
-# Simple scripts to extract data from TakeCare APIs.
+# Simple scripts to extract data from TakeCare APIs
 
 ## Description
 
