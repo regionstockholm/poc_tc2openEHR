@@ -12,14 +12,14 @@ TakeCareFunctions.json contains the configuration information.
 Extracts measurement templates from TakeCare.
 Careunit used for access is configured within the source.
 
-Usage: ExtractPocData.ps1 *output-directory*
+Usage: ExtractPocTemplates.ps1 *output-directory*
 
 ## ExtractPocUnits.ps1
 
 Extracts Careproviders, Lockgroups and Careunits info.
 Careunit used for access is configured within the source.
 
-Usage: ExtractPocData.ps1 *output-directory*
+Usage: ExtractPocUnits.ps1 *output-directory*
 
 ## ExtractPocData.ps1
 
