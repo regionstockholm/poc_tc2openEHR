@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0-beta4" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0-beta3" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +23,7 @@
 	<ProjectReference Include="..\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj" />
 	<ProjectReference Include="..\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj" />
 	<ProjectReference Include="..\Medication\Transformer\TakeCare.Migration.OpenEhr.Medication.Transformer.csproj" />
-	<ProjectReference Include="..\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj" />
+	<ProjectReference Include="..\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj" />
   </ItemGroup>
 
   <ItemGroup>

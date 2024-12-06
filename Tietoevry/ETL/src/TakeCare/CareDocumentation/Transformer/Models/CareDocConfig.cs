@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TakeCare.Foundation.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Application.Models;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {

@@ -1,4 +1,4 @@
-﻿using TakeCare.Foundation.OpenEhr.Application.Utils;
+﻿using TakeCare.Migration.OpenEhr.Application.Utils;
 using TakeCare.Migration.OpenEhr.Activities.Extraction.Models;
 
 namespace TakeCare.Migration.OpenEhr.Activities.Extraction.Services

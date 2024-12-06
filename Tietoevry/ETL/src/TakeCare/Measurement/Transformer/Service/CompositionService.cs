@@ -2,9 +2,9 @@
 using Newtonsoft.Json.Linq;
 using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
 using System.Text;
-using TakeCare.Foundation.OpenEhr.Application.Models;
-using TakeCare.Foundation.OpenEhr.Application.Services;
-using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TakeCare.Migration.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Application.Services;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 using TakeCare.Migration.OpenEhr.Measurement.Extraction.DtoModel;
 using TakeCare.Migration.OpenEhr.Measurement.Extraction.Model;
 using TakeCare.Migration.OpenEhr.Measurement.Transformer.Model;

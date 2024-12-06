@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Measurement", "Measurement"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{905947C5-E790-4978-ADFA-A6C8838952A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Foundation.OpenEhr.Archetype", "TakeCare\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj", "{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Archetype", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj", "{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Measurement.Transformer", "TakeCare\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj", "{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}"
 EndProject
@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Chemistry.Transformation", "TakeCare\Chemistry\Transformation\TakeCare.Migration.OpenEhr.Chemistry.Transformation.csproj", "{4D398C38-EB91-42F3-904C-FEC9A4143DD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Foundation.OpenEhr.Application", "TakeCare\Shared\TakeCare.Foundation.OpenEhr.Application\TakeCare.Foundation.OpenEhr.Application.csproj", "{8C859634-6347-4B96-90E8-ACD3255A5237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Application", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj", "{8C859634-6347-4B96-90E8-ACD3255A5237}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Medication.Extraction", "TakeCare\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj", "{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}"
 EndProject
@@ -42,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Medication", "Medication", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Medication.Transformer", "TakeCare\Medication\Transformer\TakeCare.Migration.OpenEhr.Medication.Transformer.csproj", "{58A4053B-3244-419A-8BEC-3CCA7BF612FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Foundation.OpenEhr.Models", "TakeCare\Shared\TakeCare.Foundation.OpenEhr.Models\TakeCare.Foundation.OpenEhr.Models.csproj", "{F5FF7045-667C-49A3-9B61-47CEAADD3495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Models", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Models\TakeCare.Migration.OpenEhr.Models.csproj", "{F5FF7045-667C-49A3-9B61-47CEAADD3495}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Activities", "Activities", "{AB504562-8DBC-4E4C-B755-56D9BD55207C}"
 EndProject

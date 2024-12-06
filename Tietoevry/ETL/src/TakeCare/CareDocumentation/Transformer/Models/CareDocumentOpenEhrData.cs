@@ -1,4 +1,4 @@
-﻿using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+﻿using TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {

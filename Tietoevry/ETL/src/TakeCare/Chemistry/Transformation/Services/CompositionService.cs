@@ -3,9 +3,9 @@ using Microsoft.Win32.SafeHandles;
 using Spine.Foundation.Web.OpenEhr.Client;
 using System.Text;
 using System.Text.RegularExpressions;
-using TakeCare.Foundation.OpenEhr.Application.Models;
-using TakeCare.Foundation.OpenEhr.Application.Services;
-using TakeCare.Foundation.OpenEhr.Application.Utils;
+using TakeCare.Migration.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Application.Services;
+using TakeCare.Migration.OpenEhr.Application.Utils;
 using TakeCare.Migration.OpenEhr.Chemistry.Extraction.Models;
 using TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models;
 

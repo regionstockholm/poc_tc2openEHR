@@ -1,6 +1,5 @@
 ﻿using Spine.Migration.OpenEhr.Etl.Core.Models;
-using TakeCare.Foundation.OpenEhr.Archetype.Entry;
-using TakeCare.Foundation.OpenEhr.Models.Model;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
 {

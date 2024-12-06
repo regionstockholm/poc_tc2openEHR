@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models
 {

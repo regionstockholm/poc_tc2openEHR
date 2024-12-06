@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TakeCare.Migration.OpenEhr.Chemistry.Extraction.Models;
-using TakeCare.Foundation.OpenEhr.Application.Utils;
+using TakeCare.Migration.OpenEhr.Application.Utils;
 
 namespace TakeCare.Migration.OpenEhr.Chemistry.Extraction.Services
 {

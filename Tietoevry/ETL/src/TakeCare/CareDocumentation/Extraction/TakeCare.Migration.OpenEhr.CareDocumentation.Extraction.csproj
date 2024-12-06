@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0-beta2" />
+    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Application\TakeCare.Foundation.OpenEhr.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195207291591_0.xml">

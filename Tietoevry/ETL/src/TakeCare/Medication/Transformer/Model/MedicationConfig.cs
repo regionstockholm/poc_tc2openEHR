@@ -1,4 +1,4 @@
-﻿using TakeCare.Foundation.OpenEhr.Application.Models;
+﻿using TakeCare.Migration.OpenEhr.Application.Models;
 
 namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
 {

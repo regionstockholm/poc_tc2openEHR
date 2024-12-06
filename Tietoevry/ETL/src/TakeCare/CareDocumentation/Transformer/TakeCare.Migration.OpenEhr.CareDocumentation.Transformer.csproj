@@ -13,13 +13,13 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0-beta1" />
-    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0-beta4" />
+    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Application\TakeCare.Foundation.OpenEhr.Application.csproj" />
-    <ProjectReference Include="..\..\Shared\TakeCare.Foundation.OpenEhr.Archetype\TakeCare.Foundation.OpenEhr.Archetype.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj" />
     <ProjectReference Include="..\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj" />
   </ItemGroup>
 

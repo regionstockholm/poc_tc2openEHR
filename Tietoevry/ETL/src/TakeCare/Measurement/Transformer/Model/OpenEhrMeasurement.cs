@@ -1,6 +1,6 @@
 ﻿using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
 using Spine.Migration.OpenEhr.Etl.Core.Models;
-using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.Measurement.Transformer.Model
 {

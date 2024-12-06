@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using TakeCare.Foundation.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Application.Models;
 
 namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Models
 {

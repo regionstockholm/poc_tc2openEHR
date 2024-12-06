@@ -2,14 +2,14 @@
 using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
 using Spine.Foundation.Web.OpenEhr.Client;
 using System.Globalization;
-using TakeCare.Foundation.OpenEhr.Application.Models;
-using TakeCare.Foundation.OpenEhr.Application.Services;
-using TakeCare.Foundation.OpenEhr.Application.Utils;
-using TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TakeCare.Migration.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Application.Services;
+using TakeCare.Migration.OpenEhr.Application.Utils;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.DtoModel;
 using TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Models;
 using SpineBase = Spine.Foundation.Web.OpenEhr.Archetype.Entry;
-using TcBase = TakeCare.Foundation.OpenEhr.Archetype.Entry;
+using TcBase = TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
 {
