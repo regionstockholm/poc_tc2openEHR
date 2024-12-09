@@ -1,0 +1,68 @@
+<div class="date-filter" (click)="toogleMenuPopup()">
+    <div>{{(isCustomDateRange ? 'observations.custom' : dateFilterText) | translate}}</div>
+    <i class="icon icon-arrow-small-down"></i>
+</div>
+<div class="popover-menu" [ngClass]="{'opened': menuOpened}">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li ngbNavItem>
+          <button ngbNavLink>{{'observations.preset' | translate}}</button>
+          <ng-template ngbNavContent>
+            <div class="preset-menu">
+                <ng-container *ngFor="let item of dateFilterOptions;">
+                    <ul *ngIf="item.column === 1">
+                        <li (click)="onDateRangeFilter(item)"  [class.active]="dateFilterText === item.name">
+                            {{item.name | translate}}
+                        </li>
+                    </ul>
+                </ng-container>
+            </div>
+            <div class="preset-menu">
+                <ng-container *ngFor="let item of dateFilterOptions;">
+                    <ul *ngIf="item.column === 2">
+                        <li (click)="onDateRangeFilter(item)"  [class.active]="dateFilterText === item.name">
+                            {{item.name | translate}}
+                        </li>
+                    </ul>
+                </ng-container>
+            </div>
+          </ng-template>
+        </li>
+        <li ngbNavItem>
+          <button ngbNavLink>{{'observations.custom' | translate}}</button>
+          <ng-template ngbNavContent>
+            <div class="custom-date-filter">
+                <div class="control">
+                    <div class="header">{{'observations.from' | translate}}</div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Datepicker" [(ngModel)]="fromDate"
+                                class="form-control" #startDate="ngbDatepicker" ngbDatepicker/>
+                        <div class="input-group-text">
+                            <button class="btn" (click)="startDate.toggle()">
+                            <em class="icon icon-calendar"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="header">{{'observations.to' | translate}}</div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Datepicker" [(ngModel)]="toDate"
+                                class="form-control" #endDate="ngbDatepicker" ngbDatepicker/>
+                        <div class="input-group-text">
+                            <button class="btn" (click)="endDate.toggle()">
+                            <em class="icon icon-calendar"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-container">
+                    <button (click)="onDateFilterApply()" class="btn btn-primary">{{'observations.apply' | translate}}</button>
+                    <button (click)="onDateFilterCancel()" class="btn btn-secondary">{{'observations.cancel' | translate}}</button>
+                </div>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav"></div>
+</div>

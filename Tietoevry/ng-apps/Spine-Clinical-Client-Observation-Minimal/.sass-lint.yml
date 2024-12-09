@@ -1,0 +1,20 @@
+options:
+  formatter: stylish
+  merge-default-rules: true
+files:
+  include: './src/**/*.scss'
+  exclude: './node_modules/*'
+rules:
+  property-sort-order: 0
+  variable-name-format:
+    - 1
+    - convention: camelcase
+  indentation:
+    - 1
+    - size: 2
+  quotes:
+    - 1
+    - style: double
+  nesting-depth:
+    - 1
+    - max-depth: 3

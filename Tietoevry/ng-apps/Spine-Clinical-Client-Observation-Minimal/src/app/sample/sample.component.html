@@ -1,0 +1,62 @@
+ <div class="wrapper">
+  <div class="header">
+    <div class="spacer"></div>
+    <div class="title">{{filter.fromDate | customDateFormat:false:false }} {{filter.fromDate  | customDateFormat:true:false}} - {{filter.toDate | customDateFormat:false:false }} {{filter.toDate | customDateFormat:true:false}}</div>
+    <div class="date-range-panel">
+      <app-custom-date-filter (dateRangeSelected)="onDateRangeChange($event)"></app-custom-date-filter>
+    </div>
+  </div>
+  <ng-container *ngIf="!noData">
+    <div #table class="table-wrapper">
+     <table>
+       <thead>
+         <tr>
+           <th class="sticky-column-row-header table-row-header table-column-header">
+               <div class="column-header">
+                 {{'timelinewidget.parameters' | translate}}
+               </div>
+           </th>
+           <th class="column-cell table-column-header" *ngFor="let column of columns">
+             <div class="column-header">
+               <span>{{ column | customDateFormat:false:false}}</span>
+               <span>{{ column | customDateFormat:true:false}}</span>
+             </div>
+           </th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let row of rows">
+           <td class="table-row-header">
+             <div class="parameter">
+               <span class="title">{{ row.title }}</span>
+               <span class="unit">{{ row.unit }}</span> 
+             </div>
+           </td>
+           <td class="column-cell" *ngFor="let column of columns">
+             <div class="multi-icon-wrapper">
+               <div class="icon-space" *ngIf="row.values[column]?.length > 1"><em class="icon icon-chart-column icon-size-1"></em></div>
+             </div>
+             <div class="value-wrapper" [ngbTooltip]="row.values[column]?.length > 0 ? tipContent : ''" placement="auto" tooltipClass="custom-tooltip">
+               <div class="value" >
+                 {{ row.values[column]?.[0]?.value }}
+               </div>
+               <ng-template #tipContent>
+                 <ng-container *ngFor="let value of row.values[column]">
+                     <div class="d-flex" [style.width]="200">
+                       {{ value.date | customDateFormat:false:true }} - {{ value.value }}
+                     </div>
+                 </ng-container>
+               </ng-template>            
+             </div>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+  </ng-container>
+  <ng-container *ngIf="noData">
+    <div class="table-wrapper no-data">
+      {{'timelinewidget.noDataMessage' | translate}}
+    </div>
+  </ng-container>
+ </div>

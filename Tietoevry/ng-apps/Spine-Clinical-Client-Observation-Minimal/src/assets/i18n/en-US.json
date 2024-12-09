@@ -1,0 +1,52 @@
+{
+  "sample": {
+    "heading": "Angular Starter Kit Usage",
+    "ingegrationSuccess": "Integrated to Host",
+    "ingegrationFailure": "Not integrated with Host",
+    "notificationTitle":"Notification sample",
+    "contextTitie":"Context sample"
+  },
+  "appNotification":{
+    "SubscribetogroupTitle":"Subscribe to group",
+    "SubscribeBtn":"Subscribe",
+    "SubscriptionStatus":"Subscription status",
+    "subscriptionState":"Not subscribed to any group",
+    "NotificationMessagesTitle":"Notification Messages" ,
+    "NotificationStatus" :" No messges received..."
+  },
+  "context":{
+    "userContext":"Get user context",
+    "patientContext":"Get patient context",
+    "copy" :"Copy"
+  },
+  "timelinewidget": {
+    "parameters": "Parameters",
+    "noDataMessage":"No data available to view"
+  },
+  "observations":{
+    "dateRangeSelection":"Date range selection",
+    "from":"From",
+    "to":"To",
+    "apply":"Apply",
+    "cancel":"Cancel",
+    "preset" : "Preset",
+    "custom" : "Custom"
+  },
+  "dateRange":{
+    "last":"Last",
+    "day":"day",
+    "days":"days",
+    "month":"month",
+    "months":"months",
+    "year":"year",
+    "years":"years",
+    "last_15_days":"Last 15 days",
+    "last_30_days":"Last 30 days",
+    "last_3_months":"Last 3 months",
+    "last_6_months":"Last 6 months",
+    "last_1_year":"Last 1 year",
+    "last_2_years":"Last 2 years",
+    "last_5_years":"Last 3 years",
+    "last_10_years":"Last 10 years"
+  }
+}

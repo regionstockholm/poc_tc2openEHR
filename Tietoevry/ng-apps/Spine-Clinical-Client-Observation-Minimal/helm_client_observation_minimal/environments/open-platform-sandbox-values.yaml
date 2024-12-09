@@ -1,0 +1,17 @@
+app:
+  host_url: "https://open-platform-sandbox.service.tietoevry.com"
+  port: "8081"
+  api_endpoint: "https://open-platform-sandbox.service.tietoevry.com"
+ingress:
+  annotation:
+    nginx.ingress.kubernetes.io/force-ssl-redirect="true"
+  className: "nginx"
+  tls:
+    - secretName: spine-tls-secret
+      hosts:
+        - open-platform-sandbox.service.tietoevry.com
+  hosts:
+  - host: open-platform-sandbox.service.tietoevry.com
+    paths:
+    - path: /observation-minimal
+      pathType: ImplementationSpecific

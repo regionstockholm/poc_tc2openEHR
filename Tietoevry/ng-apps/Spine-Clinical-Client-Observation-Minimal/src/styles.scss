@@ -1,0 +1,22 @@
+/* Importing spine theme. */
+@import '@spine/web-theme';
+
+// You can add global styles to this file, and also import other style files
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  min-height: calc(100vh - 2px) !important;
+  height: calc(100vh - 2px) !important;
+}
+
+.custom-tooltip .tooltip-inner {
+  max-width: 250px !important;
+}
+
+ngb-datepicker {
+  border: 0.5px solid !important;
+}

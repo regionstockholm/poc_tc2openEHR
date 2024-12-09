@@ -1,0 +1,52 @@
+{
+  "sample": {
+    "heading": "sv-SE-Angular Starter Kit Usage",
+    "ingegrationSuccess": "sv-SE-Integrated to Host",
+    "ingegrationFailure": "sv-SE-Not integrated with Host",
+    "notificationTitle":"sv-SE-Notification sample",
+    "contextTitie":"sv-SE-Context sample"
+  },
+  "appNotification":{
+    "SubscribetogroupTitle":"sv-SE-Subscribe to group",
+    "SubscribeBtn":"sv-SE-Subscribe",
+    "SubscriptionStatus":"sv-SE-Subscription status",
+    "subscriptionState":"sv-SE-Not subscribed to any group",
+    "NotificationMessagesTitle":"sv-SE-Notification Messages" ,
+    "NotificationStatus" :"sv-SE-No messges received..."
+  },
+  "context":{
+    "userContext":"sv-SE-Get user context",
+    "patientContext":"sv-SE-Get patient context",
+    "copy" :"sv-SE-Copy"
+  },
+  "timelinewidget": {
+    "parameters": "Parametrar",
+    "noDataMessage":"Inget data tillgängligt att visa"
+  },
+  "observations": {
+    "dateRangeSelection": "Val av datumintervall",
+    "from": "Från",
+    "to": "Till",
+    "apply": "Verkställ",
+    "cancel": "Avbryt",
+    "preset": "Förvalt",
+    "custom": "Anpassat"
+  },
+  "dateRange":{
+    "last": "Senaste",
+    "day": "Dag",
+    "days" : "Dagar",
+    "month": "Månad",
+    "months": "Månader",
+    "year": "År",
+    "years": "År",
+    "last_15_days":"Senaste 15 dag",
+    "last_30_days":"Senaste 30 dag",
+    "last_3_months":"Senaste 3 mån",
+    "last_6_months":"Senaste 6 mån",
+    "last_1_year":"Senaste 1 år",
+    "last_2_years":"Senaste 2 år",
+    "last_5_years":"Senaste 3 år",
+    "last_10_years":"Senaste 10 år"
+  }
+}

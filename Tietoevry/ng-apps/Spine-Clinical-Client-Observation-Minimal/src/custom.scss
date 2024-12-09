@@ -1,0 +1,129 @@
+[data-ehr-path="generic-external_widget-9186273"].row,
+[data-ehr-path="generic-external_widget-106934"].row {
+    margin-left: 0;
+    margin-right: 0;
+    .ehr-widget-container {
+        padding-right: 3px !important;
+        padding-left: 3px !important;
+    }
+}
+.timeline-widget {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.timeline {
+    height: calc(100vh - 63px) !important; 
+    .no-gutters {
+        // margin-left: 0 !important;
+        // margin-right: 0 !important;
+        // width: calc(100vw - 55px);
+    }
+    time {
+        height: 100% !important;
+        border-left: 1px solid #CBCCCD;
+        // width: 5.9em !important;
+    }
+    .row {
+        margin: 0 !important;
+        .left-menu {
+            // box-shadow: none !important;
+            .stickyWrapper {
+                .sticky{
+                    background: #EDEEEE;
+                    
+                    .vitals-text {
+                        margin-left: 10px;
+                        font-weight: 600;
+                        color: #282C2F;
+                        text-transform: none !important;
+                    }
+                } 
+            }
+        }
+        .col {
+            .stickyWrapper {
+                .timeline-header {
+                    background: #EDEEEE;
+                    // border-bottom: 0px !important;
+
+                    .month {
+                        display: none;
+                    }
+                    .full-date {
+                        padding-top: 15px;
+                        // text-align: left;
+                        // padding-left: 10px;
+                    }
+                }
+                .line {
+                    // border-bottom: 0px;
+                    padding-left: 3px;
+                    .item {
+                        // margin-left: 7px;
+                        // width: 5.9em !important;
+                        // text-align: left;
+                        // padding-left: 5px;
+                    }
+                    .item.hovered {
+                        // border: 0px;
+                        // padding-top: 1.5em;
+                        // padding-left: 12px !important;
+                    }
+                    .item:after {
+                        // border-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.medications-list-wrapper {
+    margin: 12px 0;
+
+    .list {
+        height: calc(100vh - 76px);
+    }
+}
+
+
+.ehr-form {
+    .default {
+       //background: transparent !important;
+       padding: 0px;
+   }
+}
+
+[data-ehr-path="generic-column_list-4311335"].ehr-column-list {
+    .grid-wrapper {
+        .wrap {
+            height: 100vh !important;
+            margin-bottom: 0px !important;
+            ehr-column-list-grid-header {
+                ehr-column-list-grid-cell {
+                    border-left: 1px solid #CBCCCD;
+                    background-color: #EDEEEE !important;
+                }
+            }
+        
+            ehr-column-list-grid-cell {
+                padding: 0px !important;
+                display: flex;
+                align-items: center !important;
+
+                .labeled-input {
+                    margin: 0px;
+
+                    .labeled-input--label {
+                        padding: 0 6px !important;
+                    }
+                }
+            }
+            ehr-column-list-grid-row.alternate-row-color:nth-child(even):not(:hover) ehr-column-list-grid-cell {
+                background-color: #F6F6F7 !important;
+            }
+        }
+    }
+}

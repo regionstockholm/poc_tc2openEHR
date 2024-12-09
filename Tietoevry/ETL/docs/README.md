@@ -196,6 +196,9 @@ Following are the frequency types-
 
 Frequency 0, 1, 2, and 3 are covered in this project.
 
+## Angular Application for visualization of Measurement and Clinical Chemistry data
+#### The code needs cleaning up but that will be part of next step. This app is developed in very short time for demo.
+
 ## SUMMARY
 
 | Module    | Template Name  |  View Used    |   Widget Used  |   Form     |   UI    |

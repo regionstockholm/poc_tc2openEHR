@@ -1,0 +1,7 @@
+{
+    "better" : {
+        "host_url" : "https://lde-b-ocase.hcwtestsaas.local",
+        "port" : "8083"
+    },
+    "api_endpoint" : "https://open-platform-migration.service.tietoevry.com"
+}
