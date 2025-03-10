@@ -1,0 +1,7 @@
+{
+    "JunoURL": "<URL to Juno server>",
+    "XchangeURL": "<URL to Xchange server (Kernel)>",
+    "CertLocation": "<Path to client certificate in certificate store>",
+    "XchangeUser": "<Xchange User>",
+    "XchangePwd": "<Xchange password>"
+}
