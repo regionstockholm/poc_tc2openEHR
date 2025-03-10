@@ -1,3 +1,5 @@
+# ETL
+
 ## ETL Introduction 
 ETL stands for Extract, Transform, and Load. Main goal in this project is to migrate and convert Takecare data to openEHR.  
 
@@ -69,8 +71,9 @@ Calls substituable service which used to get code and values based on the value 
 
 To add new iCKM archetype, add the Terminology details to the Terminolgy.json, then add the composition creation logic to TakeCare.Foundation.OpenEhr.Archetype.Entry, and finally add to the switch logic in Composition to call the appropriate composition logic.
 
+## ETL for different TakeCare categories
 
-## Care Documentation
+### Care Documentation
 
 #### Overview 
 Care Documentation ETL extracts the Case Notes from the given xml file, flattens the nested Keyword structure, and transforms the data into composition for loading into OpenEhr CDR.
@@ -90,7 +93,7 @@ The Tranformation project creates a composition for each casenote and its metada
 #### Challenges 
 The care documentation xml structure was complicated and dynamic due to TakeCare structur containing nesting of keywords and their values.
 
-## Measurements
+### Measurements
 
 #### Overview
 In Measurement ETL patient measurements data is in Json file. These files are processing json files through ETL.
@@ -119,7 +122,7 @@ In each json file there are template field which contains list of terms. These t
 NA
 
 
-## Medication
+### Medication
 
 #### Overview
 
@@ -143,7 +146,7 @@ Transformer project gets the list of medications and transforms it to compositio
 - In 2nd phase complex compostion will be saved - contains inter-relation between drug, dosages and days.
 - Medication is saved in a composition and Administration and infusion are saved in separate compositions where they are linked them to their respective medication.
 
-## Clinical Chemistry
+### Clinical Chemistry
 
 #### Overview
 Chemistry ETL extracts the Lab results from the given json file, and transforms the data into composition for saving into OpenEhr CDR.
@@ -162,7 +165,7 @@ The Transformation projects creates a composition for each file as each file con
 #### Challenges
 NA
 
-## Activities
+### Activities
 
 #### Overview 
 Activities ETL extracts the Activities from the given json file, and transforms the data into composition for loading into OpenEhr CDR.A
@@ -196,6 +199,8 @@ Following are the frequency types-
 
 Frequency 0, 1, 2, and 3 are covered in this project.
 
+# Visualisation
+
 ## Angular Application for visualization of Measurement and Clinical Chemistry data
 
 The code needs cleaning up but that will be part of next step. This app is developed in very short time for demo.
@@ -217,7 +222,7 @@ The code needs cleaning up but that will be part of next step. This app is devel
 | Activities  | RS - Activity           |   RSK.View.ActivityList     |    Used better column list, select list, buttons etc.     |    RSK_Form_Widget_Activities   |    ![alt text](image/README/image-activity.png)       |
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-## Solution Structure
+# Solution Structure
 
 ![alt text](image/README/image-5.png)
 
@@ -246,7 +251,7 @@ The code needs cleaning up but that will be part of next step. This app is devel
     - Main project where we add etl handler for each modules and set this as a startup project. All etls can be run in one go or one at a time.
 
 
-## How to Setup and Run
+# How to Setup and Run
 
 Startup project
 
