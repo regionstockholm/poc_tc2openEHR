@@ -1,0 +1,307 @@
+[
+  {
+    "display": "Läkare",
+    "definition": "Läk",
+    "code": "1"
+  },
+  {
+    "display": "Sjuksköterska",
+    "definition": "Ssk",
+    "code": "2"
+  },
+  {
+    "display": "Arbetsterapeut",
+    "definition": "Arb.ter",
+    "code": "3"
+  },
+  {
+    "display": "Sjukgymnast",
+    "definition": "Sjg",
+    "code": "4"
+  },
+  {
+    "display": "Glasögonoptiker",
+    "definition": "Gla.opt",
+    "code": "5"
+  },
+  {
+    "display": "Kiropraktor",
+    "definition": "Kip",
+    "code": "6"
+  },
+  {
+    "display": "Kurator",
+    "definition": "Kur",
+    "code": "7"
+  },
+  {
+    "display": "Logoped",
+    "definition": "Log",
+    "code": "8"
+  },
+  {
+    "display": "Naprapat",
+    "definition": "Nap",
+    "code": "9"
+  },
+  {
+    "display": "Psykolog",
+    "definition": "Psy",
+    "code": "10"
+  },
+  {
+    "display": "Psykoterapeut",
+    "definition": "Ps ter",
+    "code": "11"
+  },
+  {
+    "display": "Barnmorska",
+    "definition": "Bm",
+    "code": "12"
+  },
+  {
+    "display": "Sjukhusfysiker",
+    "definition": "Sjf",
+    "code": "13"
+  },
+  {
+    "display": "Tandläkare",
+    "definition": "Tdl",
+    "code": "14"
+  },
+  {
+    "display": "Tandhygienist",
+    "definition": "Tdh",
+    "code": "15"
+  },
+  {
+    "display": "Undersköterska",
+    "definition": "Usk",
+    "code": "16"
+  },
+  {
+    "display": "Läkarsekreterare",
+    "definition": "Läk.sekr",
+    "code": "17"
+  },
+  {
+    "display": "Dietist",
+    "definition": "Diet",
+    "code": "18"
+  },
+  {
+    "display": "Audionom",
+    "definition": "Audionom",
+    "code": "19"
+  },
+  {
+    "display": "Hörselvårdspersonal",
+    "definition": "Hörselvp",
+    "code": "20"
+  },
+  {
+    "display": "Biomedicinsk analytiker",
+    "definition": "Bma",
+    "code": "21"
+  },
+  {
+    "display": "Hörselvårdspedagog",
+    "definition": "Hörvped",
+    "code": "22"
+  },
+  {
+    "display": "Ingenjvr",
+    "definition": "Ing",
+    "code": "23"
+  },
+  {
+    "display": "Förskollärare",
+    "definition": "Fvrskl",
+    "code": "24"
+  },
+  {
+    "display": "Barnsköterska",
+    "definition": "Bsk",
+    "code": "25"
+  },
+  {
+    "display": "Övr paramedicinsk personal",
+    "definition": "Övr.param",
+    "code": "26"
+  },
+  {
+    "display": "Tandsöterska",
+    "definition": "Tds",
+    "code": "27"
+  },
+  {
+    "display": "Ortoptist",
+    "definition": "Ortopt",
+    "code": "28"
+  },
+  {
+    "display": "Ototekniker",
+    "definition": "Ototekn",
+    "code": "29"
+  },
+  {
+    "display": "Specialpedagog",
+    "definition": "Spec.ped",
+    "code": "30"
+  },
+  {
+    "display": "Optiker",
+    "definition": "Opt",
+    "code": "31"
+  },
+  {
+    "display": "Synpedagog",
+    "definition": "Syn.ped",
+    "code": "32"
+  },
+  {
+    "display": "Farmaceut",
+    "definition": "Farm",
+    "code": "33"
+  },
+  {
+    "display": "Skötare",
+    "definition": "Sköt",
+    "code": "34"
+  },
+  {
+    "display": "Behandlingsassistent",
+    "definition": "Beh.ass",
+    "code": "35"
+  },
+  {
+    "display": "Administrativ personal",
+    "definition": "Adm",
+    "code": "36"
+  },
+  {
+    "display": "Familjeterapeut",
+    "definition": "Fam.ter",
+    "code": "37"
+  },
+  {
+    "display": "Familjebehandlare",
+    "definition": "Fam.beh",
+    "code": "38"
+  },
+  {
+    "display": "Bildterapeut",
+    "definition": "Bild ter",
+    "code": "39"
+  },
+  {
+    "display": "Sjukvårdsbiträde",
+    "definition": "Sjv.bitr",
+    "code": "40"
+  },
+  {
+    "display": "Medicine kandidat",
+    "definition": "Med kand",
+    "code": "41"
+  },
+  {
+    "display": "Fotterapeut",
+    "definition": "Fott",
+    "code": "45"
+  },
+  {
+    "display": "Talpedagog",
+    "definition": "Talped",
+    "code": "46"
+  },
+  {
+    "display": "Systemförvaltare",
+    "definition": "Sys.förv",
+    "code": "47"
+  },
+  {
+    "display": "Yrkeshygieniker",
+    "definition": "YH",
+    "code": "48"
+  },
+  {
+    "display": "Miljöhygieniker",
+    "definition": "MH",
+    "code": "49"
+  },
+  {
+    "display": "Ergonom",
+    "definition": "Erg",
+    "code": "50"
+  },
+  {
+    "display": "Folkhälsovetare",
+    "definition": "FHV",
+    "code": "51"
+  },
+  {
+    "display": "Hälsopedagog",
+    "definition": "HP",
+    "code": "52"
+  },
+  {
+    "display": "Distriktssköterska",
+    "definition": "Dsk",
+    "code": "53"
+  },
+  {
+    "display": "Rehabinstrukör",
+    "definition": "Rehab instr",
+    "code": "54"
+  },
+  {
+    "display": "Datapedagog",
+    "definition": "Dataped",
+    "code": "55"
+  },
+  {
+    "display": "Synrehabiliteringspersonal",
+    "definition": "Synrehab",
+    "code": "56"
+  },
+  {
+    "display": "Studerande",
+    "definition": "Stud",
+    "code": "57"
+  },
+  {
+    "display": "Musikterapeut",
+    "definition": "Musik ter",
+    "code": "58"
+  },
+  {
+    "display": "Podiatriker",
+    "definition": "Pod",
+    "code": "59"
+  },
+  {
+    "display": "Fotograf",
+    "definition": "Fotograf",
+    "code": "60"
+  },
+  {
+    "display": "Lekterapeut",
+    "definition": "Lek ter",
+    "code": "61"
+  },
+  {
+    "display": "Hädlpmedelskonsulent",
+    "definition": "Hjm.kons",
+    "code": "62"
+  },
+  {
+    "display": "Anpassningstekniker",
+    "definition": "Anp.tekn",
+    "code": "63"
+  },
+  {
+    "display": "Case manager",
+    "definition": "Cm",
+    "code": "64"
+  }
+]

@@ -1,0 +1,144 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Etl", "TakeCare\TakeCare.Migration.OpenEhr.Etl\TakeCare.Migration.OpenEhr.Etl.csproj", "{55AC731A-36A6-4FC2-B450-534C15AB9FD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-TakeCare", "02-TakeCare", "{4441CA99-4116-40E4-9A58-FD77BFD60724}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.CareDocumentation.Transformer", "TakeCare\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj", "{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.CareDocumentation.Extraction", "TakeCare\CareDocumentation\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj", "{1335F733-9881-4206-879A-EBCF33FBF5F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CareDocumentation", "CareDocumentation", "{2F7990F2-649F-4161-B77D-175CEE27F16B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Measurement.Extraction", "TakeCare\Measurement\Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction.csproj", "{0FB798D1-12F8-477A-A064-7CAF5ED12808}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Measurement", "Measurement", "{29BB5227-3032-48BF-B622-A094D89F9138}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{905947C5-E790-4978-ADFA-A6C8838952A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Archetype", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj", "{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Measurement.Transformer", "TakeCare\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj", "{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0BB42CDE-A35B-4486-9F83-8B98721F0271}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\nuget.config = .nuget\nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chemistry", "Chemistry", "{0D325EC4-5706-41F3-8B14-5096889049C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Chemistry.Extraction", "TakeCare\Chemistry\Extraction\TakeCare.Migration.OpenEhr.Chemistry.Extraction.csproj", "{E1A1D367-6ACF-4D7B-A360-82591C518ED6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Chemistry.Transformation", "TakeCare\Chemistry\Transformation\TakeCare.Migration.OpenEhr.Chemistry.Transformation.csproj", "{4D398C38-EB91-42F3-904C-FEC9A4143DD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Application", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj", "{8C859634-6347-4B96-90E8-ACD3255A5237}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Medication.Extraction", "TakeCare\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj", "{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Medication", "Medication", "{2B89C006-4C1E-40E9-AC6A-077524F44EF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Medication.Transformer", "TakeCare\Medication\Transformer\TakeCare.Migration.OpenEhr.Medication.Transformer.csproj", "{58A4053B-3244-419A-8BEC-3CCA7BF612FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Models", "TakeCare\Shared\TakeCare.Migration.OpenEhr.Models\TakeCare.Migration.OpenEhr.Models.csproj", "{F5FF7045-667C-49A3-9B61-47CEAADD3495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Activities", "Activities", "{AB504562-8DBC-4E4C-B755-56D9BD55207C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Activities.Extraction", "TakeCare\Activities\Extraction\TakeCare.Migration.OpenEhr.Activities.Extraction.csproj", "{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakeCare.Migration.OpenEhr.Activities.Transformer", "TakeCare\Activities\Transformer\TakeCare.Migration.OpenEhr.Activities.Transformer.csproj", "{7075046C-0D8D-488B-A47D-E1FA1462E131}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55AC731A-36A6-4FC2-B450-534C15AB9FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55AC731A-36A6-4FC2-B450-534C15AB9FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55AC731A-36A6-4FC2-B450-534C15AB9FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55AC731A-36A6-4FC2-B450-534C15AB9FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1335F733-9881-4206-879A-EBCF33FBF5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1335F733-9881-4206-879A-EBCF33FBF5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1335F733-9881-4206-879A-EBCF33FBF5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1335F733-9881-4206-879A-EBCF33FBF5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB798D1-12F8-477A-A064-7CAF5ED12808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB798D1-12F8-477A-A064-7CAF5ED12808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB798D1-12F8-477A-A064-7CAF5ED12808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB798D1-12F8-477A-A064-7CAF5ED12808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88434FFB-FD6A-4247-9B89-F23C5CF8F12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A1D367-6ACF-4D7B-A360-82591C518ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A1D367-6ACF-4D7B-A360-82591C518ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A1D367-6ACF-4D7B-A360-82591C518ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A1D367-6ACF-4D7B-A360-82591C518ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D398C38-EB91-42F3-904C-FEC9A4143DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D398C38-EB91-42F3-904C-FEC9A4143DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D398C38-EB91-42F3-904C-FEC9A4143DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D398C38-EB91-42F3-904C-FEC9A4143DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C859634-6347-4B96-90E8-ACD3255A5237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C859634-6347-4B96-90E8-ACD3255A5237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C859634-6347-4B96-90E8-ACD3255A5237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C859634-6347-4B96-90E8-ACD3255A5237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A4053B-3244-419A-8BEC-3CCA7BF612FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A4053B-3244-419A-8BEC-3CCA7BF612FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A4053B-3244-419A-8BEC-3CCA7BF612FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A4053B-3244-419A-8BEC-3CCA7BF612FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FF7045-667C-49A3-9B61-47CEAADD3495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FF7045-667C-49A3-9B61-47CEAADD3495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FF7045-667C-49A3-9B61-47CEAADD3495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FF7045-667C-49A3-9B61-47CEAADD3495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7075046C-0D8D-488B-A47D-E1FA1462E131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7075046C-0D8D-488B-A47D-E1FA1462E131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7075046C-0D8D-488B-A47D-E1FA1462E131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7075046C-0D8D-488B-A47D-E1FA1462E131}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55AC731A-36A6-4FC2-B450-534C15AB9FD5} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{B1E49AA1-D014-4B0D-A6EA-BAE3D6C89B93} = {2F7990F2-649F-4161-B77D-175CEE27F16B}
+		{1335F733-9881-4206-879A-EBCF33FBF5F9} = {2F7990F2-649F-4161-B77D-175CEE27F16B}
+		{2F7990F2-649F-4161-B77D-175CEE27F16B} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{0FB798D1-12F8-477A-A064-7CAF5ED12808} = {29BB5227-3032-48BF-B622-A094D89F9138}
+		{29BB5227-3032-48BF-B622-A094D89F9138} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{905947C5-E790-4978-ADFA-A6C8838952A8} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{88434FFB-FD6A-4247-9B89-F23C5CF8F12A} = {905947C5-E790-4978-ADFA-A6C8838952A8}
+		{8C094BCB-6439-4D8E-A6BA-59EA5AD9C798} = {29BB5227-3032-48BF-B622-A094D89F9138}
+		{0D325EC4-5706-41F3-8B14-5096889049C0} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{E1A1D367-6ACF-4D7B-A360-82591C518ED6} = {0D325EC4-5706-41F3-8B14-5096889049C0}
+		{4D398C38-EB91-42F3-904C-FEC9A4143DD6} = {0D325EC4-5706-41F3-8B14-5096889049C0}
+		{8C859634-6347-4B96-90E8-ACD3255A5237} = {905947C5-E790-4978-ADFA-A6C8838952A8}
+		{AE19EB1D-B3A1-453E-BDC5-6DE0E7E044B8} = {2B89C006-4C1E-40E9-AC6A-077524F44EF6}
+		{2B89C006-4C1E-40E9-AC6A-077524F44EF6} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{58A4053B-3244-419A-8BEC-3CCA7BF612FD} = {2B89C006-4C1E-40E9-AC6A-077524F44EF6}
+		{F5FF7045-667C-49A3-9B61-47CEAADD3495} = {905947C5-E790-4978-ADFA-A6C8838952A8}
+		{AB504562-8DBC-4E4C-B755-56D9BD55207C} = {4441CA99-4116-40E4-9A58-FD77BFD60724}
+		{B018DE3E-45F6-4FB1-A939-0DEEE4ECB6B3} = {AB504562-8DBC-4E4C-B755-56D9BD55207C}
+		{7075046C-0D8D-488B-A47D-E1FA1462E131} = {AB504562-8DBC-4E4C-B755-56D9BD55207C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8268B2F8-6661-46ED-9DF0-D9BE337ECAD5}
+	EndGlobalSection
+EndGlobal

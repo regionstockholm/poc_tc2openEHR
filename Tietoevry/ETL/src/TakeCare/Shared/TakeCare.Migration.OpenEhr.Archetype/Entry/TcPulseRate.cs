@@ -1,0 +1,28 @@
+﻿using Spine.Foundation.Web.OpenEhr.Archetype.Entry;
+using Spine.Migration.OpenEhr.Etl.Core;
+
+namespace TakeCare.Migration.OpenEhr.Archetype.Entry
+{
+    [TypeInfo(1978, "TC Terminology")]
+    public class TcPulseRate : BaseMeasurement
+    {
+        public KeywordCaseNote Keyword { get; set; }
+        public TcPulseRate(string prefix, string occurance) : base(prefix, occurance)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(occurance);
+            ArgumentException.ThrowIfNullOrWhiteSpace(prefix);
+            this._occurance = occurance;
+            Measurement = new Measurement();
+            var updatedPrefix = $@"{prefix}/pulsfrekvens";
+            this._prefix = updatedPrefix;
+            Keyword = new KeywordCaseNote($@"{updatedPrefix}:{occurance}");
+        }
+        public override string ToString()
+        {
+            return $@"{base.ToString()}
+                     ""{_prefix}:{_occurance}/frekvens|magnitude"": ""{Measurement.Magnitude}"",
+                     ""{_prefix}:{_occurance}/frekvens|unit"": ""{Measurement.Units}"",
+                    {Keyword.ToString()}";
+        }
+    }
+}

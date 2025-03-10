@@ -1,0 +1,7 @@
+{
+  "better" : {
+    "host_url" : "{{ .Values.app.host_url }}",
+    "port" : "{{ .Values.app.port }}"
+},
+"api_endpoint" : "{{ .Values.app.api_endpoint }}"
+}

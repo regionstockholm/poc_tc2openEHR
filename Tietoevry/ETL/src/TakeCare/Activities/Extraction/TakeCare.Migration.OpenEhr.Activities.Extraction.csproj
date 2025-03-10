@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\TestData\Activities\Activities_195202131998.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Activities\Activities_195202131998_1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Activities\Activities_196607113146.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Activities\Activities_201402192387.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Activities\Activities_201402192388.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

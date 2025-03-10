@@ -1,0 +1,24 @@
+[
+  {
+    "code": "false",
+    "display": "false",
+    "target": [
+      {
+        "code": "at0120",
+        "display": "Preliminär",
+        "equivalence": "equivalent"
+      }
+    ]
+  },
+  {
+    "code": "true",
+    "display": "true",
+    "target": [
+      {
+        "code": "at0038",
+        "display": "Slutgiltigt",
+        "equivalence": "equivalent"
+      }
+    ]
+  }
+]

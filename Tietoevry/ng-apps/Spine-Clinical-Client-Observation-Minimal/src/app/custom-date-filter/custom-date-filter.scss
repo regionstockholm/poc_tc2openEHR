@@ -1,0 +1,112 @@
+.popover-menu {
+    right: 8px;
+    top: 56px;
+    display: none;
+    min-width: 350px;
+    height: auto;
+    position: fixed;
+    background-color: #fff;
+    z-index: 99;
+    border: 1px solid #d3d3d3;
+    cursor: default;
+    max-width: calc(100% - 32px);
+    box-shadow: 0px 2px 9px 2px #b5acac;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.popover-menu.opened {
+    display: block;
+}
+
+.preset-menu {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.popover-menu .preset-menu ul {
+    padding: 0;
+    margin: 10px 10px;
+    line-height: 15px;
+}
+
+.popover-menu .preset-menu li {
+    list-style: none;
+    padding: 8px 12px;
+    color: #000;
+    text-align: left;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.popover-menu .preset-menu .active {
+    background-color: #e0e1eb;
+}
+
+.popover-menu li:hover {
+    background-color: #e0e1eb;
+}
+
+.preset-menu-conatiner {
+    min-width: 18rem;
+}
+
+.search-form {
+    display: flex;
+}
+
+.custom-date-filter {
+    padding: 0px 10px;
+    min-width: 17.5rem;
+    text-align: left;
+}
+
+.date-filter-popover.opened {
+    display: block;
+}
+
+.custom-date-filter .action-container {
+    margin: 20px 0 10px;
+    text-align: end;
+    border-top: 1px solid #e5dfdf;
+    padding-top: 10px;
+    justify-content: end;
+    gap: 10px;
+    display: flex;
+}
+
+.custom-date-filter .control .header {
+    margin: 10px 0px;
+}
+
+.custom-date-filter .control {
+    margin-bottom: 15px;
+}
+
+.log-level-filter {
+    margin: 0px 0px 0px 10px;
+}
+
+.loglevel-filter-container {
+    padding-left: 4%;
+}
+
+.loglevel-filter-container .level {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.date-filter {
+    background: #edeeee;
+    padding: 6px 10px;
+    display: flex;
+    gap: 10px;
+    font-weight: bold;
+    border-radius: 7px;
+    align-items: center;
+    cursor: pointer;
+}

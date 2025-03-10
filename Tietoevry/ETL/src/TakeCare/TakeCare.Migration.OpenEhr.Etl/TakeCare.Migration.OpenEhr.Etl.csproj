@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Extraction\TakeCare.Migration.OpenEhr.Activities.Extraction.csproj" />
+    <ProjectReference Include="..\Activities\Transformer\TakeCare.Migration.OpenEhr.Activities.Transformer.csproj" />
+    <ProjectReference Include="..\CareDocumentation\Extraction\TakeCare.Migration.OpenEhr.CareDocumentation.Extraction.csproj" />
+    <ProjectReference Include="..\CareDocumentation\Transformer\TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.csproj" />
+    <ProjectReference Include="..\Chemistry\Extraction\TakeCare.Migration.OpenEhr.Chemistry.Extraction.csproj" />
+    <ProjectReference Include="..\Chemistry\Transformation\TakeCare.Migration.OpenEhr.Chemistry.Transformation.csproj" />
+    <ProjectReference Include="..\Measurement\Extraction\TakeCare.Migration.OpenEhr.Measurement.Extraction.csproj" />
+	<ProjectReference Include="..\Measurement\Transformer\TakeCare.Migration.OpenEhr.Measurement.Transformer.csproj" />
+	<ProjectReference Include="..\Medication\Extraction\TakeCare.Migration.OpenEhr.Medication.Extraction.csproj" />
+	<ProjectReference Include="..\Medication\Transformer\TakeCare.Migration.OpenEhr.Medication.Transformer.csproj" />
+	<ProjectReference Include="..\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AppSettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AppSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "helm_client_observation_minimal.fullname" . }}
+  labels:
+    {{- include "helm_client_observation_minimal.labels" . | nindent 4 }}
+data:
+{{ (tpl (.Files.Glob "config/*").AsConfig . ) | indent 4 }}

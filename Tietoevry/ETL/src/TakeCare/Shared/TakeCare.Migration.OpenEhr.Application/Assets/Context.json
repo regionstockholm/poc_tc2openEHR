@@ -1,0 +1,38 @@
+[
+  {
+    "CareUnitId": "1781",
+    "CareUnitName": "SLSO ÖV",
+    "CareProviderId": "1",
+    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+  },
+  {
+    "CareUnitId": "1780",
+    "CareUnitName": "Karolinska SV",
+    "CareProviderId": "1",
+    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+  },
+  {
+    "CareUnitId": "2748",
+    "CareUnitName": "Karolinska ÖV",
+    "CareProviderId": "1",
+    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+  },
+  {
+    "CareUnitId": "516",
+    "CareUnitName": "Visby  ÖV",
+    "CareProviderId": "2",
+    "CareProviderName": "Region Gotland"
+  },
+  {
+    "CareUnitId": "1774",
+    "CareUnitName": "Privat ÖV",
+    "CareProviderId": "3",
+    "CareProviderName": "Privat vårdgivare"
+  },
+  {
+    "CareUnitId": "75",
+    "CareUnitName": "Öppenvårdsmott. Urologi",
+    "CareProviderId": "1",
+    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "sample": {
+    "heading": "Fi-Angular Starter Kit Usage",
+    "ingegrationSuccess": "Fi-Integrated to Host",
+    "ingegrationFailure": "Fi-Not integrated with Host",
+    "notificationTitle":"Fi-Notification sample",
+    "contextTitie":"Fi-Context sample"
+  },
+  "appNotification":{
+    "SubscribetogroupTitle":"Fi-Subscribe to group",
+    "SubscribeBtn":"Fi-Subscribe",
+    "SubscriptionStatus":"Fi-Subscription status",
+    "subscriptionState":"Fi-Not subscribed to any group",
+    "NotificationMessagesTitle":"Fi-Notification Messages" ,
+    "NotificationStatus" :"Fi-No messges received..."
+  },
+  "context":{
+    "userContext":"Fi-Get user context",
+    "patientContext":"Fi-Get patient context",
+    "copy" :"Fi-Copy"
+  },
+  "timelinewidget": {
+    "parameters": "Parametrar",
+    "noDataMessage":"Tietoja ei ole saatavilla katseltavaksi"
+  },  
+  "observations": {
+    "dateRangeSelection": "Aikavälin valinta",
+    "from": "Alkaen",
+    "to": "Päättyen",
+    "apply": "Käytä",
+    "cancel": "Peruuta",
+    "preset" : "Preset",
+    "custom" : "Custom"
+  },
+  "dateRange":{
+    "last":"Last",
+    "day":"day",
+    "days":"days",
+    "month":"month",
+    "months":"months",
+    "year":"year",
+    "years":"years",
+    "last_15_days":"Last 15 days",
+    "last_30_days":"Last 30 days",
+    "last_3_months":"Last 3 months",
+    "last_6_months":"Last 6 months",
+    "last_1_year":"Last 1 year",
+    "last_2_years":"Last 2 years",
+    "last_5_years":"Last 3 years",
+    "last_10_years":"Last 10 years"
+
+  }
+}
