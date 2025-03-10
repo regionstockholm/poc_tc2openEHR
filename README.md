@@ -4,9 +4,9 @@ This is a collection of resources related to th Proof of Concept project convert
 
 ## Transformation code and visualisations (Mostly done by Tietoevry) 
 
-See directory /Tietoevry and its [Solution description README.md](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md) file that has several sections
+See directory /Tietoevry and its [Solution description README.md](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md) file that has several sections, for example:
 * [ETL](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md#etl)
-* [Visualisation (that lists for example Templates, AQL views and widgets used.)](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md#visualisation)
+* [Visualisation](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md#visualisation) (that lists for example Templates, AQL views and widgets used)
   
 ## OpenEHR templates (Mostly done by freshEHR)
 
