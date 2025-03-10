@@ -2,8 +2,6 @@
 
 This is a collection of resources related to th Proof of Concept project converting TakeCare content to openEHR format, storing it in a CDR and visualizing it. See e.g. https://discourse.openehr.org/t/karolinska-stockholm-procurement-of-digital-health-platform-cdr-tools-services-consultants/4457/27
 
-# Tietoevry code branch `feature/tietoevry`
-
 ## Transformation code and visualisations (Mostly done by Tietoevry) 
 [Go to Solution description](https://github.com/regionstockholm/poc_tc2openEHR/blob/feature/tietoevry/Tietoevry/ETL/docs/README.md)
 See directory /Tietoevry
