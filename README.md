@@ -18,5 +18,5 @@ A collection of simple scripts to extract data from TakeCare that was used in th
 See directory /TakeCare_extraction and its [README.md](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/TakeCare_extraction/README.md) file.
 
 ## Presentations
-* Visitors of the Swedish Vitalis Conference 2025 can find a 1hr recording at the Vitalis website. The presentation slides are also available as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/2025-05-20-Byt-journalsystem-smidigare-Vitalis-Civalero-Sundvall-Glas-Larsson.pdf)
-* A presentation from EHRCON2025 can be found as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf)
+* Visitors of the Swedish Vitalis Conference 2025 in Gothenburg can find a 1hr recording at the Vitalis website. The presentation slides are also available as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/2025-05-20-Byt-journalsystem-smidigare-Vitalis-Civalero-Sundvall-Glas-Larsson.pdf)
+* A presentation from EHRCON2025 in Barcelona can be found as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf)
