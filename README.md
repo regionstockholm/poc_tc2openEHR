@@ -19,4 +19,4 @@ See directory /TakeCare_extraction and its [README.md](https://github.com/region
 
 ## Presentations
 * Visitors of the Swedish Vitalis Conference 2025 can find a 1hr recording at the Vitalis website. The presentation slides are also available 
-* A presentation from EHRCON2025 can be found as PDF  in this directory [for download](https://raw.githubusercontent.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf)
+* A presentation from EHRCON2025 can be found as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf)
