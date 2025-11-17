@@ -1,4 +1,6 @@
-﻿namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
+﻿using TakeCare.Migration.OpenEhr.Application.Models;
+
+namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
 {
     public class TcChemistryCareUnitContext
     {
@@ -16,6 +18,7 @@
         public string CareProviderName { get; set; }
         public string CareProviderCode { get; set; } = "143591000052106";
         public string CareProviderValue { get; set; } = "vårdgivare";
+
         public string CareProviderTerminology { get; set; }
 
 
@@ -30,7 +33,7 @@
                 ""{_prefix}/identifierare:0"": ""{CareUnitId}"",
                 ""{_prefix}/identifierare:0|issuer"": ""{Issuer}"",
                 ""{_prefix}/identifierare:0|assigner"": ""{Assigner}"",
-                ""{_prefix}/identifierare:0|type"": ""CareUnitId"",
+                ""{_prefix}/identifierare:0|type"": ""{CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER}"", 
                 ""{_prefix}/roll:0|code"": ""{CareUnitCode}"",
                 ""{_prefix}/roll:0|value"": ""{CareUnitValue}"",
                 ""{_prefix}/roll:0|terminology"": ""{CareUnitTerminology}"",
@@ -38,7 +41,7 @@
                 ""{_prefix}/vårdgivare/identifierare:0"": ""{CareProviderId}"",
                 ""{_prefix}/vårdgivare/identifierare:0|issuer"": ""{Issuer}"",
                 ""{_prefix}/vårdgivare/identifierare:0|assigner"": ""{Assigner}"",
-                ""{_prefix}/vårdgivare/identifierare:0|type"": ""CareProviderId"",
+                ""{_prefix}/vårdgivare/identifierare:0|type"": ""{CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER}"",
                 ""{_prefix}/vårdgivare/roll:0|code"": ""{CareProviderCode}"",
                 ""{_prefix}/vårdgivare/roll:0|value"": ""{CareProviderValue}"",
                 ""{_prefix}/vårdgivare/roll:0|terminology"": ""{CareProviderTerminology}"",";

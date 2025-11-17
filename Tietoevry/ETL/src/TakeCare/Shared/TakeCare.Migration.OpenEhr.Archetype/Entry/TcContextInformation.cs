@@ -1,4 +1,7 @@
-﻿namespace TakeCare.Migration.OpenEhr.Archetype.Entry
+﻿using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+
+namespace TakeCare.Migration.OpenEhr.Archetype.Entry
 {
     public class TcContextInformation
     {
@@ -28,11 +31,15 @@
                             ""{_prefix}/context/setting|code"": ""{Setting.Code}"",
                             ""{_prefix}/context/setting|value"": ""{Setting.Value}"",
                             ""{_prefix}/context/setting|terminology"": ""{Setting.Terminology}"",
-                            ""{_prefix}/context/_health_care_facility|name"": ""Creating Care Unit"",
-                            ""{_prefix}/context/_health_care_facility/_identifier:0|name"": ""{HealthCareFacility.Name}"",
-                            ""{_prefix}/context/_health_care_facility/_identifier:0|id"": ""{HealthCareFacility.Id}"",
-                            ""{_prefix}/context/_health_care_facility/_identifier:0|type"": ""{HealthCareFacility.Type}"",
-                            ""{_prefix}/context/_health_care_facility/_identifier:0|issuer"": ""{HealthCareFacility.Issuer}"",";
+                            
+                            ""{_prefix}/context/_health_care_facility|name"": ""{HealthCareFacility.Name}"",
+                            ""{_prefix}/context/_health_care_facility|id"": ""{HealthCareFacility.Id}"",
+                            ""{_prefix}/context/_health_care_facility|id_scheme"": ""{HealthCareFacility.Scheme}"",
+                            ""{_prefix}/context/_health_care_facility|id_namespace"": ""{HealthCareFacility.Namespace}"",";
+
+            //""{ _prefix}/context/_health_care_facility | name"": ""Creating Care Unit"",
+            //""{_prefix}/context/_health_care_facility/_identifier:0|type"": ""{HealthCareFacility.Type}"",
+            //""{_prefix}/context/_health_care_facility/_identifier:0|issuer"": ""{HealthCareFacility.Issuer}"",";
 
             if (Language != null)
             {
@@ -72,6 +79,9 @@
         public string Id { get; set; }
         public string Type { get; set; }
         public string Issuer { get; set; }
+
+        public string Scheme { get; set; }
+        public string Namespace { get; set; }
     }
     public class Setting
     {

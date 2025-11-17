@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using TakeCare.Migration.OpenEhr.Application.Models;
 
 namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
 {
@@ -12,6 +13,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
         public CodedText Language { get; set; }
         public CodedText Territory { get; set; }
         public CodedText Category { get; set; }
+
 
         public TcContextReportID(string prefix)
         {
@@ -44,11 +46,19 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
                         result += $@"
                 ""{_prefix}/context/_health_care_facility|name"": ""{LabResult.Context.HealthCareFacility.Name}"",";
 
-                //        for (int p = 0; p < LabResult.Context.HealthCareFacility.Identifiers.Count; p++)
-                //        {
-                //            result += $@"
-                //""{_prefix}/context/_health_care_facility/_identifiers:{p}"": ""{LabResult.Context.HealthCareFacility.Identifiers[p]}"",";
-                //        }
+                        result += $@"
+                ""{_prefix}/context/_health_care_facility|id"": ""{LabResult.Context.HealthCareFacility.Identifiers.FirstOrDefault()}"",";
+
+                        result += $@"
+                ""{_prefix}/context/_health_care_facility|id_scheme"": ""{CompositionConstants.SCHEMA_ID}"",";
+                        result += $@"
+                ""{_prefix}/context/_health_care_facility|id_namespace"": ""{CompositionConstants.NAMESPACE_ID}"",";
+
+                        //        for (int p = 0; p < LabResult.Context.HealthCareFacility.Identifiers.Count; p++)
+                        //        {
+                        //            result += $@"
+                        //""{_prefix}/context/_health_care_facility/_identifiers:{p}"": ""{LabResult.Context.HealthCareFacility.Identifiers[p]}"",";
+                        //        }
                     }
                 }
             }
@@ -59,13 +69,13 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
                 ""{_prefix}/language|code"": ""{Language.Code}"",
                 ""{_prefix}/language|terminology"": ""{Language.Terminology}"",";
             }
-            if(Category!=null)
+            if (Category != null)
             {
                 result += $@"
                 ""{_prefix}/category|code"": ""{Category.Code}"",
                 ""{_prefix}/category|terminology"": ""{Category.Terminology}"",";
             }
-            if(Territory!=null)
+            if (Territory != null)
             {
                 result += $@"
                 ""{_prefix}/territory|code"": ""{Territory.Code}"",

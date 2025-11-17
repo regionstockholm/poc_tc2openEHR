@@ -96,17 +96,19 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     {
                         Composer = new TcBase.ComposerIdentifier()
                         {
-                            Name = caseNote.DocCreatedByUserId,
+                            Name = _userContextProvider.GetUserContextData(caseNote.DocCreatedByUserId),
                             Id = caseNote.DocCreatedByUserId,
                             Type = "UserId",
                             Issuer = "RSK"
                         },
                         HealthCareFacility = new TcBase.HealthCareFacilityIdentifier()
                         {
-                            Name = (contextData != null) ? contextData.CareUnitName : caseNote.DocCreatedAtCareUnitId,
-                            Id = caseNote.DocCreatedAtCareUnitId,
-                            Type = "CareUnitId",
-                            Issuer = "RSK"
+                            Name = (contextData != null) ? contextData.HealthCareFacilityName : caseNote.DocCreatedAtCareUnitId,
+                            Id = (contextData != null) ? contextData.HealthCareFacilityId : caseNote.DocCreatedAtCareUnitId,
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER,
+                            Issuer = "RSK",
+                            Scheme = CompositionConstants.SCHEMA_ID,
+                            Namespace = CompositionConstants.NAMESPACE_ID
                         },
                         Setting = new TcBase.Setting()
                         {
@@ -201,21 +203,21 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                         CareProviderName = (contextData != null) ? contextData.CareProviderName : caseNote.DocCreatedAtCareUnitId,
                         CareUnitId = new Identifier()
                         {
-                            Value = caseNote.DocCreatedAtCareUnitId,
+                            Value = (contextData != null) ? contextData.CareUnitId : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
-                            Type = "CareUnitId"
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER
                         },
                         CareProviderId = new Identifier()
                         {
                             Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
-                            Type = "CareProviderId"
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER
                         },
                         OrgId = new Identifier()
                         {
-                            Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
+                            Value = (contextData != null) ? contextData.OrganisationNumber : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
                             Type = "CareProviderId"

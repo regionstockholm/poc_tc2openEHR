@@ -9,7 +9,7 @@ using TakeCare.Migration.OpenEhr.Activities.Transformer.Models;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class ActivityEtlHandler : IEtlHandler
+    public class ActivityEtlHandler //: IEtlHandler
     {
         private readonly Lazy<IActivitiesExtractor> _lazyExtractor;
         private readonly Lazy<IActivitiesTransformer> _lazyTransformer;

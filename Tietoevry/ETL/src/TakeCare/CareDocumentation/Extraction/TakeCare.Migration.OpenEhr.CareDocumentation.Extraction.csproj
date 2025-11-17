@@ -17,19 +17,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195207291591_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195208062223_0.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195401171334_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195705172590_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195906113187_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_196607113146_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_201402192387_0 - Mock.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -38,7 +41,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_201402192387_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

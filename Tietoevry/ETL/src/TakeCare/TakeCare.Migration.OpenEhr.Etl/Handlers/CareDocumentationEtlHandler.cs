@@ -9,7 +9,7 @@ using TakeCare.Migration.OpenEhr.Etl.CareDocumentation;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class CareDocumentationEtlHandler : IEtlHandler
+    public class CareDocumentationEtlHandler //: IEtlHandler
     {
         private readonly Lazy<ICareDocumentationExtractor> _lazyExtractor;
         private readonly Lazy<ICareDocumentationTransformer> _lazyTransformer;

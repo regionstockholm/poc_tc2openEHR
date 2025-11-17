@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Spine.Migration.OpenEhr.Etl" Version="6.2.0" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.2.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>

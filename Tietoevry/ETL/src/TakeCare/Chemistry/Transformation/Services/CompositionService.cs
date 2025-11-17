@@ -54,7 +54,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                     commonPrefix = _options.Value.Template.Prefix.Sv;
                     break;
             }
-            
+
             string labResult = "laboratorieresultat";
             foreach (var data in inputData.ChemistryData)
             {
@@ -66,6 +66,11 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 chemistryData.LifecycleState = _options.Value.Ehr.LifecycleState;
                 chemistryData.AuditChangeType = _options.Value.Ehr.AuditChangeType;
 
+                if (data.Saved != null && data.Saved.CareUnit != null)
+                {
+                    contextDetails = _contextProvider.GetContextData(data.Saved.CareUnit.Id);
+                }
+
                 if (data.Attestation == null || data.Attestation.Patient == null)
                     continue;
                 chemistryOpenEhrData.PatientID = _patientService.GetPatient(data.Attestation.Patient.Id).PatientId;
@@ -75,7 +80,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 chemistryData.ReportID = new TcContextReportID($"{commonPrefix}")
                 {
                     ReportID = data.Id,
-                    Synopsis = data.Comment??"",
+                    Synopsis = data.Comment ?? "",
                 };
 
                 if (data.Lab != null && data.Lab.CareUnit != null)
@@ -85,18 +90,18 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                         Name = data.Lab.CareUnit.Name,
                         Context = new Context()
                         {
-                            StartTime = data.ReplyTime?? "",
+                            StartTime = data.ReplyTime ?? "",
                             HealthCareFacility = new HealthCareFacility()
                             {
-                                Name = data.Lab.CareUnit.Name,
+                                Name = contextDetails != null ? contextDetails.HealthCareFacilityName : data.Lab.CareUnit.Name,
                                 Identifiers = new List<string>()
                                 {
-                                    data.Lab.CareUnit.Id
+                                    contextDetails!=null ? contextDetails.HealthCareFacilityId : data.Lab.CareUnit.Id
                                 }
                             }
                         }
                     };
-                }  
+                }
 
                 chemistryData.ReportID.Language = new CodedText()
                 {
@@ -121,18 +126,15 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 #region Context CareUnit
                 //context care unit data
 
-                if (data.Saved != null && data.Saved.CareUnit != null)
-                {
-                    contextDetails = _contextProvider.GetContextData(data.Saved.CareUnit.Id);
-                }
+
                 if (contextDetails == null)
                 {
-                    throw new Exception($"Invalid Saved CareUnit Id: { (data.Saved!=null && data.Saved.CareUnit!=null ? 
+                    throw new Exception($"Invalid Saved CareUnit Id: {(data.Saved != null && data.Saved.CareUnit != null ?
                                                                 data.Saved.CareUnit.Id : null)}");
                 }
                 chemistryData.CareUnitContext = new TcChemistryCareUnitContext($"{commonPrefix}/context/vårdenhet")
                 {
-                    CareUnitName = contextDetails!=null ? contextDetails.CareUnitName : "To Be decided", //verify
+                    CareUnitName = contextDetails != null ? contextDetails.CareUnitName : "To Be decided", //verify
                     CareProviderName = contextDetails != null ? contextDetails.CareProviderName : "To be decided", //verify
                     Issuer = "RSK",
                     Assigner = "RSK",
@@ -150,11 +152,12 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                 #region Context Metadata
                 //context metadata
                 chemistryData.ContextMetadata = new TcChemistryContextMetadata($"{commonPrefix}/context/metadata");
-                if(data.Type!=null)
+                if (data.Type != null)
                 {
                     chemistryData.ContextMetadata.DocumentName = data.Type.Name;
                     chemistryData.ContextMetadata.DocumentCode = data.Type.Id;
-                };
+                }
+                ;
                 if (data.Saved != null)
                 {
                     chemistryData.ContextMetadata.DocumnetSavedTimestamp = data.Saved.SavedTimestamp;
@@ -188,19 +191,19 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                         {
                             chemistryData.AttestationData.HasDeviatingAnalysisResults = data.Attestation.Document.HasDeviatingAnalysis.GetValueOrDefault() ? "true" : "false";
                         }
-                        
+
                         chemistryData.AttestationData.IsLatestVersionAttested = data.Attestation.Document.IsLatestVersionAttested ? "true" : "false";
                     }
                     chemistryData.AttestationData.Activities = new List<Activity>();
 
                     var activityData = new Activity();
-                    activityData.ActivityData =new CodedText()
+                    activityData.ActivityData = new CodedText()
                     {
                         Code = "at0015",
                         Value = "Vidimerad",
                         Terminology = "local"
                     };
-                    
+
                     if (data.Attestation.Attested != null)
                     {
                         activityData.ActivityTimestamp = data.Attestation.Attested.DateTime;
@@ -230,7 +233,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                             },
                         }
                     };
-                    if (data.Attestation.ResponsibleAttester != null) 
+                    if (data.Attestation.ResponsibleAttester != null)
                     {
                         chemistryData.AttestationData.ResponsibleAttester.User = new User()
                         {
@@ -242,7 +245,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                             Type = "UserData"
                         };
                     }
-                    if (data.Attestation.CareUnit != null) 
+                    if (data.Attestation.CareUnit != null)
                     {
                         chemistryData.AttestationData.ResponsibleAttester.CareUnit = new CareUnitDetails()
                         {
@@ -250,7 +253,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                             Name = data.Attestation.CareUnit.Name,
                             Type = "CareUnitData",
                             Assigner = "RSK",
-                            Issuer = "RSK"                            
+                            Issuer = "RSK"
                         };
                     }
                 }
@@ -325,7 +328,8 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                                 Id = data.OrdererCareUnitExternalId,
                                 Assigner = "RSK",
                                 Issuer = "RSK",
-                                Type = "CareUnitData"
+                                Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER
+                                //Type = "CareUnitData"
                             };
                         }
 
@@ -361,14 +365,14 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
 
                         testData.Events.TestName = new CodedText()
                         {
-                            Code = (data.Order!=null && data.Order.Type!=null) ? data.Order.Type.Id: "KliniskKemi",
+                            Code = (data.Order != null && data.Order.Type != null) ? data.Order.Type.Id : "KliniskKemi",
                             Value = (data.Order != null && data.Order.Type != null) ? data.Order.Type.Id : "Klinisk Kemi",
                             Terminology = "TC-Lab-Test"
                         };
 
                         // event - overall test status
 
-                        if (data.IsFinal!=null)
+                        if (data.IsFinal != null)
                         {
                             ResultStatusDetails result = _resultService.GetResult(data.IsFinal);
                             if (result != null)
@@ -424,7 +428,7 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                                 {
                                     analyteResult.AnalyteName = new CodedText()
                                     {
-                                        Code = data.Samples[i].Analyses[k].AnalysisId, 
+                                        Code = data.Samples[i].Analyses[k].AnalysisId,
                                         Value = data.Samples[i].Analyses[k].AnalysisInfo,
                                         Terminology = "TC-Lab-Analyte"
                                     };
@@ -457,8 +461,9 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                                 // free text and quantity
                                 if (!string.IsNullOrWhiteSpace(data.Samples[i].Analyses[k].Value))
                                 {
-                                    
-                                    if (decimal.TryParse(data.Samples[i].Analyses[k].Value, out decimal result)){
+
+                                    if (decimal.TryParse(data.Samples[i].Analyses[k].Value, out decimal result))
+                                    {
                                         if (!string.IsNullOrWhiteSpace(data.Samples[i].Analyses[k].Unit))
                                         {
                                             analyteResult.AnalyteResultQuantity.Add(new MetricValue()
@@ -482,14 +487,15 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Services
                                             analyteResult.AnalyteResultFreeText.Add(data.Samples[i].Analyses[k].Value);
                                         }
                                     }
-                                    else {
+                                    else
+                                    {
                                         analyteResult.AnalyteResultFreeText.Add(data.Samples[i].Analyses[k].Value);
                                     }
                                 }
 
                                 testData.Events.AnalyteResult.Add(analyteResult);
                             }
-                        }                     
+                        }
 
                         chemistryData.TestResult.Add(testData);
                     }
