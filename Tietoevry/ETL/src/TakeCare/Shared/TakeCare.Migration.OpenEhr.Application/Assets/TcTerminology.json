@@ -84123,6 +84123,42 @@
     "TermId": "12055",
     "TermName": "Global andel cancer >= Gleason 4 i systematiska biopsier",
     "Datatype": "Numeriskt värde",
-    "Unit": "%"
+    "Unit": null
+  },
+  {
+    "Terminology": "TC-TermCatalog",
+    "TermId": "12064",
+    "TermName": "Datum för MR undersökning som ligger till grund för fusionsbiopsi",
+    "Datatype": "Datum/tid",
+    "Unit": null
+  },
+  {
+    "Terminology": "TC-TermCatalog",
+    "TermId": "12066",
+    "TermName": "Datum för beslut om välgrundad misstanke",
+    "Datatype": "Datum/tid",
+    "Unit": null
+  },
+  {
+    "Terminology": "TC-TermCatalog",
+    "TermId": "12052",
+    "TermName": "Fusionsbiopsi prostata utförd, datum",
+    "Datatype": "Datum/tid",
+    "Unit": null
+  },
+  {
+    "Terminology": "TC-TermCatalog",
+    "TermId": "11972",
+    "TermName": "Datum för biopsi",
+    "Datatype": "Datum/tid",
+    "Unit": null
+  },
+  {
+    "Terminology": "TC-TermCatalog",
+    "TermId": "12071",
+    "TermName": "Prostatasymtom enl I-PSS, totalpoäng",
+    "Datatype": "Numeriskt värde",
+    "Unit": null
   }
+
 ]

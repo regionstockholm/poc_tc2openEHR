@@ -9,7 +9,7 @@ using TakeCare.Migration.OpenEhr.Etl.CareDocumentation;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class CareDocumentationEtlHandler //: IEtlHandler
+    public class CareDocumentationEtlHandler : IEtlHandler
     {
         private readonly Lazy<ICareDocumentationExtractor> _lazyExtractor;
         private readonly Lazy<ICareDocumentationTransformer> _lazyTransformer;
@@ -50,6 +50,7 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
                         PatientID = tcOpenEhrData.PatientID,
                         Compositions = tcOpenEhrData.CaseNotes
                     });  // ToDo Mapper and model optimization
+
                 }
                 catch (Exception ex)
                 {

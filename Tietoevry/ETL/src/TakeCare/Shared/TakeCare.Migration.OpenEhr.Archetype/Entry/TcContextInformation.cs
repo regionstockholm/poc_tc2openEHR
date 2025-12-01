@@ -34,6 +34,7 @@ namespace TakeCare.Migration.OpenEhr.Archetype.Entry
                             
                             ""{_prefix}/context/_health_care_facility|name"": ""{HealthCareFacility.Name}"",
                             ""{_prefix}/context/_health_care_facility|id"": ""{HealthCareFacility.Id}"",
+                            ""{_prefix}/context/_health_care_facility/_identifier|type"": ""{HealthCareFacility.Type}"",
                             ""{_prefix}/context/_health_care_facility|id_scheme"": ""{HealthCareFacility.Scheme}"",
                             ""{_prefix}/context/_health_care_facility|id_namespace"": ""{HealthCareFacility.Namespace}"",";
 

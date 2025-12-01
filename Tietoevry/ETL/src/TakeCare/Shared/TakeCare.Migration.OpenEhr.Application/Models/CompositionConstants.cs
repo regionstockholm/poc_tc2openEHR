@@ -23,5 +23,7 @@ namespace TakeCare.Migration.OpenEhr.Application.Models
         /// </summary>
         public const string CARE_UNIT_HSA_ID_OID_MARKER = "urn:oid:1.2.752.29.4.19";
 
+        public const string CARE_PROVIDER_TYPE = "urn:oid:2.5.4.97";
+
     }
 }
