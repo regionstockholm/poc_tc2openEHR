@@ -35,13 +35,16 @@
                             ""{_prefix}/vårdgivare/identifierare:0|issuer"": ""{CareProviderId.Issuer}"",
                             ""{_prefix}/vårdgivare/identifierare:0|assigner"": ""{CareProviderId.Assigner}"",
                             ""{_prefix}/vårdgivare/identifierare:0|type"": ""{CareProviderId.Type}"",
-                            ""{_prefix}/vårdgivare/organisationsnummer:0"": ""{OrgId.Value}"",
-                            ""{_prefix}/vårdgivare/organisationsnummer:0|issuer"": ""{OrgId.Issuer}"",
-                            ""{_prefix}/vårdgivare/organisationsnummer:0|assigner"": ""{OrgId.Assigner}"",
+                            ""{_prefix}/vårdgivare/organisationsnummer:0|id"": ""{OrgId.Value}"",
                             ""{_prefix}/vårdgivare/organisationsnummer:0|type"": ""{OrgId.Type}"",
                             ""{_prefix}/vårdgivare/roll:0|code"": ""{CareProviderCode}"",
                             ""{_prefix}/vårdgivare/roll:0|value"": ""{CareProviderValue}"",
                             ""{_prefix}/vårdgivare/roll:0|terminology"": ""{CareProviderTerminology}"",";
+
+            
+            //""{_prefix}/vårdgivare/organisationsnummer:0|issuer"": ""{OrgId.Issuer}"",
+            //""{_prefix}/vårdgivare/organisationsnummer:0|assigner"": ""{OrgId.Assigner}"",
+            //""{_prefix}/vårdgivare/organisationsnummer:0|type"": ""{OrgId.Type}"",
             return result;
         }
 

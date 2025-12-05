@@ -96,17 +96,19 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     {
                         Composer = new TcBase.ComposerIdentifier()
                         {
-                            Name = caseNote.DocCreatedByUserId,
+                            Name = _userContextProvider.GetUserContextData(caseNote.DocCreatedByUserId),
                             Id = caseNote.DocCreatedByUserId,
                             Type = "UserId",
                             Issuer = "RSK"
                         },
                         HealthCareFacility = new TcBase.HealthCareFacilityIdentifier()
                         {
-                            Name = (contextData != null) ? contextData.CareUnitName : caseNote.DocCreatedAtCareUnitId,
-                            Id = caseNote.DocCreatedAtCareUnitId,
-                            Type = "CareUnitId",
-                            Issuer = "RSK"
+                            Name = (contextData != null) ? contextData.HealthCareFacilityName : caseNote.DocCreatedAtCareUnitId,
+                            Id = (contextData != null) ? contextData.HealthCareFacilityId : caseNote.DocCreatedAtCareUnitId,
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER,
+                            Issuer = "RSK",
+                            Scheme = CompositionConstants.SCHEMA_ID,
+                            Namespace = CompositionConstants.NAMESPACE_ID
                         },
                         Setting = new TcBase.Setting()
                         {
@@ -201,24 +203,24 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                         CareProviderName = (contextData != null) ? contextData.CareProviderName : caseNote.DocCreatedAtCareUnitId,
                         CareUnitId = new Identifier()
                         {
-                            Value = caseNote.DocCreatedAtCareUnitId,
+                            Value = (contextData != null) ? contextData.CareUnitId : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
-                            Type = "CareUnitId"
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER
                         },
                         CareProviderId = new Identifier()
                         {
                             Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
-                            Type = "CareProviderId"
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER
                         },
                         OrgId = new Identifier()
                         {
-                            Value = (contextData != null) ? contextData.CareProviderId : caseNote.DocCreatedAtCareUnitId,
+                            Value = (contextData != null) ? contextData.OrganisationNumber : caseNote.DocCreatedAtCareUnitId,
                             Assigner = "RSK",
                             Issuer = "RSK",
-                            Type = "CareProviderId"
+                            Type = CompositionConstants.CARE_PROVIDER_TYPE
                         },
                         CareUnitCode = "43741000",
                         CareUnitValue = "vårdenhet",
@@ -1685,10 +1687,82 @@ namespace TakeCare.Migration.OpenEhr.CareDocumentation.Transformer.Services
                     }
                     openEhrCaseNote.Entries.Add(tcProblemDiagnosis);
                     break;
+                case "12064":
+                    GetFormattedDateGenericEntry(keyword, commonPrefix); 
+                    break;
+                case "12066":
+                    GetFormattedDateGenericEntry(keyword, commonPrefix);
+                    break;
+                case "11972":
+                    GetFormattedDateGenericEntry(keyword, commonPrefix);
+                    break;
                 default:
                     GetGenericEntry(keyword, commonPrefix);
                     break;
             }
+        }
+
+        /// <summary>
+        /// This method converts a string input to a date in the format "yyyy-MM-dd".
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public string ConvertToDate(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+
+            // Keep only digits
+            string digits = new string(input.Where(char.IsDigit).ToArray());
+
+            if (digits.Length < 8)
+                return string.Empty;
+
+            string datePart = digits.Substring(0, 8);
+
+            return DateTime
+                .TryParseExact(datePart, "yyyyMMdd", null,
+                    System.Globalization.DateTimeStyles.None, out var dt)
+                ? dt.ToString("yyyy-MM-dd")
+                : string.Empty;
+        }
+
+        private void GetFormattedDateGenericEntry(KeywordDto keyword, string commonPrefix)
+        {
+            int v = counterMap["generic"];
+            TerminologyDetails datatype = _terminologyProvider.GetTerminology(keyword.TermId);
+            BaseEntry genericEntry = new TcCaseNoteGenericEntry($"{commonPrefix}/genrisk_händelse", v.ToString())
+            {
+                Uid = keyword.Guid,
+                Keyword = new TcBase.KeywordCaseNote($"{commonPrefix}/genrisk_händelse:{v}")
+                {
+                    Value = keyword.Name,
+                    Code = keyword.TermId,
+                    Terminology = "TC-Datatypes",
+                    Datatype = (datatype != null) ? datatype.Datatype : "Datum/tid",
+                    EntryUid = keyword.Guid,
+                    Comment = keyword.Comment,
+                    Level = keyword.ParentCount,
+                    TextValue = (keyword.Value != null && !string.IsNullOrEmpty(keyword.Value.TextVal)) ?
+                                ConvertToDate(keyword.Value.TextVal) : "",
+                    NumValue = (keyword.Value != null && keyword.Value.NumVal != null) ?
+                                keyword.Value.NumVal.GetDecimalValue() : null,
+                    NumUnit = (keyword.Value != null
+                                && keyword.Value.NumVal != null
+                                && !string.IsNullOrEmpty(keyword.Value.NumVal.Unit)) ?
+                                _unitProvider.GetOpenEhrUnit(keyword.Value.NumVal.Unit) : null,
+                    TermIDValue = (keyword.Value != null && !string.IsNullOrEmpty(keyword.Value.TermId)) ?
+                                keyword.Value.TermId : "",
+                    EhrUriValues = keyword.Children,
+                    OriginalUnit = (keyword.Value != null
+                                && keyword.Value.NumVal != null
+                                && !string.IsNullOrEmpty(keyword.Value.NumVal.Unit)) ?
+                                keyword.Value.NumVal.Unit : ""
+                }
+            };
+
+            counterMap["generic"]++;
+            openEhrCaseNote.Entries.Add(genericEntry);
         }
 
         private void GetGenericEntry(KeywordDto keyword, string commonPrefix)

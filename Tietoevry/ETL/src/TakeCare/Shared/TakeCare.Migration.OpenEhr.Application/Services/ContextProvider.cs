@@ -13,7 +13,7 @@ namespace TakeCare.Migration.OpenEhr.Application.Services
         }
         public ContextDetails GetContextData(string unitID)
         {
-            return _roles.Find(t => t.CareUnitId.Equals(unitID));
+            return _roles.Find(t => t.TakeCareUnitId.Equals(unitID));
         }
     }
 }

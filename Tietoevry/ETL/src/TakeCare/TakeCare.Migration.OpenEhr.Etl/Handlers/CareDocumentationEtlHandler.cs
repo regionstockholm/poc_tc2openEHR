@@ -50,6 +50,7 @@ namespace TakeCare.Migration.OpenEhr.Etl.Handlers
                         PatientID = tcOpenEhrData.PatientID,
                         Compositions = tcOpenEhrData.CaseNotes
                     });  // ToDo Mapper and model optimization
+
                 }
                 catch (Exception ex)
                 {

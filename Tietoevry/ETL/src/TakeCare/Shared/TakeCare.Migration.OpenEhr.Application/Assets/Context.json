@@ -1,38 +1,52 @@
 [
   {
-    "CareUnitId": "1781",
-    "CareUnitName": "SLSO ÖV",
-    "CareProviderId": "1",
-    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+    "TakeCareUnitId": "1781",
+    "CareProviderId": "SE5560525000-1005",
+    "CareProviderName": "Region Stockholm",
+    "CareUnitId": "SE2321000016-AQLK",
+    "CareUnitName": "SLSO PDL 1",
+    "HealthCareFacilityId": "SE2321000016-STUV",
+    "HealthCareFacilityName": "SLSO ÖV",
+    "OrganisationNumber": "2321000051"
   },
   {
-    "CareUnitId": "1780",
-    "CareUnitName": "Karolinska SV",
-    "CareProviderId": "1",
-    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+    "TakeCareUnitId": "1780",
+    "CareProviderId": "SE5560525000-1005",
+    "CareProviderName": "Region Stockholm",
+    "CareUnitId": "SE2321000016-SDET",
+    "CareUnitName": "Karolinska PDL 2",
+    "HealthCareFacilityId": "SE2321000016-LPOI",
+    "HealthCareFacilityName": "Karolinska SV",
+    "OrganisationNumber": "2321000051"
   },
   {
-    "CareUnitId": "2748",
-    "CareUnitName": "Karolinska ÖV",
-    "CareProviderId": "1",
-    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+    "TakeCareUnitId": "2748",
+    "CareProviderId": "SE5560525000-1005",
+    "CareProviderName": "Region Stockholm",
+    "CareUnitId": "SE2321000016-RFTY",
+    "CareUnitName": "Karolinska PDL 1",
+    "HealthCareFacilityId": "SE2321000016-HIJK",
+    "HealthCareFacilityName": "Karolinska ÖV",
+    "OrganisationNumber": "2321000051"
   },
   {
-    "CareUnitId": "516",
-    "CareUnitName": "Visby  ÖV",
-    "CareProviderId": "2",
-    "CareProviderName": "Region Gotland"
+    "TakeCareUnitId": "516",
+    "CareProviderId": "SE5560525000-1006",
+    "CareProviderName": "Region Gotland",
+    "CareUnitId": "SE2321000016-ZMBT",
+    "CareUnitName": "Visby PDL 1",
+    "HealthCareFacilityId": "SE2321000016-TGYH",
+    "HealthCareFacilityName": "Visby ÖV",
+    "OrganisationNumber": "2321000053"
   },
   {
-    "CareUnitId": "1774",
-    "CareUnitName": "Privat ÖV",
-    "CareProviderId": "3",
-    "CareProviderName": "Privat vårdgivare"
-  },
-  {
-    "CareUnitId": "75",
-    "CareUnitName": "Öppenvårdsmott. Urologi",
-    "CareProviderId": "1",
-    "CareProviderName": "Region Stockholm (Karolinska & SLSO)"
+    "TakeCareUnitId": "1774",
+    "CareProviderId": "SE5560525000-1007",
+    "CareProviderName": "Privat vårdgivare",
+    "CareUnitId": "SE2321000016-DEVT",
+    "CareUnitName": "Privat PDL 1",
+    "HealthCareFacilityId": "SE2321000016-WDRT",
+    "HealthCareFacilityName": "Privat ÖV",
+    "OrganisationNumber": "2321000052"
   }
 ]

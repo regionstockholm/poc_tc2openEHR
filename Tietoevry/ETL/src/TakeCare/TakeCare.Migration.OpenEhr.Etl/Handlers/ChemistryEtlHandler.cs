@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class ChemistryEtlHandler : IEtlHandler
+    public class ChemistryEtlHandler //: IEtlHandler
     {
         private readonly Lazy<IChemistryExtractor> _lazyExtractor;
         private readonly Lazy<IChemistryTransformer> _lazyTransformer;
