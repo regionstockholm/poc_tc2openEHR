@@ -32,6 +32,7 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Model
             //var infusions = Infusions.Count > 0 ? string.Join("", Drugs.Select(x => x.ToString())) : string.Empty;
 
             var result = $@"{ContextInformation.ToString()}
+                            {CareUnitContext.ToString()}
                             {MedicationContext.ToString()}
                             {Medication.ToString()}
                             {Prescription.ToString()}

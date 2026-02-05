@@ -52,9 +52,9 @@ namespace TakeCare.Migration.OpenEhr.Measurement.Transformer.Service
             // Transform the input to the desired output
             counterMap = new Dictionary<string, int>();
             var careUnitDetails = _contextProvider.GetContextData(measurementDto.CareUnitId);
-            CareUnit careU = new CareUnit();
-            careU.Id = careUnitDetails?.CareUnitId;
-            careU.Name = careUnitDetails?.CareUnitName;
+            //CareUnit careU = new CareUnit();
+            //careU.Id = careUnitDetails?.CareUnitId;
+            //careU.Name = careUnitDetails?.CareUnitName;
 
             switch (_options.Value.Language.Current)
             {
@@ -102,9 +102,9 @@ namespace TakeCare.Migration.OpenEhr.Measurement.Transformer.Service
                 },
                 HealthCareFacility = new HealthCareFacilityIdentifier()
                 {
-                    Name = careU.Name,
-                    Id = careU.Id,
-                    Type = "CareUnitId",
+                    Name = careUnitDetails?.HealthCareFacilityName,
+                    Id = careUnitDetails?.HealthCareFacilityId,
+                    Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER,
                     Issuer = "RSK"
                 },
                 Setting = new Setting()
@@ -134,10 +134,18 @@ namespace TakeCare.Migration.OpenEhr.Measurement.Transformer.Service
 
             //add ctx care unit
             var careUnit = new TcCareUnitContext("vårdkontakt");
-            careUnit.CareUnitName = careU.Name;
-            careUnit.CareUnitId = careU.Id;
-            careUnit.CareProviderId = careUnitDetails.CareProviderName;
+            careUnit.CareUnitName = careUnitDetails?.CareUnitName;
+            careUnit.CareUnitId = careUnitDetails?.CareUnitId;
+            careUnit.CareProviderId = careUnitDetails?.CareProviderId;
+            careUnit.CareProviderName = careUnitDetails?.CareProviderName;
             transformedData.CareUnitContext = careUnit;
+
+            careUnit.OrgNumber = new Identifier()
+            {
+                Value = careUnitDetails != null ? careUnitDetails.OrganisationNumber : "Add CareProviderId", //verify,
+                Type = CompositionConstants.CARE_PROVIDER_TYPE
+            };
+
             _finalCompositionJson.Append(careUnit.ToString());
 
             //add context metadata
@@ -147,8 +155,8 @@ namespace TakeCare.Migration.OpenEhr.Measurement.Transformer.Service
                 SavedOn = _savedOn,
                 CreatedByUserId = _createdByUserId,
                 SavedByFullName = _savedByUserName,
-                CareUnitId = careU.Id,
-                CareUnitName = careU.Name,
+                CareUnitId = careUnitDetails.CareUnitId,
+                CareUnitName = careUnitDetails.CareUnitName,
                 DocumentCode = "MÄT",
                 DocumentName = "Mätningar",
                 CreatedOnDate = _createdOn,

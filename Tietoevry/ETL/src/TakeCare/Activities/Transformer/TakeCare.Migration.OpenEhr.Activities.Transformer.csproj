@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\TakeCare.Migration.OpenEhr.Archetype\TakeCare.Migration.OpenEhr.Archetype.csproj" />
     <ProjectReference Include="..\Extraction\TakeCare.Migration.OpenEhr.Activities.Extraction.csproj" />
   </ItemGroup>
 

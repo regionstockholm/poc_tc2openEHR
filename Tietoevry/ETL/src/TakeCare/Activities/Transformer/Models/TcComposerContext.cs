@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using TakeCare.Migration.OpenEhr.Application.Models;
+using TakeCare.Migration.OpenEhr.Archetype.Entry;
 
 namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Models
 {
@@ -23,6 +24,8 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Models
         public CodedText Language { get; set; }
         public CodedText Territory { get; set; }
 
+        public HealthCareFacilityIdentifier HealthCareFacility { get; set; }  
+
         public TcComposerContext(string prefix)
         {
             _prefix = prefix;
@@ -39,6 +42,9 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Models
                 ""{_prefix}/context/setting|code"": ""{Setting.Code}"",
                 ""{_prefix}/context/setting|value"": ""{Setting.Value}"",
                 ""{_prefix}/context/setting|terminology"": ""{Setting.Terminology}"",
+                ""{_prefix}/context/_health_care_facility|name"": ""{HealthCareFacility.Name}"",
+                ""{_prefix}/context/_health_care_facility/_identifier:0"": ""{HealthCareFacility.Id}"",
+                ""{_prefix}/context/_health_care_facility/_identifier:0|type"": ""{HealthCareFacility.Type}"",
                 ""{_prefix}/category|code"": ""{Category.Code}"",
                 ""{_prefix}/category|value"": ""{Category.Value}"",
                 ""{_prefix}/category|terminology"": ""{Category.Terminology}"",

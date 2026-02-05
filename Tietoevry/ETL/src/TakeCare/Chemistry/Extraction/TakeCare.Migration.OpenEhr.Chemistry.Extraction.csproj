@@ -20,8 +20,11 @@
     <!--<None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195207291591.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>-->
+    <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195207291591.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195208062223.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <!--<None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195401171334.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -57,7 +60,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>-->
     <None Update="Assets\TestData\Chemistry\ChemistryReply_195208062223_32.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <!--<None Update="Assets\TestData\Chemistry\ChemistryReply_195705172590_12.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -10,7 +10,7 @@ using TakeCare.Migration.OpenEhr.Medication.Transformer.Model;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class MedicationEtlHandler //: IEtlHandler
+    public class MedicationEtlHandler : IEtlHandler
     {
         private readonly Lazy<IMedicationExtractor> _lazyExtractor;
         private readonly Lazy<IMedicationTransformer> _lazyTransformer;

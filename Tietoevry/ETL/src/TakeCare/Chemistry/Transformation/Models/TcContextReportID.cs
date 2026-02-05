@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Xml.Linq;
 using TakeCare.Migration.OpenEhr.Application.Models;
 
 namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
@@ -47,18 +48,11 @@ namespace TakeCare.Migration.OpenEhr.Chemistry.Transformation.Models
                 ""{_prefix}/context/_health_care_facility|name"": ""{LabResult.Context.HealthCareFacility.Name}"",";
 
                         result += $@"
-                ""{_prefix}/context/_health_care_facility|id"": ""{LabResult.Context.HealthCareFacility.Identifiers.FirstOrDefault()}"",";
+                ""{_prefix}/context/_health_care_facility/_identifier:0"": ""{LabResult.Context.HealthCareFacility.Identifiers.FirstOrDefault()}"",";
 
                         result += $@"
-                ""{_prefix}/context/_health_care_facility|id_scheme"": ""{CompositionConstants.SCHEMA_ID}"",";
-                        result += $@"
-                ""{_prefix}/context/_health_care_facility|id_namespace"": ""{CompositionConstants.NAMESPACE_ID}"",";
+                ""{_prefix}/context/_health_care_facility/_identifier:0|type"": ""{CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER}"",";
 
-                        //        for (int p = 0; p < LabResult.Context.HealthCareFacility.Identifiers.Count; p++)
-                        //        {
-                        //            result += $@"
-                        //""{_prefix}/context/_health_care_facility/_identifiers:{p}"": ""{LabResult.Context.HealthCareFacility.Identifiers[p]}"",";
-                        //        }
                     }
                 }
             }

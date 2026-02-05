@@ -64,10 +64,42 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Services
                 }
                 activityOpenEhrData.PatientId = patientDetails.PatientId;
 
+                //context care unit data
+                ContextDetails contextDetails = new ContextDetails();
+                if (data.Created != null && data.Created.CareUnit != null)
+                {
+                    contextDetails = _contextProvider.GetContextData(data.Created.CareUnit.Id.ToString());
+                }
+                if (contextDetails == null)
+                {
+                    throw new Exception($"Invalid Created CareUnit Id: " +
+                        $"{(data.Created != null && data.Created.CareUnit != null ? data.Created.CareUnit.Id : null)}");
+                }
+
+
+
+
                 #region ComposerContext
                 openEhrActivityData.ComposerContext = new TcComposerContext($"{commonPrefix}");
-                if(data.Created!=null && data.Created.User != null)
+                
+                #region Health care Facility
+                openEhrActivityData.ComposerContext.HealthCareFacility = new TakeCare.Migration.OpenEhr.Archetype.Entry.HealthCareFacilityIdentifier()
                 {
+
+                    Name = contextDetails.HealthCareFacilityName,
+                    Id =  contextDetails.HealthCareFacilityId,
+                    Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER,
+                    Issuer = "RSK",
+                    Scheme = CompositionConstants.SCHEMA_ID,
+                    Namespace = CompositionConstants.NAMESPACE_ID
+                };
+                #endregion
+
+
+                if (data.Created!=null && data.Created.User != null)
+                {
+
+
                     openEhrActivityData.ComposerContext.UserFullName = data.Created.User.FullName;
                     openEhrActivityData.ComposerContext.User = new Identifier()
                     {
@@ -102,17 +134,6 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Services
                 #endregion
 
                 #region ContextCareUnit
-                //context care unit data
-                ContextDetails contextDetails = new ContextDetails();
-                if (data.Created != null && data.Created.CareUnit != null)
-                {
-                    contextDetails = _contextProvider.GetContextData(data.Created.CareUnit.Id.ToString());
-                }
-                if (contextDetails == null)
-                {
-                    throw new Exception($"Invalid Created CareUnit Id: " +
-                        $"{(data.Created!=null && data.Created.CareUnit!=null? data.Created.CareUnit.Id : null)}");
-                }
 
                 openEhrActivityData.CareUnitContext = new TcCareUnitContext($"{commonPrefix}/context/vårdenhet")
                 {
@@ -130,8 +151,8 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Services
                     CareProviderTerminology = "http://snomed.info/sct/45991000052106",
                     OrgNumber = new Identifier()
                     {
-                        Value = contextDetails != null ? contextDetails.CareProviderId : "Add CareProviderId", //verify,
-                        Type = "CareProviderId"
+                        Value = contextDetails != null ? contextDetails.OrganisationNumber : "Add CareProviderId", //verify,
+                        Type = CompositionConstants.CARE_PROVIDER_TYPE
                     }
                 };
                 #endregion
