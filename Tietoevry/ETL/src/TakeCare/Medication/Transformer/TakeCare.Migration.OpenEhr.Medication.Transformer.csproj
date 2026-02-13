@@ -10,9 +10,9 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Spine.Foundation.Web.Bootstrapper.Minimal" Version="6.2.0" />
     <PackageReference Include="Spine.Foundation.Web.OpenEhr.Archetype" Version="6.2.0" />
-    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.2.0" />
+    <PackageReference Include="Spine.Foundation.Web.OpenEhr.Client" Version="6.3.0" />
     <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0" />
-    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.3.0" />
+    <PackageReference Include="Spine.Migration.OpenEhr.Loader" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>

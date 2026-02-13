@@ -11,4 +11,8 @@
     <PackageReference Include="Spine.Migration.OpenEhr.Etl.Core" Version="6.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TakeCare.Migration.OpenEhr.Application\TakeCare.Migration.OpenEhr.Application.csproj" />
+  </ItemGroup>
+
 </Project>

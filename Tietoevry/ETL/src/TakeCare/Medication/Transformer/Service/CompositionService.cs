@@ -78,9 +78,12 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Service
                         },
                         HealthCareFacility = new HealthCareFacilityIdentifier()
                         {
-                            Name = createdAtCU.CareUnitName,
-                            Id = createdAtCU.CareUnitId,
-                            Type = "CareUnitId",
+                            //TODO: Verify should it be created at care unit or saved at care unit? Changed logic for now so that we can save data 
+                            //Name = createdAtCU.CareUnitName,
+                            //Id = createdAtCU.CareUnitId,
+                            Name = savedAtCU.HealthCareFacilityName,
+                            Id = savedAtCU.HealthCareFacilityId,
+                            Type = CompositionConstants.CARE_UNIT_HSA_ID_OID_MARKER,
                             Issuer = "RSK"
                         },
                         Setting = new Setting()
@@ -111,7 +114,14 @@ namespace TakeCare.Migration.OpenEhr.Medication.Transformer.Service
                     var careUnit = new TcCareUnitContext(_prefix);
                     careUnit.CareUnitName = savedAtCU.CareUnitName;
                     careUnit.CareUnitId = savedAtCU.CareUnitId;
-                    careUnit.CareProviderId = savedAtCU.CareProviderName;
+                    careUnit.CareProviderId = savedAtCU.CareProviderId;
+                    careUnit.CareProviderName = savedAtCU.CareProviderName;
+                    careUnit.OrgNumber = new Identifier()
+                    {
+                        Value = savedAtCU != null ? savedAtCU.OrganisationNumber : "Add CareProviderId", //verify,
+                        Type = CompositionConstants.CARE_PROVIDER_TYPE
+                    };
+
                     openEhrMedication.CareUnitContext = careUnit;
 
                     var metadata = new TcMedicationContext();

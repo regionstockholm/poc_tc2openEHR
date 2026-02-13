@@ -10,7 +10,7 @@ using TakeCare.Migration.OpenEhr.Measurement.Transformer.Model;
 
 namespace TakeCare.Migration.OpenEhr.Etl.Handlers
 {
-    public class MeasurementEtlHandler //: IEtlHandler
+    public class MeasurementEtlHandler : IEtlHandler
     {
         private readonly Lazy<IMeasurementExtractor> _lazyExtractor;
         private readonly Lazy<IMeasurementTransformer> _lazyTransformer;

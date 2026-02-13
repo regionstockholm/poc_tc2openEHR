@@ -20,7 +20,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195208062223_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195401171334_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
