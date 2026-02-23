@@ -22,7 +22,13 @@
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195208062223_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195301010350_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195401171334_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195612072545_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_195705172590_0.xml">
@@ -32,6 +38,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_196607113146_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_196610232842_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_201401012396_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\CareDocumentation\CareDocumentationGet_201402192387_0 - Mock.xml">
