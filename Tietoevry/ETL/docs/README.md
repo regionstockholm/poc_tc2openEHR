@@ -8,7 +8,7 @@ Extract data in ETL compatible format​ and transfer to Transformation layer​
 Uses openEHR template, binds clinical data and context metadata with template structure. ​Creates openEHR compositon ​and transfers the same to Loader Layer​.
 
 #### Loader
-Resolve/Create Patient EhrId from (FHIR/EHR), then maps EhrId to Composition ​and saves data to opeEHR.
+The loader layer persists the composition in openEHR using the patient’s existing EHR ID
 
 As a part of this application ETL tool was developed for following information types:
 - Care Documentation
@@ -43,7 +43,7 @@ The Unit Provider Service takes the TakeCare unit as input as provides the corre
 
 #### Context Provider
 
-The Context Provider Service takes the CareUnit and CareProvider details. It takes the Care Unit Id and returns the corresponsing Care Unit and Provider name.
+The Context Provider Service takes the TakeCare Care Unit Id(healthcare delivery unit) and returns the corresponsing Healthcare delivery unit, Care Unit and Provider name.
 
 #### Terminology Provider
 
@@ -51,7 +51,7 @@ The Terminology Provider Service takes the term Id as input and returns the corr
 
 #### Patient Service
 
-The Patient Service provides the Patient Id based on the SSN (Social security number) ID provided in the data files.
+The Patient Service provides the Patient EHR Id based on the SSN (Social security number) ID provided in the data files.
 
 #### Role Provider
 
@@ -208,7 +208,7 @@ Frequency 0, 1, 2, and 3 are covered in this project.
 | Blood pressure and pulse Widget | RSK - Journal Encounter |   RSK.View.Widget.Line.Chart.Systolic.Diastolic.Pulse    |    Blood pressure and pulse Widget    |     RSK.Form.Widget.Line.Chart.Systolic.Diastolic.Pulse  |  ![alt text](image/README/bppulse.png)    |
 | Height Weight BMI Widget | RSK - Journal Encounter |   RSK.View.Widget.Weight_Height_BMI    |    Parameter with History   |     RSK.Form.Widget.Height_Weight_BMI  |   ![alt text](image/README/htwtbmi.png)   |
 | Weight(kg) | RSK - Journal Encounter |   RSK.View.Widget.Line.Chart.Weight     |    Simple Line Chart    |     RSK.Form.Widget.Line.Chart.Weight  |    ![alt text](image/README/weight.png)    |
-| Medication  | RSK - Medication order  |   RSK.View.Medication     |    Column List     |     RSK.Form.Widget.Medication   |  ![alt text](image/README/medication.png)       |
+| Medication  | RSK - Medication order  |   RSK.View.Medications     |    Column List     |     RSK.Form.Widget.Medication   |  ![alt text](image/README/medication.png)       |
 | Chemistry   | Lab_result_report_TCPOC |   RSK.View.Chemistry.Data, RSK.View.Chemistry.MaxDate     |    Table for showing data over time     |    RSK.Form.Widget.Chemistry   | ![alt text](image/README/image-8.png)      | 
 | B-HbA1c(mmol/mol)  | Lab_result_report_TCPOC      |   RSK.View.Widget.Line.Chart.B-HbA1c   |    Simple Line Chart    |    RSK.Form.Widget.Line.Chart.B-HbA1c   |   ![alt text](image/README/labBhba1c.png)   |
 | P-PK(INR) widget   | Lab_result_report_TCPOC |   RSK.View.Widget.Line.Chart.P-PK(INR)  |    Used better simple line chart widget  |    RSK.Form.Widget.Line.Chart.P-PK(INR)  |   ![alt text](image/README/labPPK.png)     | 
@@ -255,3 +255,13 @@ Program.cs
 Set **TakeCare.Migration.OpenEhr.Etl** project as startup project
 
 ![alt text](image/README/image-4.png)
+
+
+The ETL tool prepares the deployable package by collecting all required project assets and organizing them into a structured output directory.
+
+![alt text](image/README/output-path.png)
+
+Folder tree structure looks like below
+
+![alt text](image/README/output-folder.png)
+

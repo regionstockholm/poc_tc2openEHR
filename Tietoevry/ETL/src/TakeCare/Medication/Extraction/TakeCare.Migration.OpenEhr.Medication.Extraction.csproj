@@ -23,7 +23,13 @@
     <None Update="Assets\TestData\Medication\MedicationHistoryGet_195207291591_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\TestData\Medication\MedicationHistoryGet_195301010350_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\Medication\MedicationHistoryGet_195401171334_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Medication\MedicationHistoryGet_195612072545_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\Medication\MedicationHistoryGet_195705172590_0.xml">
@@ -33,6 +39,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\Medication\MedicationHistoryGet_196607113146_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Medication\MedicationHistoryGet_196610232842_0.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Medication\MedicationHistoryGet_201401012396_0.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Assets\TestData\Medication\MedicationHistoryGet_201402192387_0.xml">

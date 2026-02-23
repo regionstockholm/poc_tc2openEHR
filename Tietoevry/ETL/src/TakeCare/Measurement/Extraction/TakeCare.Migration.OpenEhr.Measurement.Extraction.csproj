@@ -17,6 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\TestData\Measurement\MeasurementsIndex_195906113187.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\MeasurementsIndex_196607113146.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Measurement\MeasurementsIndex_201402192387.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\Measurement\Measurements_195207291591_20241023084031-197803070189.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

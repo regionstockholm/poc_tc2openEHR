@@ -26,6 +26,12 @@
     <None Update="Assets\TestData\Activities\Activities_196607113146.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\TestData\Activities\Activities_196610232842.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Activities\Activities_201401012396.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\TestData\Activities\Activities_201402192387.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

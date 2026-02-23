@@ -26,6 +26,18 @@
     <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195208062223.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195612072545.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195906113187.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_196607113146.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_196610232842.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <!--<None Update="Assets\TestData\Chemistry\ChemistryRepliesIndex_195401171334.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
@@ -60,6 +72,36 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>-->
     <None Update="Assets\TestData\Chemistry\ChemistryReply_195208062223_32.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195612072545_57.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195612072545_60.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195612072545_61.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195906113187_57.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195906113187_60.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_195906113187_61.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_196607113146_53.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_196607113146_57.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_196610232842_53.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TestData\Chemistry\ChemistryReply_196610232842_57.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <!--<None Update="Assets\TestData\Chemistry\ChemistryReply_195705172590_12.json">

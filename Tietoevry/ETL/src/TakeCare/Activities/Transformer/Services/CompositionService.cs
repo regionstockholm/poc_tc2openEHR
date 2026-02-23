@@ -76,9 +76,6 @@ namespace TakeCare.Migration.OpenEhr.Activities.Transformer.Services
                         $"{(data.Created != null && data.Created.CareUnit != null ? data.Created.CareUnit.Id : null)}");
                 }
 
-
-
-
                 #region ComposerContext
                 openEhrActivityData.ComposerContext = new TcComposerContext($"{commonPrefix}");
                 
