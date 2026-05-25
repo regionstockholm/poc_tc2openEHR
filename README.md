@@ -19,7 +19,7 @@ See directory /Tietoevry and its [Solution description README.md](https://github
 
 Archetype documentation is found in the repository <https://github.com/regionstockholm/CKM-mirror-via-modellbibliotek> under the branch poc-tc2openEHR.
 
-## TakeCare_extraction (Mostly done by Tom at Karolinska)
+## TakeCare_extraction (Mostly done by Tom Backman at Karolinska)
 
 A collection of simple scripts to extract data from TakeCare that was used in the PoC.
 See directory /TakeCare_extraction and its [README.md](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/TakeCare_extraction/README.md) file.
