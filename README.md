@@ -4,7 +4,7 @@ This is a collection of resources related to th Proof of Concept project convert
 
 ## Presentations
 * Visitors of the Swedish Vitalis Conference 2025 in Gothenburg can find a 1hr recording at the Vitalis website. The presentation slides are also available as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/2025-05-20-Byt-journalsystem-smidigare-Vitalis-Civalero-Sundvall-Glas-Larsson.pdf)
-* An English presentation from EHRCON2025 in Barcelona can be found as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf)
+* An English presentation from EHRCON2025 in Barcelona can be found as [PDF  in this directory](https://github.com/regionstockholm/poc_tc2openEHR/blob/main/EHRCON2025-10-17-Store-legacy-EHR-content-openEHR-Sundvall%2BMcNicoll.pdf) Update: now also available as scientific publication [Using openEHR and FHIR to store and access legacy data from an EHR to be decommissioned](https://link.springer.com/article/10.1186/s12919-026-00367-3#Sec51) and EHRCON25 presentation [available as video recording on YouTube](https://www.youtube.com/watch?v=mIiWWFa98eg) 
 
 # Background / task
 See e.g. https://discourse.openehr.org/t/karolinska-stockholm-procurement-of-digital-health-platform-cdr-tools-services-consultants/4457/27
